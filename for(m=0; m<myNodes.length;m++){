@@ -1,0 +1,12 @@
+ for(m=0; m<myNodes.length;m++){
+       
+     var node= myNodes[m]; 
+     var id = node.id;
+     var count =0;
+     for(n=0; n<mylinks.length;n++){
+        var link=mylinks[n];
+        if (link.t==id) count++;
+        console.log(link);
+     }
+       if (count==0) {console.log("find heaer:"+ id)}
+     }
