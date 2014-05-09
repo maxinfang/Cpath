@@ -1,5 +1,4 @@
-function addDroplist(options){
-  
+function addDroplist(options){ 
       newselect= document.createElement('select');
       $(newselect).addClass("droplist");
       var select= $(newselect).uniqueId(); 

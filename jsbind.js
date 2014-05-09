@@ -5,6 +5,7 @@ jsPlumb.bind("click", function(conn) {
         node.parentID="";
         updateNode(node,"parentID");
         console.log(conn);
+        drawbox(conn);
         jsPlumb.detach(conn);   
   
         $("#"+childId).children().each(function(no,el){

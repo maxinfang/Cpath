@@ -1,20 +1,6 @@
-function drawbox(){
+function drawbox(node){
 
-if(node.activity==""){ 
-     node.activity=0;
-     dropL=addDroplist();
-     dropLid=$(dropL).prop('id');
-     $(dropL).width('90%');
-    
-  }
-  
-  else{
-    dropL=addDroplist(node.activity);
-    dropLid=$(dropL).prop('id'); 
-    $(dropL).width('90%');
-  
-  }   
-  
+ 
       
      var dataLeft= $(newdiv).position().left;
      var dataTop= $(newdiv).position().top; 
@@ -139,29 +125,6 @@ if(node.activity==""){
          
 }); 
   
-  $(dropL).change(function() { 
-      var indexvalue= $( "#"+dropLid+" option:selected" ).val();
-      node.activity= indexvalue;
-      updateNode(node,"activity");
-     
-     $("#"+durationId).text("Duration: "+du[node.activity]);
-       
-      
-    })
-   //console.log("test");
-    
-    
-    $("#"+deleteId).click(function() { 
-    if (confirm('Delete this node?')) {   
-        jsPlumb.detachAllConnections(currentId )
-        jsPlumb.removeAllEndpoints(currentId);
-        
-        $("#"+node.id).empty();  
-      
-        
-      
-      }  
-      
-      });
+  
 }
  
