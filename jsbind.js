@@ -4,6 +4,7 @@ jsPlumb.bind("click", function(conn) {
         var node = findnode(childId);
         node.parentID="";
         updateNode(node,"parentID");
+        console.log(conn);
         jsPlumb.detach(conn);   
   
         $("#"+childId).children().each(function(no,el){
