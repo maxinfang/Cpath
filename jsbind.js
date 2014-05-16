@@ -1,18 +1,21 @@
-jsPlumb.bind("click", function(conn) { 
+
+
+
+jsPlumb.bind("dblclick", function(conn) { 
         var parentId=$('#'+conn.sourceId).parent().attr('id');
         var childId=$('#'+conn.targetId).parent().attr('id');
         var node = findnode(childId);
         node.parentID="";
         updateNode(node,"parentID");
-        console.log(conn);
-        drawbox(conn);
-        jsPlumb.detach(conn);   
+        var box= conn.getOverlay("customOverlay");
+       console.log(box);
+        //jsPlumb.detach(conn);  
+       // if(box.isVisiable==true){box.setVisiable(false)} 
+        // console.log(conn);
+  if(box.visible==true){
+    box.setVisible(false);}
+  else{box.setVisible(true);}
   
-        $("#"+childId).children().each(function(no,el){
-        if($(el).hasClass("droplist")){
-         $(el).hide();
-        } 
-        });
      }); 
 
 
