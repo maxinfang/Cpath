@@ -16,6 +16,7 @@ jsPlumb.bind("dblclick", function(conn) {
     box.setVisible(false);}
   else{box.setVisible(true);}
   
+  
      }); 
 
 
