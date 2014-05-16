@@ -159,12 +159,22 @@ $(document).ready(function()  {
       var conn = info.connection;
       var parentId=$('#'+conn.sourceId).parent().attr('id');
       var childId=$('#'+conn.targetId).parent().attr('id');
-      
+      jsPlumb.select(info).addOverlay( ["Custom", {
+                create:function(component) {
+                      var node = new Node();
+                     var boxvalue= drawbox("line",node)
+                    return $(boxvalue);                
+                },
+                location:0.5,
+                id:"customOverlay"
+            }]);
      var cc= new connector();
+    
      cc.h=parentId;
      cc.t=childId; 
      addNewLink(cc);
-    console.log(mylinks);
+     console.log(conn);
+   // console.log(mylinks);
       
    //document.getElementById(" ").style.zIndex="1";
     
