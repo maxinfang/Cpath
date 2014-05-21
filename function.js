@@ -16,7 +16,8 @@ var Data_SEPARATOR='D';
 
 
 
-function connector(){
+function connector(id,h,t,EST,EFT,LST,LFT,FF,TF){
+       this.id="";
        this.h="";
        this.t="";
        this.EST="";
@@ -25,6 +26,7 @@ function connector(){
        this.LFT="";
        this.FF="";
        this.TF="";
+       this.activity="";
 }
 
 function Node(id,type,parent,top,left,activity,EST,EFT,LST,LFT,FF,TF){            
@@ -254,6 +256,24 @@ function deletelink(h,t){
        console.log(mylinks);
 
 }
+
+function generateLinkID(mylinks){
+      
+  if (typeof(mylinks) == "undefined" ) {return 1;}
+      
+      var mylinksArray=mylinks;
+      var max=0;  
+      
+      for(n=0; n<mylinks.length;n++){ 
+         var mylink= mylinks[n]; 
+          mylink.id >=max;
+          max=mylink.id 
+       } 
+      var ret= Number(max) +1;
+      return ret;
+      
+      };
+
 
 function addNewNode(node){
 

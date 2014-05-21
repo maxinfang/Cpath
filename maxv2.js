@@ -4,7 +4,6 @@
  var questionId=this.frameElement.attributes.id.value; 
  var array = questionId.split("_");
 
-
  
  
 if(array[0] != "question" && array[0] !='"question'){ 
@@ -55,8 +54,6 @@ function getDuration(){
    console.log("_+++++"+elements[0]+"fas");
      return elements;
 }
-
- 
  
  function getEntry(){
    
@@ -134,8 +131,7 @@ $(document).ready(function()  {
      
    //check wehter we need reload or not
 
-  if(mode=="submission") { 
-                          history= getSubmission();
+  if(mode=="submission") {  history= getSubmission();
                            
     
     }
@@ -159,19 +155,23 @@ $(document).ready(function()  {
       var conn = info.connection;
       var parentId=$('#'+conn.sourceId).parent().attr('id');
       var childId=$('#'+conn.targetId).parent().attr('id');
-      jsPlumb.select(info).addOverlay( ["Custom", {
-                create:function(component) {
-                      var node = new Node();
-                     var boxvalue= drawbox("line",node)
-                    return $(boxvalue);                
-                },
-                location:0.5,
-                id:"customOverlay"
-            }]);
      var cc= new connector();
     
      cc.h=parentId;
      cc.t=childId; 
+     cc.id=generateLinkID(mylinks); 
+  console.log("test+"+cc.id);  
+    jsPlumb.select(info).addOverlay( ["Custom", {
+                create:function(component) {
+                     
+                     var boxvalue= drawbox("line",cc);
+                    return $(boxvalue);                
+                },
+                location:0.5,
+                cssClass:"datatable",
+                id: cc.id//"customOverlay"//cc.id
+            }]);
+     
      addNewLink(cc);
      console.log(conn);
    // console.log(mylinks);

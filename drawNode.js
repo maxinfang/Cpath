@@ -14,32 +14,22 @@ function drawnode(node){
       $(newdiv).css({ top: node.top, left: node.left });
       } 
    
-      $("#canvasdiv").append(newdiv);
- 
+      $("#canvasdiv").append(newdiv); 
       dragzone= document.createElement('div'); 
-      deletezone= document.createElement('div');
-      
-  
-  
+      deletezone= document.createElement('div'); 
       var elem = document.createElement("img");
      elem.setAttribute("src", " icon-error.png");
      $(elem).uniqueId();
      $(elem).attr('align', 'right');
-     $(deletezone).append(elem);
-  
-  
-  
+     $(deletezone).append(elem); 
       $(deletezone).addClass("delete");
       //$(deletezone).text("delete");
    
       $(dragzone).uniqueId();
       var deleteId  =$(elem).attr("id");
-      var currentId=$(dragzone).attr("id");
-  
+      var currentId=$(dragzone).attr("id"); 
       $(newdiv).append(deletezone);
-      $(newdiv).append(dragzone); 
-  
-  
+      $(newdiv).append(dragzone);  
       addShape("C",dragzone);  
   
      
