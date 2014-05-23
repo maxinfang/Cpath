@@ -1,5 +1,5 @@
 function addConnections(linklist){
-  
+     
     var arraynodes=linklist.slice();
    
   for(n=0; n<arraynodes.length;n++){
@@ -33,7 +33,7 @@ function addConnection(link){
       s=jsPlumb.selectEndpoints({source: sourceid}).get(0);
       t=jsPlumb.selectEndpoints({target: targetid}).get(0);
        
-       jsPlumb.connect({source:s, target:t});  
+      jsPlumb.connect({source:s, target:t});  
         
 
 }

@@ -17,7 +17,7 @@ var Data_SEPARATOR='D';
 
 
 function connector(id,h,t,EST,EFT,LST,LFT,FF,TF){
-       this.id="";
+      
        this.h="";
        this.t="";
        this.EST="";
@@ -55,27 +55,39 @@ function Node(id,type,parent,top,left,activity,EST,EFT,LST,LFT,FF,TF){
 
 
 function deserialiseL(string){ 
+  
        var array= new Array(); 
-       var stringwithCandL=string.split('a');
-  
-       var stringnode=stringwithCandL[0];
-       var stringlink=stringwithCandL[1];
+       var stringwithCandL=string.split('a'); 
        
-       if(stringlink.length ==0) return [];
-  
-       var link= stringlink.split('L');
-  
+       var stringlink=stringwithCandL[1]; 
+       if(stringlink.length ==0) return [];  
+       console.log("!!!!!!!!!!!!!!!!!!");
+       var link= stringlink.split('L'); 
+ 
        for(i=1;i<link.length;i++){ 
-          
-       var linkAttribute=link[i].split('c');
+       var shapeanddata=link[i].split('D'); 
+      
+       var linkAttribute= shapeanddata[0].split('c');
+       var dataAttribute=shapeanddata[1].split('d');
+         console.log(dataAttribute);
        var cc = new connector();
+          
        cc.h= linkAttribute[1]
        cc.t= linkAttribute[2];
        
-       array.push(cc);
-          
-       }  
-     return array;   
+       cc.activity=dataAttribute[1];
+       cc.EST=dataAttribute[2];
+       cc.EFT=dataAttribute[3];
+       cc.LST=dataAttribute[4];
+       cc.LFT=dataAttribute[5];
+       cc.FF=dataAttribute[6];
+       cc.TF=dataAttribute[7]; 
+         console.log(cc);
+        array.push(cc);
+      }
+    
+       
+   
   
 }
 
@@ -122,24 +134,21 @@ function serialise(myNodes,mylinks){
   var answervalue =""; 
   
       for(l=0;l<myNodes.length;l++){
-      var thisnode=myNodes[l]; 
-     
-     //Cc"id"c"top"c"left"c
+      var thisnode=myNodes[l];  
       answervalue+=C_SEPARATOR;  
       answervalue+=C_field_SEPARATOR; 
       answervalue+=thisnode.id;
       answervalue+=C_field_SEPARATOR; 
       answervalue+=thisnode.top;
       answervalue+=C_field_SEPARATOR;
-        answervalue+=thisnode.left;
-      answervalue+=C_field_SEPARATOR;
-      //"Actvity"d
+      answervalue+=thisnode.left;
+      answervalue+=C_field_SEPARATOR;  
       answervalue+=Data_SEPARATOR;
-        answervalue+=Label_SEPARATOR;
+      answervalue+=Label_SEPARATOR;
       answervalue+=thisnode.activity;
       answervalue+=Label_SEPARATOR;
       answervalue+=thisnode.EST;
-        console.log("thisnodeSST:"+thisnode.EST);
+       
       answervalue+=Label_SEPARATOR;
       answervalue+=thisnode.EFT;
       answervalue+=Label_SEPARATOR;
@@ -154,14 +163,32 @@ function serialise(myNodes,mylinks){
     } 
       answervalue+=CL_SEPARATOR='a';
    for(l=0;l<mylinks.length;l++){
-      var thisnode=mylinks[l]; 
+      var thislink=mylinks[l]; 
      //Cc"id"c"top"c"left"c
-      answervalue+=L_SEPARATOR;  
+      answervalue+=L_SEPARATOR;   
       answervalue+=C_field_SEPARATOR; 
-      answervalue+=thisnode.h;
+      answervalue+=thislink.h;
       answervalue+=C_field_SEPARATOR; 
-      answervalue+=thisnode.t;
+      answervalue+=thislink.t;
       answervalue+=C_field_SEPARATOR;
+       answervalue+=C_field_SEPARATOR;  
+      answervalue+=Data_SEPARATOR;
+      answervalue+=Label_SEPARATOR;
+      answervalue+=thislink.activity;
+      answervalue+=Label_SEPARATOR;
+      answervalue+=thislink.EST;
+       
+      answervalue+=Label_SEPARATOR;
+      answervalue+=thislink.EFT;
+      answervalue+=Label_SEPARATOR;
+        
+      answervalue+=thislink.LST;
+      answervalue+=Label_SEPARATOR;
+      answervalue+=thislink.LFT;
+      answervalue+=Label_SEPARATOR;
+      answervalue+=thislink.FF;
+      answervalue+=Label_SEPARATOR;
+      answervalue+=thislink.TF; 
     
       //"Actvity"d
         
@@ -169,7 +196,7 @@ function serialise(myNodes,mylinks){
       
       return answervalue;
       
-};
+} 
 
 function generateID(myNodes){
       
@@ -228,20 +255,22 @@ function findrootnode(){
   
   
 }
+
 function findlink(h,t){
-  
+ 
 for(var n=0; n<mylinks.length;n++){ 
          var link= mylinks[n]; 
      
      if (link.h == h && link.t== t)
      
-     { 
+     {  console.log("here");
        console.log("~~~link"+link.h+link.t+"~~"+h+t);
        return link; 
      };
       
-   return;
-}
+      return null;
+   }
+      return null;
 }
 
 function deletelink(h,t){
@@ -259,7 +288,7 @@ function deletelink(h,t){
 
 function generateLinkID(mylinks){
       
-  if (typeof(mylinks) == "undefined" ) {return 1;}
+  if (typeof(mylinks) == "undefined" ) {return 10000;}
       
       var mylinksArray=mylinks;
       var max=0;  

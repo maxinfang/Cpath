@@ -21,14 +21,10 @@ function redraw(history){
      
      var root = new Node();
      root = findrootnode(); 
-      
-     
-     
+       
      var linkedArray= new Array(); 
      var linkedArray2= new Array(); 
-     
-     
-         
+      
       for(n=0; n<myNodes.length;n++){  
       var node=myNodes[n];  
        //console.log(node);
@@ -153,8 +149,6 @@ function redraw(history){
       }
         
         
-     
-    
      
      for( var i=1; i<=deep; i++ )   {
       for (var j=0;j<linkedArray.length;j++){

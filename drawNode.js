@@ -205,7 +205,11 @@ function drawnode(node){
  
   
     
-    
+     $(datadiv).dblclick(
+       function() { 
+      
+     $("#"+datadivId).toggle("slow") ;
+      });
     
    $(dragzone).dblclick(function() { 
       

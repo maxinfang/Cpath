@@ -155,21 +155,25 @@ $(document).ready(function()  {
       var conn = info.connection;
       var parentId=$('#'+conn.sourceId).parent().attr('id');
       var childId=$('#'+conn.targetId).parent().attr('id');
-     var cc= new connector();
     
-     cc.h=parentId;
-     cc.t=childId; 
-     cc.id=generateLinkID(mylinks); 
-  console.log("test+"+cc.id);  
+    
+    var cc= findlink(parentId,childId);
+    
+     if (!cc){cc = new connector();
+              cc.h=parentId;
+              cc.t=childId;  
+              cc.id=generateLinkID(mylinks); 
+             }
+     console.log(cc);
     jsPlumb.select(info).addOverlay( ["Custom", {
-                create:function(component) {
-                     
-                     var boxvalue= drawbox("line",cc);
-                    return $(boxvalue);                
+                create:function(component) {  
+                    var boxvalue= drawbox("line",cc); 
+                  
+                    return $(boxvalue);  
                 },
                 location:0.5,
-                cssClass:"datatable",
-                id: cc.id//"customOverlay"//cc.id
+                cssClass:"datatable"//,
+               // id: cc.id
             }]);
      
      addNewLink(cc);
