@@ -2,7 +2,7 @@ function redraw(history){
   
      myNodes=deserialiseC(history);
      mylinks=deserialiseL(history);
-    
+     console.log(mylinks);
      if (myNodes == []) return;
        
      if(mode == "submission")

@@ -87,7 +87,7 @@ function deserialiseL(string){
       }
     
        
-   
+    return array;
   
 }
 
