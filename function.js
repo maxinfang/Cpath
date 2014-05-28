@@ -335,6 +335,8 @@ function updatelink(link,property){
             if(property=="FF"){ll.FF=link.FF;} 
            if(property=="TF"){ll.TF=link.TF;}
     }
+   if(mode == "student"){ sentToparentPage();}
+   return;
   
 }
 
