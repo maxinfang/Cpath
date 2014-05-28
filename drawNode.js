@@ -36,15 +36,13 @@ function drawnode(node){
   var dropL;
   var dropLid;
   
-  
-  
+   
   
   if(node.activity==""){ 
      node.activity=0;
      dropL=addDroplist();
      dropLid=$(dropL).prop('id');
-     $(dropL).width('90%');
-    
+     $(dropL).width('90%'); 
   }
   
   else{
@@ -52,8 +50,7 @@ function drawnode(node){
     dropLid=$(dropL).prop('id'); 
     $(dropL).width('90%');
   
-  }   
-  
+  }    
       
      var dataLeft= $(newdiv).position().left;
      var dataTop= $(newdiv).position().top; 
@@ -126,8 +123,7 @@ function drawnode(node){
    var FFdata = document.createElement("div");
    ESTdata.style.display = 'block';
    
-  
-  
+   
   
   $(FFdata).append(addlabel("FF"+"&nbsp&nbsp")); 
    var FF= (node.FF=="") ? addtext("FF") : addtext("FF",node.FF);
@@ -175,10 +171,13 @@ function drawnode(node){
   $(TF).change(function() {
            node.TF= $(TF).val();
            updateNode(node,"TF");
+     console.log("the value has been changed");
          
 }); 
   
   $(dropL).change(function() { 
+   
+    
       var indexvalue= $( "#"+dropLid+" option:selected" ).val();
       node.activity= indexvalue;
       updateNode(node,"activity");
@@ -187,8 +186,7 @@ function drawnode(node){
        
       
     })
-   //console.log("test");
-    
+   
     
     $("#"+deleteId).click(function() { 
     if (confirm('Delete this node?')) {   

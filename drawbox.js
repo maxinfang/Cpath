@@ -26,7 +26,8 @@ function drawbox(type,data){
     
      var datadivId=$(datadiv).attr("id");
     //  data.id=datadivId;
-     $(datadiv).addClass("datatable"); 
+     $(datadiv).addClass("datatable");
+      
      console.log(datadiv);
     var element = document.createElement('span');
     element.className = "normal short";
@@ -78,40 +79,40 @@ function drawbox(type,data){
     
    $(EST).change(function() {
            data.EST= $(EST).val();
-           updateNode(data,"EST");
+           updatelink(data,"EST");
          
 });   
    $(EFT).change(function() {
            data.EFT= $(EFT).val();
-           updateNode(data,"EFT");
+           updatelink(data,"EFT");
          
 });  
    $(LST).change(function() {
            data.LST= $(LST).val();
-           updateNode(data,"LST");
+           updatelink(data,"LST");
          
 }); 
   $(LFT).change(function() {
            data.LFT= $(LFT).val();
-           updateNode(data,"LFT");
+           updatelink(data,"LFT");
          
 }); 
   $(FF).change(function() {
            data.FF= $(FF).val();
-           updateNode(data,"FF");
+           updatelink(data,"FF");
          
 }); 
   $(TF).change(function() {
            data.TF= $(TF).val();
-           updateNode(data,"TF");
+           updatelink(data,"TF");
          
 }); 
   
   $(dropL).change(function() { 
       var indexvalue= $( "#"+dropLid+" option:selected" ).val();
       data.activity= indexvalue;
-      updateNode(data,"activity");
-        console.log(data);
+      updatelink(data,"activity");
+      console.log(data);
      $("#"+durationId).text("Duration: "+du[data.activity]);
        
       

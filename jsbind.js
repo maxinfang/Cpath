@@ -1,4 +1,4 @@
-
+ 
 jsPlumb.bind("dblclick", function(conn) { 
        // var parentId=$('#'+conn.sourceId).parent().attr('id');
        // var childId=$('#'+conn.targetId).parent().attr('id');

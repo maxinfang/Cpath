@@ -65,6 +65,7 @@ function getDuration(){
  
     var  tempname= namespaceforEntry+"_"+seq; 
     var element=parent.document.getElementById(tempname);
+    
    
     if ( typeof element !="undefined"&& element !=null ) { 
       
@@ -122,7 +123,7 @@ $(document).ready(function()  {
                                       zIndex: 2000 };
       jsPlumb.endpointClass = "endpointClass";
       jsPlumb.connectorClass =  "connectorClass";   
-  
+    
     /*initialize bind function*/
    ///click
       

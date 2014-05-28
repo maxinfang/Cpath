@@ -57,8 +57,7 @@ function Node(id,type,parent,top,left,activity,EST,EFT,LST,LFT,FF,TF){
 function deserialiseL(string){ 
   
        var array= new Array(); 
-       var stringwithCandL=string.split('a'); 
-       
+       var stringwithCandL=string.split('a');  
        var stringlink=stringwithCandL[1]; 
        if(stringlink.length ==0) return [];  
        console.log("!!!!!!!!!!!!!!!!!!");
@@ -68,6 +67,7 @@ function deserialiseL(string){
        var shapeanddata=link[i].split('D'); 
       
        var linkAttribute= shapeanddata[0].split('c');
+        
        var dataAttribute=shapeanddata[1].split('d');
          console.log(dataAttribute);
        var cc = new connector();
@@ -82,7 +82,7 @@ function deserialiseL(string){
        cc.LFT=dataAttribute[5];
        cc.FF=dataAttribute[6];
        cc.TF=dataAttribute[7]; 
-         console.log(cc);
+       
         array.push(cc);
       }
     
@@ -132,7 +132,7 @@ function deserialiseC(string){
 function serialise(myNodes,mylinks){
   
   var answervalue =""; 
-  
+      
       for(l=0;l<myNodes.length;l++){
       var thisnode=myNodes[l];  
       answervalue+=C_SEPARATOR;  
@@ -145,14 +145,13 @@ function serialise(myNodes,mylinks){
       answervalue+=C_field_SEPARATOR;  
       answervalue+=Data_SEPARATOR;
       answervalue+=Label_SEPARATOR;
+        console.log(thisnode);
       answervalue+=thisnode.activity;
       answervalue+=Label_SEPARATOR;
-      answervalue+=thisnode.EST;
-       
+      answervalue+=thisnode.EST; 
       answervalue+=Label_SEPARATOR;
       answervalue+=thisnode.EFT;
-      answervalue+=Label_SEPARATOR;
-        
+      answervalue+=Label_SEPARATOR; 
       answervalue+=thisnode.LST;
       answervalue+=Label_SEPARATOR;
       answervalue+=thisnode.LFT;
@@ -162,6 +161,7 @@ function serialise(myNodes,mylinks){
       answervalue+=thisnode.TF; 
     } 
       answervalue+=CL_SEPARATOR='a';
+  
    for(l=0;l<mylinks.length;l++){
       var thislink=mylinks[l]; 
      //Cc"id"c"top"c"left"c
@@ -320,22 +320,40 @@ function  emptymyNodes(){
  
    }
 
+function updatelink(link,property){
+
+  var mylinkArray=mylinks;
+  
+    
+     var ll= findlink(link.h,link.t)
+    if(ll){
+           if(property=="activity"){ll.activity=link.activity;} 
+           if(property=="EST"){ll.EST=link.EST;} 
+           if(property=="EFT"){ll.EFT=link.EFT;}
+            if(property=="LST"){ll.LST=link.LST;} 
+           if(property=="LFT"){ll.LFT=link.LFT;}
+            if(property=="FF"){ll.FF=link.FF;} 
+           if(property=="TF"){ll.TF=link.TF;}
+    }
+  
+}
+
 
 function updateNode(node,property){
       var myNodesArray=myNodes;
       
       for(n=0; n<myNodesArray.length;n++){ 
-         var n= myNodes[n]; 
-        if(  n.id== node.id){
-          if(property=="top") {n.top=node.top;}
-          if(property=="left"){n.left=node.left;} 
-           if(property=="activity"){n.activity=node.activity;} 
-           if(property=="EST"){n.EST=node.EST;} 
-           if(property=="EFT"){n.EFT=node.EFT;}
-            if(property=="LST"){n.LST=node.LST;} 
-           if(property=="LFT"){n.LFT=node.LFT;}
-            if(property=="FF"){n.FF=node.FF;} 
-           if(property=="TF"){n.TF=node.TF;}
+         var nn= myNodes[n]; 
+        if(  nn.id== node.id){
+          if(property=="top") {nn.top=node.top;}
+          if(property=="left"){nn.left=node.left;} 
+           if(property=="activity"){nn.activity=node.activity;} 
+           if(property=="EST"){nn.EST=node.EST;} 
+           if(property=="EFT"){nn.EFT=node.EFT;}
+            if(property=="LST"){nn.LST=node.LST;} 
+           if(property=="LFT"){nn.LFT=node.LFT;}
+            if(property=="FF"){nn.FF=node.FF;} 
+           if(property=="TF"){nn.TF=node.TF;}
           
         }
        } 

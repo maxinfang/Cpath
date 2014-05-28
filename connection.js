@@ -3,10 +3,8 @@ function addConnections(linklist){
     var arraynodes=linklist.slice();
    
   for(n=0; n<arraynodes.length;n++){
-   var link= arraynodes[n];
-    
-   addConnection(link);
-        
+   var link= arraynodes[n]; 
+   addConnection(link); 
   
   }
   
@@ -33,7 +31,20 @@ function addConnection(link){
       s=jsPlumb.selectEndpoints({source: sourceid}).get(0);
       t=jsPlumb.selectEndpoints({target: targetid}).get(0);
        
-      jsPlumb.connect({source:s, target:t});  
+  console.log(link);
+     var linkconn= jsPlumb.connect({source:s, 
+                       target:t  
+                      }); 
+      linkconn.addOverlay( ["Custom", {
+                create:function(component) {  
+                    var boxvalue= drawbox("line",link); 
+                  
+                    return $(boxvalue);  
+                },
+                location:0.5,
+                cssClass:"datatable"//,
+               // id: cc.id
+            }]); 
         
 
 }
