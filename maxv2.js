@@ -165,15 +165,21 @@ $(document).ready(function()  {
               cc.t=childId;  
               cc.id=generateLinkID(mylinks); 
              }
-      if(cc.activity==0){
+    if(cc.activity==0){
       conn.setPaintStyle({lineWidth: 2, 
                                  strokeStyle:"#666",
                                  dashstyle:"4 2"})
         
-        };
+        }
+    else{
+     conn.setPaintStyle({lineWidth: 2, 
+                                 strokeStyle:"#666",
+                                 dashstyle:"0 0"})
+    
+    };
     jsPlumb.select(info).addOverlay( ["Custom", {
                 create:function(component) {  
-                    var boxvalue= drawbox("line",cc,conn); 
+                var boxvalue= drawbox("line",cc,conn); 
                   
                     return $(boxvalue);  
                 },
