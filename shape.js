@@ -31,10 +31,10 @@ function addDiamond(dragzone) {
         }, 
         connector: ["Straight"],
         maxConnections: -1,
-        connectorOverlays: [["Arrow",
+        /*connectorOverlays: [["Arrow",
         { width: 15,
          length: 15}
-        ]], 
+        ]], */
         isSource:true,
         isTarget:false
         };
@@ -65,10 +65,10 @@ function addRect(dragzone) {
         }, 
         connector: ["Straight"],
         maxConnections: -1,
-        connectorOverlays: [["Arrow",
+        /*connectorOverlays: [["Arrow",
         { width: 15,
          length: 15}
-        ]], 
+        ]], */
         isSource:true,
         isTarget:false
         };
@@ -102,10 +102,10 @@ function addTriangle(dragzone) {
         }, 
         connector: ["Straight"],
         maxConnections: -1,
-        connectorOverlays: [["Arrow",
+        /*connectorOverlays: [["Arrow",
         { width: 15,
          length: 15}
-        ]], 
+        ]], */
         isSource:true,
         isTarget:false
         };
@@ -133,24 +133,20 @@ function addTriangle(dragzone) {
         anchor:"Right", 
          connectorStyle: {
             lineWidth: 2,
-            strokeStyle: '#666',
-           // dashstyle:"4 2",
-        
+            strokeStyle: '#666'
         }, 
         connector: ["Straight"],
         maxConnections: -1,
-        connectorOverlays: [["Arrow",
+    /*    connectorOverlays: [["Arrow",
         { width: 15,
          length: 15}
-        ]], 
-        
+        ]], */
         isSource:true,
         isTarget:false
         };
          
         var targetPoint= {
         anchor: "Left",
-          maxConnections: -1,
         isSource:false,
         isTarget:true
     };  
@@ -201,10 +197,10 @@ function addTriangle(dragzone) {
         }, 
         connector: ["Straight"],
         maxConnections: -1,
-        connectorOverlays: [["Arrow",
+     /*   connectorOverlays: [["Arrow",
         { width: 15,
          length: 15}
-        ]], 
+        ]],  */
         isSource:true,
         isTarget:false
         };
