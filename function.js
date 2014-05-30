@@ -320,14 +320,25 @@ function  emptymyNodes(){
  
    }
 
-function updatelink(link,property){
+function updatelink(link,property,con){
 
   var mylinkArray=mylinks;
   
     
      var ll= findlink(link.h,link.t)
     if(ll){
-           if(property=="activity"){ll.activity=link.activity;} 
+           if(property=="activity"){ll.activity=link.activity;
+                                    if (ll.activity==0){
+                                      con.setPaintStyle({lineWidth: 2, 
+                                       strokeStyle:"#666",
+                                        dashstyle:"4 2"})
+                                       } 
+                                    else{
+                                      con.setPaintStyle({lineWidth: 2, 
+                                       strokeStyle:"#666",
+                                        dashstyle:"0 0"})
+                                      } 
+                                    } 
            if(property=="EST"){ll.EST=link.EST;} 
            if(property=="EFT"){ll.EFT=link.EFT;}
             if(property=="LST"){ll.LST=link.LST;} 

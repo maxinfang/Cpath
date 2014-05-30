@@ -30,14 +30,24 @@ function addConnection(link){
      
       s=jsPlumb.selectEndpoints({source: sourceid}).get(0);
       t=jsPlumb.selectEndpoints({target: targetid}).get(0);
-       
+      
   console.log(link);
-     var linkconn= jsPlumb.connect({source:s, 
-                       target:t  
+    
+     
+     var linkconn= jsPlumb.connect({
+                       source:s,
+                       target:t 
                       }); 
+      
+      
+          
+            
+           
+   
+     
       linkconn.addOverlay( ["Custom", {
                 create:function(component) {  
-                    var boxvalue= drawbox("line",link); 
+                    var boxvalue= drawbox("line",link,linkconn); 
                   
                     return $(boxvalue);  
                 },
@@ -45,7 +55,14 @@ function addConnection(link){
                 cssClass:"datatable"//,
                // id: cc.id
             }]); 
+  
+      if(link.activity==0){
+      linkconn.setPaintStyle({lineWidth: 2, 
+                                 strokeStyle:"#666",
+                                 dashstyle:"4 2"})
         
+        }
+               
 
 }
 

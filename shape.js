@@ -133,7 +133,9 @@ function addTriangle(dragzone) {
         anchor:"Right", 
          connectorStyle: {
             lineWidth: 2,
-            strokeStyle: '#666'
+            strokeStyle: '#666',
+           // dashstyle:"4 2",
+        
         }, 
         connector: ["Straight"],
         maxConnections: -1,
@@ -141,6 +143,7 @@ function addTriangle(dragzone) {
         { width: 15,
          length: 15}
         ]], 
+        
         isSource:true,
         isTarget:false
         };

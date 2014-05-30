@@ -1,4 +1,4 @@
-function drawbox(type,data){
+function drawbox(type,data,conn){
     
      //judge the element and see how it goes.
   if(type=="line"){
@@ -18,6 +18,7 @@ function drawbox(type,data){
     dropLid=$(dropL).prop('id'); 
     $(dropL).width('90%');
   
+ 
   }    
      var dataLeft= $(newdiv).position().left;
      var dataTop= $(newdiv).position().top; 
@@ -79,39 +80,39 @@ function drawbox(type,data){
     
    $(EST).change(function() {
            data.EST= $(EST).val();
-           updatelink(data,"EST");
+           updatelink(data,"EST",conn);
          
 });   
    $(EFT).change(function() {
            data.EFT= $(EFT).val();
-           updatelink(data,"EFT");
+           updatelink(data,"EFT",conn);
          
 });  
    $(LST).change(function() {
            data.LST= $(LST).val();
-           updatelink(data,"LST");
+           updatelink(data,"LST",conn);
          
 }); 
   $(LFT).change(function() {
            data.LFT= $(LFT).val();
-           updatelink(data,"LFT");
+           updatelink(data,"LFT",conn);
          
 }); 
   $(FF).change(function() {
            data.FF= $(FF).val();
-           updatelink(data,"FF");
+           updatelink(data,"FF",conn);
          
 }); 
   $(TF).change(function() {
            data.TF= $(TF).val();
-           updatelink(data,"TF");
+           updatelink(data,"TF",conn);
          
 }); 
   
   $(dropL).change(function() { 
       var indexvalue= $( "#"+dropLid+" option:selected" ).val();
       data.activity= indexvalue;
-      updatelink(data,"activity");
+      updatelink(data,"activity",conn);
       console.log(data);
      $("#"+durationId).text("Duration: "+du[data.activity]);
        

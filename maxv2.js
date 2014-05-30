@@ -165,10 +165,15 @@ $(document).ready(function()  {
               cc.t=childId;  
               cc.id=generateLinkID(mylinks); 
              }
-     console.log(cc);
+      if(cc.activity==0){
+      conn.setPaintStyle({lineWidth: 2, 
+                                 strokeStyle:"#666",
+                                 dashstyle:"4 2"})
+        
+        };
     jsPlumb.select(info).addOverlay( ["Custom", {
                 create:function(component) {  
-                    var boxvalue= drawbox("line",cc); 
+                    var boxvalue= drawbox("line",cc,conn); 
                   
                     return $(boxvalue);  
                 },
@@ -221,14 +226,11 @@ $(document).ready(function()  {
            if($(el).hasClass("_jsPlumb_endpoint_anchor_")){
             console.log(el.id);
            jsPlumb.detachAllConnections(el.id);
-           jsPlumb.removeAllEndpoints(el.id); 
-           
+           jsPlumb.removeAllEndpoints(el.id);  
         } 
-        });
-             
+        }); 
          $('#'+currentId).remove();
-          }
-           
+          } 
            myNodes.length = 0; 
            sentToparentPage();
              
