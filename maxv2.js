@@ -113,6 +113,11 @@ var element=parent.document.getElementById(namespaceforSub);
  var op = getEntry();
  var du= getDuration();
  console.log(du);
+
+
+ 
+
+
 $(document).ready(function()  { 
   
     //initialize jsPlumb
@@ -123,7 +128,8 @@ $(document).ready(function()  {
                                       zIndex: 2000 };
       jsPlumb.endpointClass = "endpointClass";
       jsPlumb.connectorClass =  "connectorClass";   
-    
+      $(".datatable").jLzindex();
+
     /*initialize bind function*/
    ///click
       
@@ -189,8 +195,9 @@ $(document).ready(function()  {
             }]);
      
      addNewLink(cc);
-     console.log(conn);
-   // console.log(mylinks);
+     $(".datatable").jLzindex();
+    // console.log("++datable."+conn);
+    console.log(mylinks);
       
    //document.getElementById(" ").style.zIndex="1";
     

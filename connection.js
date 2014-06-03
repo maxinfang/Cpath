@@ -55,7 +55,7 @@ function addConnection(link){
                 cssClass:"datatable"//,
                // id: cc.id
             }]); 
-  
+       $(".datatable").jLzindex();
       if(link.activity==0){
       linkconn.setPaintStyle({lineWidth: 2, 
                                  strokeStyle:"#666",

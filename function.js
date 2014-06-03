@@ -384,7 +384,7 @@ function  giveWarning(){
 }
 
 function sentToparentPage()
-{
+{ 
  answervalue= serialise(myNodes,mylinks);
    console.log(answervalue);
   var elem= parent.document.getElementsByTagName("input"); 
