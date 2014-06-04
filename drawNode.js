@@ -221,7 +221,10 @@ function drawnode(node){
     jsPlumb.draggable(containerId);
   
       $("#"+containerId).draggable(    
-          {  stop: function(event, ui ){ 
+          {   containment: $("#canvasdiv").parent(),
+             scroll:false,
+             handle:  "#"+currentId,
+             stop: function(event, ui ){ 
              position = ui.position; 
              value="top:"+position.top+"left"+position.left;
              node.top=position.top;
