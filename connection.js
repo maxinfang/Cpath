@@ -47,8 +47,7 @@ function addConnection(link){
      
       linkconn.addOverlay( ["Custom", {
                 create:function(component) {  
-                    var boxvalue= drawbox("line",link,linkconn); 
-                  
+                    var boxvalue= drawbox("line",link,linkconn);  
                     return $(boxvalue);  
                 },
                 location:0.5,

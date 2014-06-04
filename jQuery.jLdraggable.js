@@ -9,13 +9,19 @@
           $($dragIndex).css("z-index",'99999');
         }
  
+         
         
+        
+         var index=   100000; 
          $dragIndex.mousedown(function(e){
+           
+           //find the largest value of index box
+         
              
            var x=  e.currentTarget.id 
            var selected= $("#"+x);
-           var index=   selected.zIndex(); 
-           selected.css("z-index",index+2);
+           index= index+2;
+           selected.css("z-index",index);
            console.log(index);
         });
       }
