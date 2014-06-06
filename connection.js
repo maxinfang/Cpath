@@ -50,10 +50,18 @@ function addConnection(link){
             }]); 
        $(".datatable").jLzindex();
       if(link.activity==0){
-      linkconn.setPaintStyle({lineWidth: 2, 
-                                 strokeStyle:"#666",
-                                 dashstyle:"4 2"})
         
+      linkconn.setPaintStyle({lineWidth: 2, 
+      strokeStyle:"#666",
+      dashstyle:"4 2"})
+      var box= linkconn.getOverlays();
+          
+        //jsPlumb.detach(conn);  
+       // if(box.isVisiable==true){box.setVisiable(false)} 
+        console.log(linkconn);
+       
+       if(box[1].visible==true){
+         box[1].setVisible(false);}
         }
                
 
