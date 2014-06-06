@@ -29,7 +29,9 @@ function drawbox(type,data,conn){
     //  data.id=datadivId;
      $(datadiv).addClass("datatable");
       
+     
      console.log(datadiv);
+   
     var element = document.createElement('span');
     element.className = "normal short";
   
@@ -116,6 +118,7 @@ function drawbox(type,data,conn){
                                       conn.setPaintStyle({lineWidth: 2, 
                                        strokeStyle:"#666",
                                         dashstyle:"4 2"})
+                                   
                                        } 
                                     else{
                                       conn.setPaintStyle({lineWidth: 2, 

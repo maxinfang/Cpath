@@ -193,7 +193,21 @@ $(document).ready(function()  {
                 cssClass:"datatable"//,
                // id: cc.id
             }]);
-     
+      console.log("1111111111111"+cc.activity+"?????");
+       if(cc.activity==0){
+       console.log("1111111111111");
+     var box= conn.getOverlays();
+          
+        //jsPlumb.detach(conn);  
+       // if(box.isVisiable==true){box.setVisiable(false)} 
+        console.log(conn);
+       
+       if(box[1].visible==true){
+         box[1].setVisible(false);}
+   
+   
+    }
+    
      addNewLink(cc);
      $(".datatable").jLzindex();
     // console.log("++datable."+conn);

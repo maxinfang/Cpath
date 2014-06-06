@@ -43,9 +43,15 @@ function drawnode(node){
      dropL=addDroplist();
      dropLid=$(dropL).prop('id');
      $(dropL).width('90%'); 
+      dropL.show();
   }
-  
+  else if(node.activity!=0){
+     dropL=addDroplist();
+     dropLid=$(dropL).prop('id');
+     $(dropL).width('90%')
+     dropL.show(); }
   else{
+    
     dropL=addDroplist(node.activity);
     dropLid=$(dropL).prop('id'); 
     $(dropL).width('90%');
@@ -76,7 +82,8 @@ function drawnode(node){
     $(oNewP).append(durationL);
 
    $(newdiv).append(datadiv);
-   $(datadiv).append(dropL.show());
+  
+    $(datadiv).append(dropL); 
    $(datadiv).append(oNewP);
    $(datadiv).append(element);
     
@@ -214,7 +221,9 @@ function drawnode(node){
      $("#"+datadivId).toggle("slow") ;
       });
   
-  if(mode != "correct") {$(datadiv).hide();  }
+  if(node.activity==0){$(datadiv).hide()}
+  
+//  if(mode != "correct") {$(datadiv).hide();  }
   
   
    

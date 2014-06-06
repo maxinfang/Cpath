@@ -9,8 +9,8 @@ jsPlumb.bind("dblclick", function(conn) {
           
         //jsPlumb.detach(conn);  
        // if(box.isVisiable==true){box.setVisiable(false)} 
-        // console.log(conn);
-  
+        console.log(conn);
+       
        if(box[1].visible==true){
               box[1].setVisible(false);
           }
