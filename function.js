@@ -283,6 +283,9 @@ function deletelink(h,t){
        mylinks.splice(index,1);
      
        console.log(mylinks);
+     if(mode == "student"){ sentToparentPage();}
+   return;
+
 
 }
 
@@ -453,8 +456,25 @@ function calculateFFTF(node,value){
  
 function deleteNode(node)
 {
+          var deletedNodeid=node.id; 
+       var index = myNodes.indexOf(node); 
+       
+       myNodes.splice(index,1); 
+       for(n=0; n<myNodes.length;n++){
+        var node= myNodes[n];
         
-      
+        if(node.parentID==node.id){ 
+        node.parentID="";
+                                             $("#"+node.id).children().each(function(no,el){
+        if($(el).hasClass("droplist")){
+        $(el).hide();
+        } 
+        });}
+       }  
+       
+      $("#"+deletedNodeid).remove();
+ if(mode == "student"){ sentToparentPage();}
+   return;
 }
 
  
