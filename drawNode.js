@@ -201,6 +201,7 @@ function drawnode(node){
         jsPlumb.removeAllEndpoints(currentId);
         
         $("#"+node.id).empty();  
+      deleteNode(node);
       
         
       

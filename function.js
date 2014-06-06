@@ -456,7 +456,7 @@ function calculateFFTF(node,value){
  
 function deleteNode(node)
 {
-          var deletedNodeid=node.id; 
+       var deletedNodeid=node.id; 
        var index = myNodes.indexOf(node); 
        
        myNodes.splice(index,1); 
