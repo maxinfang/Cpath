@@ -45,7 +45,11 @@ function drawnode(node){
      $(dropL).width('90%'); 
       dropL.show();
   }
- 
+  else if(node.activity!=0){
+     dropL=addDroplist();
+     dropLid=$(dropL).prop('id');
+     $(dropL).width('90%')
+     dropL.show(); }
   else{
     
     dropL=addDroplist(node.activity);
