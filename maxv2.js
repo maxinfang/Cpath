@@ -11,7 +11,8 @@ if(array[0] != "question" && array[0] !='"question'){
       alert ("iframe setting not vailid!");
       
  }; 
-
+   
+ 
  var mode="student";
  var history=""; 
  var namespaceforSub = array[0]+"_"+array[1]+"_submission";
@@ -162,27 +163,36 @@ $(document).ready(function()  {
       var conn = info.connection;
       var parentId=$('#'+conn.sourceId).parent().attr('id');
       var childId=$('#'+conn.targetId).parent().attr('id');
+    if (parentId != childId) {
     
-    
-    var cc= findlink(parentId,childId);
-    
-     if (!cc){cc = new connector();
+     var cc= findlink(parentId,childId);
+     
+    if (cc==null){cc = new connector();
               cc.h=parentId;
               cc.t=childId;  
               cc.id=generateLinkID(mylinks); 
-             }
+              addNewLink(cc);
+                    
+                   conn.setPaintStyle({lineWidth: 2, 
+                                 strokeStyle:"#666",
+                                 dashstyle:"4 2"})              }
+    
+    else{
+      
     if(cc.activity==0){
       conn.setPaintStyle({lineWidth: 2, 
                                  strokeStyle:"#666",
-                                 dashstyle:"4 2"})
-        
+                                 dashstyle:"4 2"}) 
+      
         }
+    
     else{
-     conn.setPaintStyle({lineWidth: 2, 
+           conn.setPaintStyle({lineWidth: 2, 
                                  strokeStyle:"#666",
                                  dashstyle:"0 0"})
     
     };
+   }
     jsPlumb.select(info).addOverlay( ["Custom", {
                 create:function(component) {  
                 var boxvalue= drawbox("line",cc,conn); 
@@ -193,43 +203,47 @@ $(document).ready(function()  {
                 cssClass:"datatable"//,
                // id: cc.id
             }]);
-      console.log("1111111111111"+cc.activity+"?????");
+      
        if(cc.activity==0){
-       console.log("1111111111111");
+     
      var box= conn.getOverlays();
           
         //jsPlumb.detach(conn);  
        // if(box.isVisiable==true){box.setVisiable(false)} 
-        console.log(conn);
+       // console.log(conn);
        
        if(box[1].visible==true){
-         box[1].setVisible(false);}
-   
-   
-    }
-    
-     addNewLink(cc);
-     $(".datatable").jLzindex();
-    // console.log("++datable."+conn);
-    console.log(mylinks);
-      
-   //document.getElementById(" ").style.zIndex="1";
-    
-        });
+         box[1].setVisible(false);} 
+    } 
+     $(".datatable").jLzindex(); 
+  }});
    //initialzie button action to different buttons;
   
    jsPlumb.bind("connectionDetached", function(info, originalEvent) {
       var conn = info.connection;
       var parentId=$('#'+conn.sourceId).parent().attr('id');
       var childId=$('#'+conn.targetId).parent().attr('id');
-     
+     if (parentId != childId){
       deletelink(parentId,childId);
+       console.log(mylinks);
+     }
      //delete
      
          
 })
-  
-    
+     
+     
+  /* jsPlumb.bind("connectionDrag", function(conn) {
+      console.log("moving to new one");
+     //delete 
+})*/
+    jsPlumb.bind("connectionDragStop", function(conn) {
+       var parentId=$('#'+conn.sourceId).parent().attr('id');
+       var childId=$('#'+conn.targetId).parent().attr('id');
+       console.log(childId);
+})
+   
+   
   if(mode!="submission"){
       
      

@@ -257,20 +257,19 @@ function findrootnode(){
 }
 
 function findlink(h,t){
- 
+  
 for(var n=0; n<mylinks.length;n++){ 
          var link= mylinks[n]; 
      
      if (link.h == h && link.t== t)
      
-     {  console.log("here");
-       console.log("~~~link"+link.h+link.t+"~~"+h+t);
+     {    
        return link; 
      };
       
       return null;
    }
-      return null;
+      return  null ;
 }
 
 function deletelink(h,t){
@@ -282,7 +281,7 @@ function deletelink(h,t){
      
        mylinks.splice(index,1);
      
-       console.log(mylinks);
+        
      if(mode == "student"){ sentToparentPage();}
    return;
 
@@ -382,12 +381,43 @@ function updateNode(node,property){
       };
 
 
-function  giveWarning(){
-      
+ 
+  function  giveWarning(){
+     
+           console.log(myNodes);
+       
+      var numberOfnoParent=0;
+  for(n=0; n<myNodes.length;n++){
+        var node= myNodes[n];
+        var tail= node.id;
+         var istailexist=0;
+        for(var l=0; l<mylinks.length;l++){ 
+         var link= mylinks[l]; 
+          if (link.t == tail ){ 
+            istailexist=1;break;
+          } 
+          }   
+          if (istailexist==0) numberOfnoParent++;
+        }
+    
+        if (numberOfnoParent>1) {
+           
+           $("body").css("background-color","#fee");
+           $("p").text("Warning: Not all nodes are connected!");
+            
+         }  
+            else{
+              $("body").css("background-color","transparent");
+              $("p").text("");
+            
+       }; 
+         
+            
 }
+ 
 
 function sentToparentPage()
-{ 
+{   giveWarning();
  answervalue= serialise(myNodes,mylinks);
    console.log(answervalue);
   var elem= parent.document.getElementsByTagName("input"); 

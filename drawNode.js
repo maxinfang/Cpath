@@ -83,7 +83,7 @@ function drawnode(node){
 
    $(newdiv).append(datadiv);
   
-    $(datadiv).append(dropL); 
+   $(datadiv).append(dropL); 
    $(datadiv).append(oNewP);
    $(datadiv).append(element);
     
