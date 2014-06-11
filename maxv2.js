@@ -240,7 +240,11 @@ $(document).ready(function()  {
     jsPlumb.bind("connectionDragStop", function(conn) {
        var parentId=$('#'+conn.sourceId).parent().attr('id');
        var childId=$('#'+conn.targetId).parent().attr('id');
-       console.log(childId);
+      console.log("save the draged link"+conn)
+      console.log("check the link see if it is exsit");
+      
+      console.log(childId);
+      
 })
    
    
