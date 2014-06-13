@@ -124,6 +124,7 @@ $(document).ready(function()  {
     //initialize jsPlumb
      
     /*initialize endpoint Class*/
+  
       jsPlumb.Defaults.Container = $("#canvasdiv"); 
       jsPlumb.DefaultDragOptions = {  cursor:"pointer",
                                       zIndex: 2000 };
@@ -163,17 +164,19 @@ $(document).ready(function()  {
       var conn = info.connection;
       var parentId=$('#'+conn.sourceId).parent().attr('id');
       var childId=$('#'+conn.targetId).parent().attr('id');
+     
     if (parentId != childId) {
     
      var cc= findlink(parentId,childId);
      
-    if (cc==null){cc = new connector();
+    if (cc==null){
+              cc = new connector();
               cc.h=parentId;
               cc.t=childId;  
               cc.id=generateLinkID(mylinks); 
               addNewLink(cc);
                     
-                   conn.setPaintStyle({lineWidth: 2, 
+              conn.setPaintStyle({lineWidth: 2, 
                                  strokeStyle:"#666",
                                  dashstyle:"4 2"})              }
     
@@ -211,7 +214,7 @@ $(document).ready(function()  {
         //jsPlumb.detach(conn);  
        // if(box.isVisiable==true){box.setVisiable(false)} 
        // console.log(conn);
-       
+        var box= conn.getOverlays();
        if(box[1].visible==true){
          box[1].setVisible(false);} 
     } 
@@ -233,25 +236,23 @@ $(document).ready(function()  {
 })
      
      
-  /* jsPlumb.bind("connectionDrag", function(conn) {
-      console.log("moving to new one");
-     //delete 
-})*/
-    jsPlumb.bind("connectionDragStop", function(conn) {
-       var parentId=$('#'+conn.sourceId).parent().attr('id');
-       var childId=$('#'+conn.targetId).parent().attr('id');
-      console.log("save the draged link"+conn)
-      console.log("check the link see if it is exsit");
+    
+     
+   
+     
+    jsPlumb.bind("beforeDrop", function(info) {
       
-      console.log(childId);
+      var parentId = $('#'+conn.sourceId).parent().attr('id');
+      var childId =  $('#'+conn.targetId).parent().attr('id');
+      console.log(info);
+      console.log("pis"+parentId+"cis"+childId);
+      console.log("check the link see if it is exsit"); 
+      
       
 })
+ 
    
-   
-  if(mode!="submission"){
-      
-     
-      
+  if(mode!="submission"){ 
     $("#c").click(function(){ 
          var node= new Node();
          node.id =generateID(myNodes); 

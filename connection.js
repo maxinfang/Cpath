@@ -1,11 +1,10 @@
 function addConnections(linklist){
      
-    var arraynodes=linklist.slice();
+  var arraynodes=linklist.slice();
    
   for(n=0; n<arraynodes.length;n++){
-   var link= arraynodes[n]; 
-   addConnection(link); 
-  
+    var link= arraynodes[n]; 
+   addConnection(link);  
   }
   
 }
