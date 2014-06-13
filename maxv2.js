@@ -236,17 +236,14 @@ $(document).ready(function()  {
 })
      
      
-    
-     
-   
      
     jsPlumb.bind("beforeDrop", function(info) {
       
       var parentId = $('#'+conn.sourceId).parent().attr('id');
       var childId =  $('#'+conn.targetId).parent().attr('id');
+      
       console.log(info);
-      console.log("pis"+parentId+"cis"+childId);
-      console.log("check the link see if it is exsit"); 
+      
       
       
 })
