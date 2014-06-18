@@ -188,8 +188,8 @@ $(document).ready(function()  {
      
                 }
     
-    else{
-         jsPlumb.detach(info.connection)
+    else{ 
+       //  jsPlumb.detach(info.connection)
       
     
    }
