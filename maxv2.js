@@ -1,6 +1,6 @@
  var myNodes=new Array();
  var mylinks=new Array();
-  
+ var templink;
  var questionId=this.frameElement.attributes.id.value; 
  var array = questionId.split("_");
 
@@ -25,7 +25,7 @@ if(array[0] != "question" && array[0] !='"question'){
 //console.log(namespaceforSub);
 if(parent.document.getElementById(namespaceforSub))
    {mode ="submission";
-       console.log("11111");
+       
    }
 else{
     mode="student";
@@ -132,13 +132,7 @@ $(document).ready(function()  {
       jsPlumb.connectorClass =  "connectorClass";   
       $(".datatable").jLzindex();
 
-    /*initialize bind function*/
-   ///click
-      
-   ///connection  
-   
-     
-   //check wehter we need reload or not
+    
 
   if(mode=="submission") {  history= getSubmission();
                            
@@ -147,7 +141,7 @@ $(document).ready(function()  {
   
   
   if(mode=="student"){history=getHistory();
-                      //console.log("studentpage:"+history);
+                      
                      }
   
   if(history == "" ){ 
@@ -159,17 +153,18 @@ $(document).ready(function()  {
       }
   
   
-  jsPlumb.bind("connection", function(info, originalEvent) {
+  jsPlumb.bind("connection",
+               function(info, originalEvent) {
         
-      var conn = info.connection;
-      var parentId=$('#'+conn.sourceId).parent().attr('id');
-      var childId=$('#'+conn.targetId).parent().attr('id');
+                var conn = info.connection;
+                var parentId=$('#'+conn.sourceId).parent().attr('id');
+                var childId=$('#'+conn.targetId).parent().attr('id');
      
-    if (parentId != childId) {
+                if (parentId != childId) {
     
-     var cc= findlink(parentId,childId);
+             var cc= findlink(parentId,childId);
      
-    if (cc==null){
+              if (cc==null){
               cc = new connector();
               cc.h=parentId;
               cc.t=childId;  
@@ -178,25 +173,9 @@ $(document).ready(function()  {
                     
               conn.setPaintStyle({lineWidth: 2, 
                                  strokeStyle:"#666",
-                                 dashstyle:"4 2"})              }
-    
-    else{
-      
-    if(cc.activity==0){
-      conn.setPaintStyle({lineWidth: 2, 
-                                 strokeStyle:"#666",
-                                 dashstyle:"4 2"}) 
-      
-        }
-    
-    else{
-           conn.setPaintStyle({lineWidth: 2, 
-                                 strokeStyle:"#666",
-                                 dashstyle:"0 0"})
-    
-    };
-   }
-    jsPlumb.select(info).addOverlay( ["Custom", {
+                                 dashstyle:"4 2"})   
+     
+                 jsPlumb.select(info).addOverlay( ["Custom", {
                 create:function(component) {  
                 var boxvalue= drawbox("line",cc,conn); 
                   
@@ -206,6 +185,15 @@ $(document).ready(function()  {
                 cssClass:"datatable"//,
                // id: cc.id
             }]);
+     
+                }
+    
+    else{
+         jsPlumb.detach(info.connection)
+      
+    
+   }
+ 
       
        if(cc.activity==0){
      
@@ -221,12 +209,15 @@ $(document).ready(function()  {
      $(".datatable").jLzindex(); 
   }});
    //initialzie button action to different buttons;
+ 
+  
+  
   
    jsPlumb.bind("connectionDetached", function(info, originalEvent) {
       var conn = info.connection;
       var parentId=$('#'+conn.sourceId).parent().attr('id');
       var childId=$('#'+conn.targetId).parent().attr('id');
-     if (parentId != childId){
+      if (parentId != childId){
       deletelink(parentId,childId);
        console.log(mylinks);
      }
@@ -234,20 +225,44 @@ $(document).ready(function()  {
      
          
 })
+    
+    
+    jsPlumb.bind("connectionDrag", function(conn) {
+      var parentId=$('#'+conn.sourceId).parent().attr('id');
+      var childId=$('#'+conn.targetId).parent().attr('id');
+      console.log("dragining"+parentId+"~~"+childId);
+     if(parentId==childId){}//doing nothing when creating a new one
+     if(parentId !=childId)
+     {  var cc= findlink(parentId,childId);
+        
+        if(cc!=null) {
+         templink=cc;
+        }
+        //check whether exist already 
+      
+       ///put it input temp e   now it is creating a new one 
+      
+     }
+}) 
      
-     
-     
-    jsPlumb.bind("beforeDrop", function(info) {
-      
-      var parentId = $('#'+conn.sourceId).parent().attr('id');
-      var childId =  $('#'+conn.targetId).parent().attr('id');
-      
-      console.log(info);
-      
-      
-      
-})
  
+  
+     
+   jsPlumb.bind("connectionDragStop", function(conn) {
+      var parentId=$('#'+conn.sourceId).parent().attr('id');
+      var childId=$('#'+conn.targetId).parent().attr('id');
+      
+      var cc= findlink(parentId,childId);
+     if(cc!=null){
+       console.log("delete:"+parentId+childId);
+       console.log(templink);
+       
+     }
+      
+    
+})
+      
+     
    
   if(mode!="submission"){ 
     $("#c").click(function(){ 
