@@ -236,7 +236,7 @@ function findrootnode(){
        
      var node= myNodes[m]; 
      var id = node.id; 
-     console.log(mylinks);
+     
      var count =0;
      for(var n=0; n<mylinks.length;n++){
         var link=mylinks[n];
@@ -418,6 +418,7 @@ function updateNode(node,property){
 
 function sentToparentPage()
 {   giveWarning();
+    console.log(mylinks);
  answervalue= serialise(myNodes,mylinks);
    console.log(answervalue);
   var elem= parent.document.getElementsByTagName("input"); 

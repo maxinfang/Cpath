@@ -150,7 +150,7 @@ function addTriangle(dragzone) {
          
         var targetPoint= {
         anchor: "Left",
-        //  maxConnections: -1,
+          maxConnections: -1,
         isSource:false,
         isTarget:true
     };  

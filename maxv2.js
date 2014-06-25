@@ -217,10 +217,28 @@ $(document).ready(function()  {
       var conn = info.connection;
       var parentId=$('#'+conn.sourceId).parent().attr('id');
       var childId=$('#'+conn.targetId).parent().attr('id');
+     
+      var beforeId= $('#'+info.targetId).parent().attr('id');
+     console.log("thisnodeconnected"+childId)
+      console.log("thisnodepriviousid"+beforeId);
+      
+     if(beforeId!=childId){
+      // var pendingnode = findnode(beforeId);;
+      //  pendingnode.parentID="";
+      //  updateNode(pendingnode,"parentID");
+       
+      
+     }
+     
+     
+     
       if (parentId != childId){
       deletelink(parentId,childId);
        console.log(mylinks);
      }
+     
+     
+     
      //delete
      
          
@@ -254,8 +272,8 @@ $(document).ready(function()  {
       
       var cc= findlink(parentId,childId);
      if(cc!=null){
-       console.log("delete:"+parentId+childId);
-       console.log(templink);
+     //  console.log("delete:"+parentId+childId);
+     //  console.log(templink);
        
      }
       

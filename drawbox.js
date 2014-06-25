@@ -5,7 +5,7 @@ function drawbox(type,data,conn){
      var dropL;
   var dropLid; 
        
-      console.log("test"+data.h);
+     // console.log("test"+data.h);
   if(data.activity==""){ 
      data.activity=0;
      dropL=addDroplist();
@@ -30,7 +30,7 @@ function drawbox(type,data,conn){
      $(datadiv).addClass("datatable");
       
      
-     console.log(datadiv);
+    // console.log(datadiv);
    
     var element = document.createElement('span');
     element.className = "normal short";
@@ -48,7 +48,7 @@ function drawbox(type,data,conn){
    $(datadiv).append(element);
     
    //$(element).append(addlabel("EST"));
-    console.log("test"+data.EST);
+   //  console.log("test"+data.EST);
   var EST = (data.EST=="") ? addtext("EST") : addtext("EST",data.EST);
   var ESTdata = document.createElement("div");
    ESTdata.style.display = 'block'; 
@@ -126,7 +126,7 @@ function drawbox(type,data,conn){
                                        dashstyle:"0 0"})
                                       } 
       updatelink(data,"activity",conn);
-      console.log(data);
+      //console.log(data);
      $("#"+durationId).text("Duration: "+du[data.activity]);
        
       
