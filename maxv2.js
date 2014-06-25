@@ -219,14 +219,11 @@ $(document).ready(function()  {
       var childId=$('#'+conn.targetId).parent().attr('id');
      
       var beforeId= $('#'+info.targetId).parent().attr('id');
-     console.log("thisnodeconnected"+childId)
-      console.log("thisnodepriviousid"+beforeId);
+   console.log("thisnodeconnected"+childId);
+  console.log("thisnodepriviousid"+beforeId);
       
      if(beforeId!=childId){
-      // var pendingnode = findnode(beforeId);;
-      //  pendingnode.parentID="";
-      //  updateNode(pendingnode,"parentID");
-       
+   
       
      }
      
