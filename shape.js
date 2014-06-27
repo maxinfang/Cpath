@@ -115,7 +115,9 @@ function addTriangle(dragzone) {
         isSource:false,
         isTarget:true
     };
+ 
     var currentId = $(dragzone).attr('id'); 
+   
     e1= jsPlumb.addEndpoint(currentId, sourcePoint);
     e2= jsPlumb.addEndpoint(currentId, targetPoint);  
   
@@ -131,6 +133,7 @@ function addTriangle(dragzone) {
         }); 
     var sourcePoint= {
         anchor:"Right", 
+      
          connectorStyle: {
             lineWidth: 2,
             strokeStyle: '#666'
@@ -151,10 +154,12 @@ function addTriangle(dragzone) {
         var targetPoint= {
         anchor: "Left",
         maxConnections: -1,
+     
         isSource:false,
         isTarget:true
     };  
     var currentId = $(dragzone).attr('id'); 
+     
     e1= jsPlumb.addEndpoint(currentId, sourcePoint);
     e2= jsPlumb.addEndpoint(currentId, targetPoint); 
         

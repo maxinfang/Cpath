@@ -52,7 +52,7 @@ function getDuration(){
       
    }
   
-   console.log("_+++++"+elements[0]+"fas");
+  // console.log("_+++++"+elements[0]+"fas");
      return elements;
 }
  
@@ -154,13 +154,14 @@ $(document).ready(function()  {
   
   
   jsPlumb.bind("connection",
-               function(info, originalEvent) {
+          function(info, originalEvent) {
         
-                var conn = info.connection;
-                var parentId=$('#'+conn.sourceId).parent().attr('id');
-                var childId=$('#'+conn.targetId).parent().attr('id');
-     
-                if (parentId != childId) {
+             var conn = info.connection;
+             var parentId=$('#'+conn.sourceId).parent().attr('id');
+             var childId=$('#'+conn.targetId).parent().attr('id');
+       
+       
+            if (parentId != childId) {
     
              var cc= findlink(parentId,childId);
      
@@ -188,11 +189,10 @@ $(document).ready(function()  {
      
                 }
     
-    else{ 
-       //  jsPlumb.detach(info.connection)
-      
+             else{ 
+     
     
-   }
+   }   
  
       
        if(cc.activity==0){
@@ -202,47 +202,68 @@ $(document).ready(function()  {
         //jsPlumb.detach(conn);  
        // if(box.isVisiable==true){box.setVisiable(false)} 
        // console.log(conn);
-        var box= conn.getOverlays();
+     var box= conn.getOverlays();
        if(box[1].visible==true){
          box[1].setVisible(false);} 
     } 
      $(".datatable").jLzindex(); 
-  }});
+  }}  
+           
+              );
    //initialzie button action to different buttons;
  
+ 
+    
+          
   
-  
+   
+   
   
    jsPlumb.bind("connectionDetached", function(info, originalEvent) {
+    
+ 
+ 
       var conn = info.connection;
       var parentId=$('#'+conn.sourceId).parent().attr('id');
-      var childId=$('#'+conn.targetId).parent().attr('id');
-     
+      var childId=$('#'+conn.targetId).parent().attr('id'); 
       var beforeId= $('#'+info.targetId).parent().attr('id');
-   console.log("thisnodeconnected"+childId);
-  console.log("thisnodepriviousid"+beforeId);
+                 
       
+        
+      console.log("thisnodeconnected"+childId);
+      console.log("thisnodepriviousid"+beforeId); 
+     
      if(beforeId!=childId){
-   
+       
+       console.log("gethere");
+         if (parentId != childId){
+    
+      deletelink(parentId,childId);
+      // console.log(mylinks);
+     }
+        
+      
+     }
+      if(beforeId==childId){
+       
+       console.log("the same");
+        
       
      }
      
      
      
-      if (parentId != childId){
-      deletelink(parentId,childId);
-       console.log(mylinks);
-     }
+    
      
      
      
      //delete
      
          
-})
+   })
     
     
-    jsPlumb.bind("connectionDrag", function(conn) {
+   /* jsPlumb.bind("connectionDrag", function(conn) {
       var parentId=$('#'+conn.sourceId).parent().attr('id');
       var childId=$('#'+conn.targetId).parent().attr('id');
       console.log("dragining"+parentId+"~~"+childId);
@@ -255,24 +276,19 @@ $(document).ready(function()  {
         }
         //check whether exist already 
       
-       ///put it input temp e   now it is creating a new one 
+       //put it input temp e   now it is creating a new one 
       
      }
 }) 
-     
+     */
  
-  
+ 
      
    jsPlumb.bind("connectionDragStop", function(conn) {
-      var parentId=$('#'+conn.sourceId).parent().attr('id');
-      var childId=$('#'+conn.targetId).parent().attr('id');
-      
-      var cc= findlink(parentId,childId);
-     if(cc!=null){
-     //  console.log("delete:"+parentId+childId);
-     //  console.log(templink);
-       
-     }
+                    var arr=jsPlumb.select({source:conn.sourceId,target:conn.targetId});
+             if(arr.length>1){
+               jsPlumb.detach(conn); 
+             }
       
     
 })
@@ -297,7 +313,7 @@ $(document).ready(function()  {
           
            $("#"+currentId).children().each(function(no,el){
            if($(el).hasClass("_jsPlumb_endpoint_anchor_")){
-            console.log(el.id);
+           // console.log(el.id);
            jsPlumb.detachAllConnections(el.id);
            jsPlumb.removeAllEndpoints(el.id);  
         } 

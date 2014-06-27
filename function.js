@@ -421,8 +421,8 @@ function sentToparentPage()
     console.log(mylinks);
  answervalue= serialise(myNodes,mylinks);
    console.log(answervalue);
-  var elem= parent.document.getElementsByTagName("input"); 
   
+  var elem= parent.document.getElementsByTagName("input"); 
   var arr = new Array();
   var i = 0;
   var iarr = 0;
