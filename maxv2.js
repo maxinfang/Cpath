@@ -242,22 +242,30 @@ $(document).ready(function()  {
      
        if(beforeId==childId){ 
           if (parentId != childId){
-             deletelink(parentId,childId);  //drag off
+            // deletelink(parentId,childId);  //drag off
           } 
        } 
    })
      
      
-   jsPlumb.bind("connectionDragStop", function(conn,event) {
-      console.log("dragandstop");  
+   jsPlumb.bind("connectionDragStop", function(conn) {
+       
        var arr=jsPlumb.getConnections({source:conn.sourceId,target:conn.targetId}); 
-     console.log(arr);
+       console.log(conn);
+      console.log(conn.sourceId);
+     console.log(conn.suspendedElementId);
+   
+       
+       
       var previous= findlink($('#'+conn.sourceId).parent().attr('id'),$('#'+conn.suspendedElementId).parent().attr('id'));
-         console.log(previous);
-         console.log(arr[0]);
-       if(arr.length>1){
+        // console.log(previous);
+        // console.log(arr[0]);
+       if(arr.length>1){ 
          
-         jsPlumb.detach(arr[0].connector);  
+         deletelink($('#'+conn.sourceId).parent().attr('id'),$('#'+conn.suspendedElementId).parent().attr('id'));
+        jsPlumb.detach(arr[0]); 
+       // jsPlumb.detach(arr2[0]);
+         
          /*
          cc = new connector();
          if(previous!=null)  {cc=previous;}

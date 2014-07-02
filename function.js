@@ -267,7 +267,7 @@ for(var n=0; n<mylinks.length;n++){
        return link; 
      };
       
-      return null;
+    
    }
       return  null ;
 }
