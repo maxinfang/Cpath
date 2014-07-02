@@ -121,9 +121,12 @@ function drawbox(type,data,conn){
                                    
                                        } 
                                     else{
-                                      conn.setPaintStyle({lineWidth: 2, 
-                                       strokeStyle:"#666",
-                                       dashstyle:"0 0"})
+                                       
+                                      conn.setPaintStyle({
+                                        lineWidth: 2,  
+                                        strokeStyle:"#666"}
+                                                        )
+                                       
                                       } 
       updatelink(data,"activity",conn);
       //console.log(data);

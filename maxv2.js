@@ -124,7 +124,7 @@ $(document).ready(function()  {
     //initialize jsPlumb
      
     /*initialize endpoint Class*/
-  
+      jsPlumb.setRenderMode(jsPlumb.SVG);
       jsPlumb.Defaults.Container = $("#canvasdiv"); 
       jsPlumb.DefaultDragOptions = {  cursor:"pointer",
                                       zIndex: 2000 };
@@ -185,13 +185,9 @@ $(document).ready(function()  {
                 location:0.5,
                 cssClass:"datatable"//,
                // id: cc.id
-            }]);
-     
-                }
-    
-             else{ 
-     
-    
+            }]); 
+                } 
+             else{  
    }   
  
       
@@ -220,77 +216,72 @@ $(document).ready(function()  {
    
   
    jsPlumb.bind("connectionDetached", function(info, originalEvent) {
-    
- 
- 
+      
       var conn = info.connection;
       var parentId=$('#'+conn.sourceId).parent().attr('id');
       var childId=$('#'+conn.targetId).parent().attr('id'); 
       var beforeId= $('#'+info.targetId).parent().attr('id');
                  
       
-        
+      console.log("thisnodepriviousid"+beforeId);   
       console.log("thisnodeconnected"+childId);
-      console.log("thisnodepriviousid"+beforeId); 
-     
-     if(beforeId!=childId){
+      console.log("thisnodeconnected"+parentId);
        
-       console.log("gethere");
+      // when drag the start endpoint but didn't drop
+     
+      // when change the connection
+     
+     //    when drag off the endpoint
+     
+    
+      if(beforeId!=childId){  
          if (parentId != childId){
-    
-      deletelink(parentId,childId);
-      // console.log(mylinks);
-     }
-        
-      
-     }
-      if(beforeId==childId){
-       
-       console.log("the same");
-        
-      
+           deletelink(parentId,childId);   //change  
+          } 
      }
      
-     
-     
-    
-     
-     
-     
-     //delete
-     
-         
+       if(beforeId==childId){ 
+          if (parentId != childId){
+             deletelink(parentId,childId);  //drag off
+          } 
+       } 
    })
-    
-    
-   /* jsPlumb.bind("connectionDrag", function(conn) {
-      var parentId=$('#'+conn.sourceId).parent().attr('id');
-      var childId=$('#'+conn.targetId).parent().attr('id');
-      console.log("dragining"+parentId+"~~"+childId);
-     if(parentId==childId){}//doing nothing when creating a new one
-     if(parentId !=childId)
-     {  var cc= findlink(parentId,childId);
-        
-        if(cc!=null) {
-         templink=cc;
-        }
-        //check whether exist already 
-      
-       //put it input temp e   now it is creating a new one 
-      
-     }
-}) 
-     */
- 
- 
      
-   jsPlumb.bind("connectionDragStop", function(conn) {
-                    var arr=jsPlumb.select({source:conn.sourceId,target:conn.targetId});
-             if(arr.length>1){
-               jsPlumb.detach(conn); 
-             }
-      
-    
+     
+   jsPlumb.bind("connectionDragStop", function(conn,event) {
+      console.log("dragandstop"); 
+     
+       var arr=jsPlumb.getConnections({source:conn.sourceId,target:conn.targetId}); 
+      var previous= findlink($('#'+conn.sourceId).parent().attr('id'),$('#'+conn.suspendedElementId).parent().attr('id'));
+         console.log(previous);
+       console.log(conn);
+       if(arr.length>1){
+         
+         jsPlumb.detach(arr[0]);  
+         cc = new connector();
+         if(previous!=null)  {cc=previous;}
+          cc.h=$('#'+conn.sourceId).parent().attr('id');
+          cc.t=$('#'+conn.targetId).parent().attr('id');
+          cc.id=generateLinkID(mylinks); 
+          addNewLink(cc); 
+     
+      jsPlumb.select(conn).addOverlay( ["Custom", {
+           create:function(component) {  
+                var boxvalue= drawbox("line",cc,conn); 
+                    return $(boxvalue);  
+                },
+           location:0.5,
+           cssClass:"datatable"//, 
+            }]);  
+         
+       
+         if(cc.activity==0){ 
+     var box= conn.getOverlays();
+       if(box[1].visible==true){
+         box[1].setVisible(false);} 
+    } 
+     $(".datatable").jLzindex(); 
+             } 
 })
       
      
@@ -304,13 +295,11 @@ $(document).ready(function()  {
   });
   
    
-   $("#clear").click(function(){
-     
-            if (confirm('Delete all nodes?')) { 
+   $("#clear").click(function(){ 
+           if (confirm('Delete all nodes?')) { 
            for(var n=0; n<myNodes.length;n++){
            var node= myNodes[n];
-           var currentId=node.id;    
-          
+           var currentId=node.id;     
            $("#"+currentId).children().each(function(no,el){
            if($(el).hasClass("_jsPlumb_endpoint_anchor_")){
            // console.log(el.id);
