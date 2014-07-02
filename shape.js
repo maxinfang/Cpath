@@ -132,8 +132,7 @@ function addTriangle(dragzone) {
             r : 45
         }); 
     var sourcePoint= {
-        anchor:"Right", 
-      
+        anchor:"Right",  
          connectorStyle: {
             lineWidth: 2,
             strokeStyle: '#666',

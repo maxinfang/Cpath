@@ -185,7 +185,7 @@ $(document).ready(function()  {
                 location:0.5,
                 cssClass:"datatable"//,
                // id: cc.id
-            }]); 
+            }]);  
                 } 
              else{  
    }   
@@ -258,6 +258,7 @@ $(document).ready(function()  {
        if(arr.length>1){
          
          jsPlumb.detach(conn);  
+         /*
          cc = new connector();
          if(previous!=null)  {cc=previous;}
           cc.h=$('#'+conn.sourceId).parent().attr('id');
