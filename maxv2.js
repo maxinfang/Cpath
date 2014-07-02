@@ -249,15 +249,15 @@ $(document).ready(function()  {
      
      
    jsPlumb.bind("connectionDragStop", function(conn,event) {
-      console.log("dragandstop"); 
-     
+      console.log("dragandstop");  
        var arr=jsPlumb.getConnections({source:conn.sourceId,target:conn.targetId}); 
+     console.log(arr);
       var previous= findlink($('#'+conn.sourceId).parent().attr('id'),$('#'+conn.suspendedElementId).parent().attr('id'));
          console.log(previous);
-       console.log(conn);
+         console.log(arr[0]);
        if(arr.length>1){
          
-         jsPlumb.detach(conn);  
+         jsPlumb.detach(arr[0].connector);  
          /*
          cc = new connector();
          if(previous!=null)  {cc=previous;}

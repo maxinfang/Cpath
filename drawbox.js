@@ -124,7 +124,8 @@ function drawbox(type,data,conn){
                                        
                                       conn.setPaintStyle({
                                         lineWidth: 2,  
-                                        strokeStyle:"#666"}
+                                        strokeStyle:"#666",
+                                      dashstyle:"0 0 0 0"}
                                                         )
                                        
                                       } 
