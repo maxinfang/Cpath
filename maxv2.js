@@ -257,7 +257,7 @@ $(document).ready(function()  {
        console.log(conn);
        if(arr.length>1){
          
-         jsPlumb.detach(arr[0]);  
+         jsPlumb.detach(conn);  
          cc = new connector();
          if(previous!=null)  {cc=previous;}
           cc.h=$('#'+conn.sourceId).parent().attr('id');
@@ -275,12 +275,12 @@ $(document).ready(function()  {
             }]);  
          
        
-         if(cc.activity==0){ 
+        /* if(cc.activity==0){ 
      var box= conn.getOverlays();
        if(box[1].visible==true){
          box[1].setVisible(false);} 
     } 
-     $(".datatable").jLzindex(); 
+     $(".datatable").jLzindex(); */
              } 
 })
       
@@ -310,8 +310,7 @@ $(document).ready(function()  {
          $('#'+currentId).remove();
           } 
            myNodes.length = 0; 
-           sentToparentPage();
-             
+           sentToparentPage(); 
          }  
        })
      }
