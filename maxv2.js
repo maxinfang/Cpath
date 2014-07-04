@@ -246,6 +246,10 @@ $(document).ready(function()  {
                    { deletelink(parentId,childId); 
                      console.log("chekck");
                     }
+                    if(originalEvent.type=="dropstop")
+                   { deletelink(parentId,childId); 
+                     console.log("chekck");
+                    }
             }
           } 
        } 
