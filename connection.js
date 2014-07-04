@@ -48,11 +48,13 @@ function addConnection(link){
                // id: cc.id
             }]); 
        $(".datatable").jLzindex();
+     
       if(link.activity==0){
         
       linkconn.setPaintStyle({lineWidth: 2, 
       strokeStyle:"#666",
-      dashstyle:"4 2"})
+      dashstyle:"4 2"
+                             })
       var box= linkconn.getOverlays();
           
         //jsPlumb.detach(conn);  

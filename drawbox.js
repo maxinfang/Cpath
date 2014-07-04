@@ -115,18 +115,19 @@ function drawbox(type,data,conn){
       var indexvalue= $( "#"+dropLid+" option:selected" ).val();
       data.activity= indexvalue;
        if (data.activity==0){
-                                      conn.setPaintStyle({lineWidth: 2, 
-                                       strokeStyle:"#666",
-                                        dashstyle:"4 2"})
+                                     // conn.setPaintStyle({lineWidth: 2, 
+                                     //  strokeStyle:"#666",
+                                      //  dashstyle:"4 2"})
                                    
                                        } 
-                                    else{
+                                    else{ 
                                        
-                                      conn.setPaintStyle({
-                                        lineWidth: 2,  
-                                        strokeStyle:"#666",
-                                      dashstyle:"0 0 0 0"}
-                                                        )
+                                     // conn.setPaintStyle({
+                                     //  dashstyle:"solid",
+                                       // lineWidth: 2,  
+                                       // strokeStyle:"red"
+                                   //   }
+                                                     //   )
                                        
                                       } 
       updatelink(data,"activity",conn);

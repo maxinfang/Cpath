@@ -336,9 +336,11 @@ function updatelink(link,property,con){
                                         dashstyle:"4 2"})
                                        } 
                                     else{
-                                      con.setPaintStyle({lineWidth: 2, 
-                                       strokeStyle:"#666",
-                                       dashstyle:"0 0"})
+                                       con.setPaintStyle({
+                                       dashstyle: "none",
+                                       lineWidth: 2 ,
+                                       strokeStyle:"#666"
+                                      })
                                       } 
                                     } 
            if(property=="EST"){ll.EST=link.EST;} 

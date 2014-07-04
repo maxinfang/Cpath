@@ -165,7 +165,7 @@ $(document).ready(function()  {
     
              var cc= findlink(parentId,childId);
      
-              if (cc==null){
+              
               cc = new connector();
               cc.h=parentId;
               cc.t=childId;  
@@ -186,9 +186,7 @@ $(document).ready(function()  {
                 cssClass:"datatable"//,
                // id: cc.id
             }]);  
-                } 
-             else{  
-   }   
+                 
  
       
        if(cc.activity==0){
@@ -239,35 +237,37 @@ $(document).ready(function()  {
            deletelink(parentId,childId);   //change  
           } 
      }
-     
+      console.log("do Ineed deleted?")
+      console.log(originalEvent);
        if(beforeId==childId){ 
           if (parentId != childId){
-            // deletelink(parentId,childId);  //drag off
+            if (typeof(originalEvent) != "undefined"){
+                   if(originalEvent.type=="drop")
+                   { deletelink(parentId,childId); 
+                     console.log("chekck");
+                    }
+            }
           } 
        } 
    })
      
      
-   jsPlumb.bind("connectionDragStop", function(conn) {
-       
+   jsPlumb.bind("connectionDragStop", function(conn) { 
        var arr=jsPlumb.getConnections({source:conn.sourceId,target:conn.targetId}); 
        console.log(conn);
       console.log(conn.sourceId);
      console.log(conn.suspendedElementId);
-   
-       
-       
+     
+        
       var previous= findlink($('#'+conn.sourceId).parent().attr('id'),$('#'+conn.suspendedElementId).parent().attr('id'));
-        // console.log(previous);
-        // console.log(arr[0]);
-       if(arr.length>1){ 
-         
-         deletelink($('#'+conn.sourceId).parent().attr('id'),$('#'+conn.suspendedElementId).parent().attr('id'));
+         console.log("get here");
+         console.log(arr[0]);
+       if(arr.length>1){   deletelink($('#'+conn.sourceId).parent().attr('id'),$('#'+conn.suspendedElementId).parent().attr('id'));
         jsPlumb.detach(arr[0]); 
-       // jsPlumb.detach(arr2[0]);
+         //jsPlumb.detach(arr2[0]);
          
-         /*
-         cc = new connector();
+         
+        /* cc = new connector();
          if(previous!=null)  {cc=previous;}
           cc.h=$('#'+conn.sourceId).parent().attr('id');
           cc.t=$('#'+conn.targetId).parent().attr('id');
@@ -283,13 +283,12 @@ $(document).ready(function()  {
            cssClass:"datatable"//, 
             }]);  
          
-       
-        /* if(cc.activity==0){ 
+       if(cc.activity==0){ 
      var box= conn.getOverlays();
        if(box[1].visible==true){
          box[1].setVisible(false);} 
     } 
-     $(".datatable").jLzindex(); */
+     $(".datatable").jLzindex();  */
              } 
 })
       
