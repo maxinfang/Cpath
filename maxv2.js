@@ -246,7 +246,7 @@ $(document).ready(function()  {
                    { deletelink(parentId,childId); 
                      console.log("chekck");
                     }
-                    if(originalEvent.type=="dropstop")
+                    if(originalEvent.type=="dragstop")
                    { deletelink(parentId,childId); 
                      console.log("chekck");
                     }
