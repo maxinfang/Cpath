@@ -171,12 +171,13 @@ $(document).ready(function()  {
               cc.t=childId;  
               cc.id=generateLinkID(mylinks); 
               addNewLink(cc);
-                    
+              console.log("setnew");
+              console.log(conn);       
               conn.setPaintStyle({lineWidth: 2, 
                                  strokeStyle:"#666",
                                  dashstyle:"4 2"})   
-     
-                 jsPlumb.select(info).addOverlay( ["Custom", {
+                if (conn.getOverlays().length<=1){
+                  jsPlumb.select(conn).addOverlay( ["Custom", {
                 create:function(component) {  
                 var boxvalue= drawbox("line",cc,conn); 
                   
@@ -186,20 +187,23 @@ $(document).ready(function()  {
                 cssClass:"datatable"//,
                // id: cc.id
             }]);  
+            }
                  
  
       
-       if(cc.activity==0){
+      
      
      var box= conn.getOverlays();
-          
+       
         //jsPlumb.detach(conn);  
        // if(box.isVisiable==true){box.setVisiable(false)} 
-       // console.log(conn);
-     var box= conn.getOverlays();
+         console.log(conn);
+         console.log("here!!");
+    // var box= conn.getOverlays();
+         console.log(box);
        if(box[1].visible==true){
          box[1].setVisible(false);} 
-    } 
+     
      $(".datatable").jLzindex(); 
   }}  
            
@@ -268,9 +272,7 @@ $(document).ready(function()  {
          console.log(arr[0]);
        if(arr.length>1){   deletelink($('#'+conn.sourceId).parent().attr('id'),$('#'+conn.suspendedElementId).parent().attr('id'));
         jsPlumb.detach(arr[0]); 
-         //jsPlumb.detach(arr2[0]);
-         
-         
+         //jsPlumb.detach(arr2[0]); 
         /* cc = new connector();
          if(previous!=null)  {cc=previous;}
           cc.h=$('#'+conn.sourceId).parent().attr('id');
