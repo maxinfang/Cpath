@@ -324,6 +324,7 @@ $(document).ready(function()  {
        $('#'+currentId).remove();
      } 
      myNodes.length = 0; 
+     mylinks.length= 0;
      sentToparentPage(); 
    }  
  })
