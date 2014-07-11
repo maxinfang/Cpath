@@ -473,9 +473,35 @@ function deleteNode(node)
       if($(el).hasClass("droplist")){
         $(el).hide();
       } 
-    });}
+    });
+  }
+ }
+   
+   deletearray =new Array();
+   for(var n=0; n<mylinks.length;n++){ 
+   var link= mylinks[n];  
+   if (link.h == deletedNodeid  )
+     
+   {    
+    deletearray.push(link); 
+   }
+     
+      if (link.t == deletedNodeid  )
+     
+   {    
+     deletearray.push(link); 
+   }
+   
   }  
-  
+   
+   for(var d=0; d<mylinks.length;d++){ 
+      var link= deletearray[d]; 
+      deletelink(link.h,link.t);
+     
+   
+   }
+   
+   
   $("#"+deletedNodeid).remove();
   if(mode == "student"){ sentToparentPage();}
   return;
