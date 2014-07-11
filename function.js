@@ -5,6 +5,29 @@ var C_field_SEPARATOR='c';
 var L_field_SEPARATRo='c';
 var Label_SEPARATOR='d';
 var Data_SEPARATOR='D';
+
+if (!Array.prototype.indexOf)
+{
+  Array.prototype.indexOf = function(elt /*, from*/)
+  {
+    var len = this.length >>> 0;
+
+    var from = Number(arguments[1]) || 0;
+    from = (from < 0)
+         ? Math.ceil(from)
+         : Math.floor(from);
+    if (from < 0)
+      from += len;
+
+    for (; from < len; from++)
+    {
+      if (from in this &&
+          this[from] === elt)
+        return from;
+    }
+    return -1;
+  };
+}
  
 function connector(id,h,t,EST,EFT,LST,LFT,FF,TF){ 
  this.h="";
