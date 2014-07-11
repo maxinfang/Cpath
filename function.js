@@ -1,17 +1,11 @@
 var CL_SEPARATOR='a';
-
 var C_SEPARATOR='C';
-
 var L_SEPARATOR='L';
-
 var C_field_SEPARATOR='c';
-
 var L_field_SEPARATRo='c';
-
 var Label_SEPARATOR='d';
-
 var Data_SEPARATOR='D';
-
+ 
 function connector(id,h,t,EST,EFT,LST,LFT,FF,TF){ 
  this.h="";
  this.t="";
@@ -85,10 +79,8 @@ function deserialiseC(string){
  var array= new Array(); 
  var stringwithCandL=string.split('a'); 
  var stringnode=stringwithCandL[0];
- var stringlink=stringwithCandL[1];
- 
- var stringnode=  stringnode.split('C');
- 
+ var stringlink=stringwithCandL[1]; 
+ var stringnode=  stringnode.split('C'); 
  for(i=1;i<stringnode.length;i++){ 
    var shapeanddata=stringnode[i].split('D'); 
        //console.log(shapeanddata);
@@ -172,8 +164,7 @@ function deserialiseC(string){
      answervalue+=thislink.FF;
      answervalue+=Label_SEPARATOR;
      answervalue+=thislink.TF; 
-     
-      //"Actvity"d
+      
       
     } 
     
@@ -186,9 +177,7 @@ function deserialiseC(string){
     if (typeof(myNodes) == "undefined" ) {return 1;}
     
     var myNodesArray=myNodes;
-    var max=0;   
-    
-    
+    var max=0;    
     for(n=0; n<myNodesArray.length;n++){ 
      var node= myNodes[n]; 
      node.id >=max;
@@ -369,7 +358,6 @@ return;
 
 function  giveWarning(){
  
- console.log(myNodes);
  
  var numberOfnoParent=0;
  for(n=0; n<myNodes.length;n++){

@@ -262,17 +262,17 @@ $(document).ready(function()  {
  
  jsPlumb.bind("connectionDragStop", function(conn) { 
    var arr=jsPlumb.getConnections({source:conn.sourceId,target:conn.targetId}); 
+   console.log("connectionDragStop");
    console.log(conn);
    console.log(conn.sourceId);
-   console.log(conn.suspendedElementId);
-   
+   console.log(conn.suspendedElementId); 
    
    var previous= findlink($('#'+conn.sourceId).parent().attr('id'),$('#'+conn.suspendedElementId).parent().attr('id'));
    console.log("get here");
    console.log(arr[0]);
    if(arr.length>1){   deletelink($('#'+conn.sourceId).parent().attr('id'),$('#'+conn.suspendedElementId).parent().attr('id'));
    jsPlumb.detach(arr[0]); 
-         //jsPlumb.detach(arr2[0]); 
+      //jsPlumb.detach(arr2[0]); 
         /* cc = new connector();
          if(previous!=null)  {cc=previous;}
           cc.h=$('#'+conn.sourceId).parent().attr('id');

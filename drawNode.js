@@ -198,11 +198,11 @@ function drawnode(node){
    $("#"+deleteId).click(function() { 
     if (confirm('Delete this node?')) {   
       jsPlumb.detachAllConnections(currentId )
-      jsPlumb.removeAllEndpoints(currentId);
-      
+      jsPlumb.removeAllEndpoints(currentId); 
+       
       $("#"+node.id).empty();  
-      deleteNode(node);
       
+       deleteNode(node);
       
       
     }  
