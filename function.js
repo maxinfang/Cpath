@@ -494,11 +494,9 @@ function deleteNode(node)
    
   }  
    
-   for(var d=0; d<mylinks.length;d++){ 
+   for(var d=0; d<deletearray.length;d++){ 
       var link= deletearray[d]; 
-      deletelink(link.h,link.t);
-     
-   
+      deletelink(link.h,link.t); 
    }
    
    
