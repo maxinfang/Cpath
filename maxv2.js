@@ -241,7 +241,7 @@ $(document).ready(function()  {
            deletelink(parentId,childId);   //change  
          } 
        }
-       console.log("do Ineed deleted?")
+       console.log("do I need deleted?")
        console.log(originalEvent);
        if(beforeId==childId){ 
         if (parentId != childId){

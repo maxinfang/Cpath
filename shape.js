@@ -153,7 +153,7 @@ function addCircle(dragzone) {
    var targetPoint= {
     anchor: "Left",
     maxConnections: -1,
-    
+     
     isSource:false,
     isTarget:true
   };  
@@ -161,6 +161,8 @@ function addCircle(dragzone) {
   
   e1= jsPlumb.addEndpoint(currentId, sourcePoint);
   e2= jsPlumb.addEndpoint(currentId, targetPoint); 
+  jsPlumb.makeTarget(currentId, targetPoint);
+ 
   
 }
 
