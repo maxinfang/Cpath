@@ -314,6 +314,7 @@ $(document).ready(function()  {
      for(var n=0; n<myNodes.length;n++){
        var node= myNodes[n];
        var currentId=node.id;     
+       
        $("#"+currentId).children().each(function(no,el){
          if($(el).hasClass("_jsPlumb_endpoint_anchor_")){
            // console.log(el.id);

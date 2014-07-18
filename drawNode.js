@@ -209,18 +209,19 @@ function drawnode(node){
     
   });
    
-   
-   
-   $(datadiv).dblclick(
-     function() { 
-      
+  
+    
+   $(datadiv).bind("dblclick","doubletap",
+     function() {  
+     
        $("#"+datadivId).toggle("slow") ;
      });
    
-   $(dragzone).dblclick(function() { 
-    
+   $(dragzone).bind("dblclick","doubletap",
+      function() { 
      $("#"+datadivId).toggle("slow") ;
-   });
+   }
+      );
    
    if(node.activity==0){$(datadiv).hide()}
     
