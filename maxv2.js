@@ -323,6 +323,7 @@ $(document).ready(function()  {
        }); 
        $('#'+currentId).remove();
      } 
+     jsPlumb.deleteEveryEndpoint();
      myNodes.length = 0; 
      mylinks.length= 0;
      sentToparentPage(); 

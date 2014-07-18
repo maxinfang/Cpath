@@ -160,8 +160,10 @@ function addCircle(dragzone) {
   var currentId = $(dragzone).attr('id'); 
   
   e1= jsPlumb.addEndpoint(currentId, sourcePoint);
-  e2= jsPlumb.addEndpoint(currentId, targetPoint); 
+ // e2= jsPlumb.addEndpoint(currentId, targetPoint); 
   jsPlumb.makeTarget(currentId, targetPoint);
+  //jsPlumb.makesource(currentId, sourcePoint);
+ 
  
   
 }
