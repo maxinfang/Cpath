@@ -311,20 +311,26 @@ $(document).ready(function()  {
   
   $("#clear").click(function(){ 
    if (confirm('Delete all nodes?')) { 
+      
      for(var n=0; n<myNodes.length;n++){
        var node= myNodes[n];
-       var currentId=node.id;     
-       
+       var currentId=node.id;    
+      
+        if( $("#"+currentId) !=null ) 
+        {
        $("#"+currentId).children().each(function(no,el){
          if($(el).hasClass("_jsPlumb_endpoint_anchor_")){
            // console.log(el.id);
            jsPlumb.detachAllConnections(el.id);
            jsPlumb.removeAllEndpoints(el.id);  
          } 
-       }); 
-       $('#'+currentId).remove();
+       })
+       $("#"+currentId).remove();
+       
+     }
      } 
      jsPlumb.deleteEveryEndpoint();
+      jsPlumb.reset();
      myNodes.length = 0; 
      mylinks.length= 0;
      sentToparentPage(); 
