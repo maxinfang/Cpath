@@ -262,8 +262,11 @@ $(document).ready(function()  {
  /*f  var previous=findlink($('#'+conn.sourceId).parent().attr('id'),$('#'+conn.suspendedElementId).parent().attr('id'));
   // console.log(arr[0]);*/
     console.log("**************the event triggered***************");
-   if(arr.length>1){      //deletelink($('#'+conn.sourceId).parent().attr('id'),$('#'+conn.suspendedElementId).parent().attr('id'));
-                           jsPlumb.detach(arr[0]); }
+   
+    console.log(arr)
+  //* if(arr.length>1){      //deletelink($('#'+conn.sourceId).parent().attr('id'),$('#'+conn.suspendedElementId).parent().attr('id'));
+                         //  jsPlumb.detach(arr[0]); 
+ //  }
       //jsPlumb.detach(arr2[0]); 
         /* cc = new connector();
          if(previous!=null)  {cc=previous;}
