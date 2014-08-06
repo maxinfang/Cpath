@@ -66,14 +66,14 @@ function addCircle(dragzone) {
   };  
   var currentId = $(dragzone).attr('id'); 
   
-<<<<<<< HEAD
+
   e1= jsPlumb.addEndpoint(currentId, sourcePoint);
 // e2= jsPlumb.addEndpoint(currentId, targetPoint); 
-=======
+
      jsPlumb.addEndpoint(currentId, sourcePoint);
   //   jsPlumb.addEndpoint(currentId, targetPoint);
   //jsPlumb.makeSource(currentId, sourcePoint);
->>>>>>> 24e763c6004403b2499ae1d6a550435e585617d7
+
   jsPlumb.makeTarget(currentId, targetPoint);
   //jsPlumb.makesource(currentId, sourcePoint);
  
