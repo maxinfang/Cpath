@@ -158,20 +158,16 @@ $(document).ready(function()  {
      var parentId=$('#'+conn.sourceId).parent().attr('id');
      var childId=$('#'+conn.targetId).parent().attr('id');
      
-   console.log("**************the event triggered***************"); 
-   console.log("connectionevent");
-      
+     
      if (parentId != childId) {
       
-       var cc= findlink(parentId,childId);
-       
-       
+       var cc= findlink(parentId,childId);  
        cc = new connector();
        cc.h=parentId;
        cc.t=childId;  
        cc.id=generateLinkID(mylinks); 
-      // addNewLink(cc);
-       console.log("setnew");
+       addNewLink(cc);
+       
        console.log(conn);       
        conn.setPaintStyle({lineWidth: 2, 
          strokeStyle:"#666",
@@ -193,8 +189,7 @@ $(document).ready(function()  {
       
         //jsPlumb.detach(conn);  
        // if(box.isVisiable==true){box.setVisiable(false)} 
-       console.log(conn);
-       console.log("here!!");
+      
     // var box= conn.getOverlays();
     console.log(box);
     if(box[1].visible==true){
@@ -252,46 +247,6 @@ $(document).ready(function()  {
        })
  
  
- jsPlumb.bind("connectionDragStop", function(conn) { 
-   var arr=jsPlumb.getConnections({source:conn.sourceId,target:conn.targetId});
-   console.log("**************the event triggered***************"); 
-   console.log("connectionDragStop");
-   console.log(conn);
-   console.log(conn.sourceId);
-   console.log(conn.suspendedElementId);
- /*f  var previous=findlink($('#'+conn.sourceId).parent().attr('id'),$('#'+conn.suspendedElementId).parent().attr('id'));
-  // console.log(arr[0]);*/
-    console.log("**************the event triggered***************");
-   
-    console.log(arr)
-  //* if(arr.length>1){      //deletelink($('#'+conn.sourceId).parent().attr('id'),$('#'+conn.suspendedElementId).parent().attr('id'));
-                         //  jsPlumb.detach(arr[0]); 
- //  }
-      //jsPlumb.detach(arr2[0]); 
-        /* cc = new connector();
-         if(previous!=null)  {cc=previous;}
-          cc.h=$('#'+conn.sourceId).parent().attr('id');
-          cc.t=$('#'+conn.targetId).parent().attr('id');
-          cc.id=generateLinkID(mylinks); 
-          addNewLink(cc); 
-     
-      jsPlumb.select(conn).addOverlay( ["Custom", {
-           create:function(component) {  
-                var boxvalue= drawbox("line",cc,conn); 
-                    return $(boxvalue);  
-                },
-           location:0.5,
-           cssClass:"datatable"//, 
-            }]);  
-         
-       if(cc.activity==0){ 
-     var box= conn.getOverlays();
-       if(box[1].visible==true){
-         box[1].setVisible(false);} 
-    } 
-    $(".datatable").jLzindex(); 
-  } */
-})
  
  
  
