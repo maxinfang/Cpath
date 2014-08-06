@@ -31,9 +31,8 @@ function addCircle(dragzone) {
     connector: ["Straight"], 
      connectorOverlays: [["Arrow",
     { width: 15,
-     length: 15}
-     ]], 
-<<<<<<< HEAD
+     length: 15}]],
+ 
        beforeDetach:function(conn) { 
           return confirm("Detach connection?"); 
         },
@@ -41,14 +40,10 @@ function addCircle(dragzone) {
      isTarget:false
    };
  
-=======
   
-    isSource:true,
-    isTarget:false
-   };
+     
   
   
->>>>>>> 24e763c6004403b2499ae1d6a550435e585617d7
    var targetPoint= {
     anchor: "Left",
     maxConnections: -1,

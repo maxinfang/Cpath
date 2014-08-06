@@ -4,11 +4,9 @@
  var questionId=this.frameElement.attributes.id.value; 
  var array = questionId.split("_");
 
- 
- 
+  
  if(array[0] != "question" && array[0] !='"question'){ 
-  alert(alert(array[0])); 
-  alert ("iframe setting not vailid!");
+   alert (array[0]);
   
 }; 
  
@@ -139,7 +137,7 @@ $(document).ready(function()  {
      addConnections(mylinks);
    }
    
-<<<<<<< HEAD
+ 
    
    jsPlumb.bind("connection",
     function(info, originalEvent) {
@@ -239,9 +237,7 @@ $(document).ready(function()  {
  
  
  
- 
-=======
->>>>>>> 24e763c6004403b2499ae1d6a550435e585617d7
+  
  if(mode!="submission"){ 
   $("#c").click(function(){ 
    var node= new Node();
