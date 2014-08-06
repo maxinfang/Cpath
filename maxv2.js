@@ -11,8 +11,7 @@
   alert ("iframe setting not vailid!");
   
 }; 
-
-
+ 
 var mode="student";
 var history_page=""; 
 var namespaceforSub = array[0]+"_"+array[1]+"_submission";
@@ -115,11 +114,7 @@ var du= getDuration();
 console.log(du);
 
 
-
-
-
-$(document).ready(function()  { 
-  
+$(document).ready(function()  {  
     //initialize jsPlumb 
     /*initialize endpoint Class*/
     jsPlumb.setRenderMode(jsPlumb.SVG);
@@ -129,17 +124,12 @@ $(document).ready(function()  {
     jsPlumb.endpointClass = "endpointClass";
     jsPlumb.connectorClass =  "connectorClass";   
     $(".datatable").jLzindex();
-
-     
-
+ 
     if(mode=="submission") {  history_page= getSubmission();
-     
       
     }
-    
-    
+     
     if(mode=="student"){history_page=getHistory();
-      
     }
     
     if(history_page == "" ){ 
@@ -147,154 +137,8 @@ $(document).ready(function()  {
     else{  
      redraw(history_page); 
      addConnections(mylinks);
-     
    }
    
-   
-   jsPlumb.bind("connection",
-    function(info, originalEvent) {
-      
-     var conn = info.connection;
-     var parentId=$('#'+conn.sourceId).parent().attr('id');
-     var childId=$('#'+conn.targetId).parent().attr('id');
-     
-   console.log("**************the event triggered***************"); 
-   console.log("connectionevent");
-      
-     if (parentId != childId) {
-      
-       var cc= findlink(parentId,childId);
-       
-       
-       cc = new connector();
-       cc.h=parentId;
-       cc.t=childId;  
-       cc.id=generateLinkID(mylinks); 
-      // addNewLink(cc);
-       console.log("setnew");
-       console.log(conn);       
-       conn.setPaintStyle({lineWidth: 2, 
-         strokeStyle:"#666",
-         dashstyle:"4 2"})   
-       if (conn.getOverlays().length<=1){
-        jsPlumb.select(conn).addOverlay( ["Custom", {
-          create:function(component) {  
-            var boxvalue= drawbox("line",cc,conn);  
-            return $(boxvalue);  
-          },
-          location:0.5,
-                cssClass:"datatable"//,
-               // id: cc.id
-             }]);  
-      }
-      
-       
-      var box= conn.getOverlays();
-      
-        //jsPlumb.detach(conn);  
-       // if(box.isVisiable==true){box.setVisiable(false)} 
-       console.log(conn);
-       console.log("here!!");
-    // var box= conn.getOverlays();
-    console.log(box);
-    if(box[1].visible==true){
-     box[1].setVisible(false);} 
-     
-     $(".datatable").jLzindex(); 
-   }
-    
-    }  
-   
-   );
-   //initialzie button action to different buttons;
-   
-    
-   
-   jsPlumb.bind("connectionDetached", function(info, originalEvent) {
-    
-    var conn = info.connection;
-    var parentId=$('#'+conn.sourceId).parent().attr('id');
-    var childId=$('#'+conn.targetId).parent().attr('id'); 
-    var beforeId= $('#'+info.targetId).parent().attr('id');
-    
-    console.log("*******************event trigged");
-    console.log("thisnodepriviousid"+beforeId);   
-    console.log("thisnodeconnected"+childId);
-    console.log("thisnodeconnected"+parentId);
-    
-      // when drag the start endpoint but didn't drop 
-      // when change the connection 
-     //    when drag off the endpoint
-     
-     /*
-     if(beforeId!=childId){  
-       if (parentId != childId){
-           deletelink(parentId,childId);   //change  
-         } 
-       }
-       console.log("do I need deleted?")
-       console.log(originalEvent);
-       if(beforeId==childId){ 
-        if (parentId != childId){
-          if (typeof(originalEvent) != "undefined"){
-           if(originalEvent.type=="drop")
-             { deletelink(parentId,childId); 
-               console.log("chekck");
-             }
-             if(originalEvent.type=="dragstop")
-               { deletelink(parentId,childId); 
-                 console.log("chekck");
-               }
-             }
-           } 
-         } 
-     */
-       })
- 
- 
- jsPlumb.bind("connectionDragStop", function(conn) { 
-   var arr=jsPlumb.getConnections({source:conn.sourceId,target:conn.targetId});
-   console.log("**************the event triggered***************"); 
-   console.log("connectionDragStop");
-   console.log(conn);
-   console.log(conn.sourceId);
-   console.log(conn.suspendedElementId);
- /*f  var previous=findlink($('#'+conn.sourceId).parent().attr('id'),$('#'+conn.suspendedElementId).parent().attr('id'));
-  // console.log(arr[0]);*/
-    console.log("**************the event triggered***************");
-   
-    console.log(arr)
-  //* if(arr.length>1){      //deletelink($('#'+conn.sourceId).parent().attr('id'),$('#'+conn.suspendedElementId).parent().attr('id'));
-                         //  jsPlumb.detach(arr[0]); 
- //  }
-      //jsPlumb.detach(arr2[0]); 
-        /* cc = new connector();
-         if(previous!=null)  {cc=previous;}
-          cc.h=$('#'+conn.sourceId).parent().attr('id');
-          cc.t=$('#'+conn.targetId).parent().attr('id');
-          cc.id=generateLinkID(mylinks); 
-          addNewLink(cc); 
-     
-      jsPlumb.select(conn).addOverlay( ["Custom", {
-           create:function(component) {  
-                var boxvalue= drawbox("line",cc,conn); 
-                    return $(boxvalue);  
-                },
-           location:0.5,
-           cssClass:"datatable"//, 
-            }]);  
-         
-       if(cc.activity==0){ 
-     var box= conn.getOverlays();
-       if(box[1].visible==true){
-         box[1].setVisible(false);} 
-    } 
-    $(".datatable").jLzindex(); 
-  } */
-})
- 
- 
- 
  if(mode!="submission"){ 
   $("#c").click(function(){ 
    var node= new Node();
