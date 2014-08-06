@@ -11,8 +11,7 @@
   alert ("iframe setting not vailid!");
   
 }; 
-
-
+ 
 var mode="student";
 var history_page=""; 
 var namespaceforSub = array[0]+"_"+array[1]+"_submission";
@@ -115,11 +114,7 @@ var du= getDuration();
 console.log(du);
 
 
-
-
-
-$(document).ready(function()  { 
-  
+$(document).ready(function()  {  
     //initialize jsPlumb 
     /*initialize endpoint Class*/
     jsPlumb.setRenderMode(jsPlumb.SVG);
@@ -129,17 +124,12 @@ $(document).ready(function()  {
     jsPlumb.endpointClass = "endpointClass";
     jsPlumb.connectorClass =  "connectorClass";   
     $(".datatable").jLzindex();
-
-     
-
+ 
     if(mode=="submission") {  history_page= getSubmission();
-     
       
     }
-    
-    
+     
     if(mode=="student"){history_page=getHistory();
-      
     }
     
     if(history_page == "" ){ 
@@ -147,9 +137,9 @@ $(document).ready(function()  {
     else{  
      redraw(history_page); 
      addConnections(mylinks);
-     
    }
    
+<<<<<<< HEAD
    
    jsPlumb.bind("connection",
     function(info, originalEvent) {
@@ -250,6 +240,8 @@ $(document).ready(function()  {
  
  
  
+=======
+>>>>>>> 24e763c6004403b2499ae1d6a550435e585617d7
  if(mode!="submission"){ 
   $("#c").click(function(){ 
    var node= new Node();
