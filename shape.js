@@ -50,8 +50,8 @@ function addCircle(dragzone) {
     isTarget:true,
     deleteEndpointsOnDetach: false,
     beforeDrop:function(conn) {  
-     var       existingConnections=jsPlumb.getConnections({source:conn.sourceId,target:conn.targetId});
-      if(existingconnections !=0 ) return false;
+     var        existingConnections=jsPlumb.getConnections({source:conn.sourceId,target:conn.targetId});
+      if(existingConnections !=0 ) return false;
       else return true;
       
 
