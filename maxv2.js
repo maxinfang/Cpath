@@ -5,10 +5,11 @@
  var array = questionId.split("_");
 
   
- if(array[0] != "question" && array[0] !='"question'){ 
-   alert (array[0]);
-  
-}; 
+// Special handling may be required here if iframe id has double quotes included.
+if(array[0] != "question"){
+  alert ("iframe id does not match required format. It should begin with question_: " + questionId);
+};
+ 
  
 var mode="student";
 var history_page=""; 
@@ -18,18 +19,15 @@ var namespaceforLabel= array[0]+"_"+array[1]+"_label";
 var namespaceforDuration= array[0]+"_"+array[1]+"_duration"; 
 var op= new Array();
 
-
-//console.log(namespaceforSub);
+ 
 if(parent.document.getElementById(namespaceforSub))
  {mode ="submission";
-
 }
 else{
   mode="student";
 };
 
 function getDuration(){
-
  var elements=new Array();  
  var  seq=0;
  var  flag =1;
@@ -48,8 +46,7 @@ function getDuration(){
   }else {flag=0;}
   
 }
-
-  // console.log("_+++++"+elements[0]+"fas");
+ 
   return elements;
 }
 
@@ -194,16 +191,19 @@ $(document).ready(function()  {
     
    
    jsPlumb.bind("connectionDetached", function(info, originalEvent) {
-    
-    var conn = info.connection;
-    var parentId=$('#'+conn.sourceId).parent().attr('id');
+     var conn = info.connection;
+      var parentId=$('#'+conn.sourceId).parent().attr('id');
     var childId=$('#'+conn.targetId).parent().attr('id'); 
     var beforeId= $('#'+info.targetId).parent().attr('id');
     
-    console.log("*******************event trigged");
+     console.log("*******************event trigged");
     console.log("thisnodepriviousid"+beforeId);   
     console.log("thisnodeconnected"+childId);
     console.log("thisnodeconnected"+parentId);
+    
+  /*  
+   
+    
     
       // when drag the start endpoint but didn't drop 
       // when change the connection 

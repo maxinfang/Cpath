@@ -19,9 +19,11 @@ function addCircle(dragzone) {
   }); 
   
  
+ 
   
   var sourcePoint= {
     anchor:"Right",  
+     deleteEndpointsOnDetach: false,
     connectorStyle: {
       lineWidth: 2,
       strokeStyle: '#666' 
@@ -37,41 +39,34 @@ function addCircle(dragzone) {
           return confirm("Detach connection?"); 
         },
      isSource:true,
-     isTarget:false
+     isTarget:false,
+    
    };
  
-  
-     
-  
-  
    var targetPoint= {
     anchor: "Left",
-    maxConnections: -1,
+    maxConnections: -1, 
     isSource:false,
     isTarget:true,
-    beforeDrop:function(params) { 
+    deleteEndpointsOnDetach: false,
+    beforeDrop:function(conn) {  
+     var       existingConnections=jsPlumb.getConnections({source:conn.sourceId,target:conn.targetId});
+      if(existingconnections !=0 ) return false;
+      else return true;
       
-      
-    
-      
-      
-      return confirm("Connect " + $('#'+params.sourceId).parent().attr('id') + " to " + $('#'+params.targetId).parent().attr('id') + "?"); 
-        }
+
+        } 
    
   };  
   var currentId = $(dragzone).attr('id'); 
   
 
   e1= jsPlumb.addEndpoint(currentId, sourcePoint);
-// e2= jsPlumb.addEndpoint(currentId, targetPoint); 
-
-     jsPlumb.addEndpoint(currentId, sourcePoint);
-  //   jsPlumb.addEndpoint(currentId, targetPoint);
-  //jsPlumb.makeSource(currentId, sourcePoint);
-
+  e2= jsPlumb.addEndpoint(currentId, targetPoint); 
+ 
   jsPlumb.makeTarget(currentId, targetPoint);
-  //jsPlumb.makesource(currentId, sourcePoint);
  
  
   
 }
+
