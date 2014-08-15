@@ -18,12 +18,10 @@ function addCircle(dragzone) {
     r : 45
   }); 
   
- 
- 
   
   var sourcePoint= {
     anchor:"Right",  
-     deleteEndpointsOnDetach: false,
+    // deleteEndpointsOnDetach: false,
     connectorStyle: {
       lineWidth: 2,
       strokeStyle: '#666' 
@@ -36,7 +34,7 @@ function addCircle(dragzone) {
      length: 15}]],
  
        beforeDetach:function(conn) { 
-          return confirm("Detach connection?"); 
+        //  return confirm("Detach connection?"); 
         },
      isSource:true,
      isTarget:false,
@@ -48,8 +46,10 @@ function addCircle(dragzone) {
     maxConnections: -1, 
     isSource:false,
     isTarget:true,
-    deleteEndpointsOnDetach: false,
+    //deleteEndpointsOnDetach: false,
     beforeDrop:function(conn) {  
+      console.log(conn);
+      console.log(conn.isSuspendEvents());
      var        existingConnections=jsPlumb.getConnections({source:conn.sourceId,target:conn.targetId});
       if(existingConnections !=0 ) return false;
       else return true;
@@ -64,7 +64,7 @@ function addCircle(dragzone) {
   e1= jsPlumb.addEndpoint(currentId, sourcePoint);
   e2= jsPlumb.addEndpoint(currentId, targetPoint); 
  
-  jsPlumb.makeTarget(currentId, targetPoint);
+  //jsPlumb.makeTarget(currentId, targetPoint);
  
  
   
