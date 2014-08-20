@@ -12,7 +12,30 @@ jsPlumb.bind("connection",  function(info, originalEvent) {
   //console.log(childId);
   
          
-    }) 
+    })
+ 
+ 
+ 
+ jsPlumb.bind("dblclick", function(conn) {
+        // console.log(mylinks);
+        // console.log(link.id); 
+        var box= conn.getOverlays();
+          
+       
+        //jsPlumb.detach(conn);  
+        // if(box.isVisiable==true){box.setVisiable(false)} 
+        console.log(conn);
+       console.log(conn);
+        
+        if(box[1].visible==true){
+              box[1].setVisible(false);
+          }
+       else{
+         box[1].setVisible(true);
+          }
+   
+     }); 
+        
    
   
 jsPlumb.bind("connectionDetached", function(info, originalEvent) {

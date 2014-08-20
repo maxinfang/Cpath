@@ -32,8 +32,7 @@ function addCircle(dragzone) {
      connectorOverlays: [["Arrow",
     { width: 15,
      length: 15}]],
- 
-      c
+  
      isSource:true,
      isTarget:false,
     
@@ -46,10 +45,9 @@ function addCircle(dragzone) {
     isTarget:true,
     //deleteEndpointsOnDetach: false,
     beforeDrop:function(conn) {  
-      console.log(conn);
-      console.log(conn.isSuspendEvents());
+     
      var        existingConnections=jsPlumb.getConnections({source:conn.sourceId,target:conn.targetId});
-      if(existingConnections !=0 ) return false;
+      if(existingConnections.length >0 ) return false;
       else return true;
       
 
