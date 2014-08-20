@@ -33,9 +33,7 @@ function addCircle(dragzone) {
     { width: 15,
      length: 15}]],
  
-       beforeDetach:function(conn) { 
-        //  return confirm("Detach connection?"); 
-        },
+      c
      isSource:true,
      isTarget:false,
     
