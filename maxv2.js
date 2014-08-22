@@ -172,10 +172,6 @@ $(document).ready(function()  {
        
       var box= conn.getOverlays();
       
-        //jsPlumb.detach(conn);  
-       // if(box.isVisiable==true){box.setVisiable(false)} 
-      
-    // var box= conn.getOverlays();
     console.log(box);
     if(box[1].visible==true){
      box[1].setVisible(false);} 
@@ -201,15 +197,7 @@ $(document).ready(function()  {
     console.log("thisnodeconnected"+childId);
     console.log("thisnodeconnected"+parentId);
     
-  /*  
-   
     
-    
-      // when drag the start endpoint but didn't drop 
-      // when change the connection 
-     //    when drag off the endpoint
-     
-     /*
      if(beforeId!=childId){  
        if (parentId != childId){
            deletelink(parentId,childId);   //change  
@@ -231,7 +219,7 @@ $(document).ready(function()  {
              }
            } 
          } 
-     */
+     
        })
  
  
