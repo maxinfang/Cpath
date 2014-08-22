@@ -40,8 +40,7 @@ if(mode=="correct") {
     var nodedata= node.node; 
     var length= nextnodes.length;
     
-    
-    
+     
     if( length>0) {
       var  prob=0;
       var max = 0;
@@ -107,10 +106,10 @@ if(mode=="correct") {
        }
        
        var linkedrootnode=findlinkednode(root.id)
-       recursive(linkedrootnode);
-       
+       recursive(linkedrootnode); 
        var deep =linkedrootnode.level;
        console.log(linkedrootnode);
+   
        for(var n=deep; n>0 ;n--){
         
          for (var j=0;j<linkedArray.length;j++){
@@ -142,14 +141,10 @@ if(mode=="correct") {
          if(project_duration < nodeEFT){
           project_duration =nodeEFT;
           
-        }
-        
-        
+        } 
       }
     }
-    
-    
-    
+     
     for( var i=1; i<=deep; i++ )   {
       for (var j=0;j<linkedArray.length;j++){
        var  lnode=  linkedArray[j]; 
@@ -171,21 +166,13 @@ if(mode=="correct") {
          }
          
          calculateLFT(lnode.node,minValueofChildLST);
-         calculateLST(lnode.node);
-          //calculateFF;
-          calculateFFTF(lnode.node,minValueofChildEST);
-          
-          
+         calculateLST(lnode.node);  
+         calculateFFTF(lnode.node,minValueofChildEST);   
         }
         
       }
       
     }
-    
-    
-     /****************
-      for (j=0;j<linkedArray.length;j++){ console.log(linkedArray[j])} 
-       */
      
      for(n=0; n<myNodes.length;n++){ 
        var node= myNodes[n];

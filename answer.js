@@ -6,13 +6,13 @@
  var array = questionId.split("_");
 
  
- if(array[0] != "question" && array[0] !='"question'){ 
-  alert(alert(array[0])); 
+ if(array[0] != "question"){ 
+ 
   alert ("iframe setting not vailid!");
   
 }; 
 
-var history=""; 
+var history_page=""; 
 var namespaceforSub = array[0]+"_"+array[1]+"_submission";
 var namespaceforEntry = array[0]+"_"+array[1]+"_entry"; 
 var namespaceforLabel= array[0]+"_"+array[1]+"_label"; 
@@ -101,7 +101,7 @@ function getHistory(){
 
 var op = getEntry();
 var du= getDuration();
-console.log(du);
+ 
 $(document).ready(function()  { 
   
     //initialize jsPlumb
@@ -122,16 +122,18 @@ $(document).ready(function()  {
    //check wehter we need reload or not
    
    
-   if(mode=="correct"){history=getHistory();
+   if(mode=="correct"){history_page=getHistory();
                       //console.log("studentpage:"+history);
                     }
                     
-                    if(history == "" ){ 
+                    if(history_page == "" ){ 
                     }
                     else{  
-                     
-                     redraw(history); 
-                     addConnections(mylinks);
+                    
+                   redraw(history_page); 
+                      console.log(mylinks);
+                   addConnections(mylinks);
+                   
                      
                    }
                    
@@ -146,23 +148,14 @@ $(document).ready(function()  {
                     cc.h=parentId;
                     cc.t=childId; 
                     addNewLink(cc);
-                    console.log(mylinks);
+                   
                     
    //document.getElementById(" ").style.zIndex="1";
    
  });
    //initialzie button action to different buttons;
    
-   jsPlumb.bind("connectionDetached", function(info, originalEvent) {
-    var conn = info.connection;
-    var parentId=$('#'+conn.sourceId).parent().attr('id');
-    var childId=$('#'+conn.targetId).parent().attr('id');
-    
-    deletelink(parentId,childId);
-     //delete
-     
-     
-   })
+   
    
    
    if(mode!="submission"){
