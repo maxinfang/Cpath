@@ -17,14 +17,11 @@ function redraw(history){
 
 
 
-if(mode=="correct") {
- 
+if(mode=="correct") { 
  var root = new Node();
- root = findrootnode(); 
- 
+ root = findrootnode();  
  var linkedArray= new Array(); 
- var linkedArray2= new Array(); 
- 
+ var linkedArray2= new Array();  
  for(n=0; n<myNodes.length;n++){  
   var node=myNodes[n];  
        //console.log(node);

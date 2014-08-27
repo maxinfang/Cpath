@@ -17,15 +17,18 @@ var namespaceforSub = array[0]+"_"+array[1]+"_submission";
 var namespaceforEntry = array[0]+"_"+array[1]+"_entry"; 
 var namespaceforLabel= array[0]+"_"+array[1]+"_label"; 
 var namespaceforDuration= array[0]+"_"+array[1]+"_duration"; 
-var namespaceforAnswer= array[0]+"_"+array[1]+"_answer"; 
+var namespaceforAnswer= array[0]+"_"+array[1]+"_answer"; var namespacefortype= array[0]+"_"+array[1]+"_type"; 
 var op= new Array();
-
+var answer_type=parent.document.getElementById(namespacefortype);
+console.log(answer_type);
 
 //console.log(namespaceforSub);
 if(parent.document.getElementById(namespaceforAnswer))
  {mode ="correct";
 console.log("11111");
 }
+
+
 
 function getDuration(){
 

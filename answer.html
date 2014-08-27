@@ -28,8 +28,12 @@
     z-index:-1;
   } 
   .container {  
-    position:absolute; 
-    width:100px;  
+   
+      position: relative;
+      top:20;
+      z-index:1000000000;
+      width: 100px;
+      height: 20px; 
   } 
   div.delete{ 
     display:none;  
@@ -49,6 +53,17 @@
     background: transparent;
     z-index:50000;
   }
+  #containment_limit{
+      width:98%;
+      height:84%;
+      border-style:solid;
+      border-color:black;
+      border-width:0px;
+      margin-top:0px;
+      margin-bottom:120px;
+      margin-right:0px;
+      margin-left:0px;
+    }
   input[type=text]
   {         width:50px;   
   }          p{
@@ -57,19 +72,14 @@
 </style> 
 </head>  
 <body> 
- <div class="box" id="hide">
+ <div id="containment_limit">
+ <div id='canvasdiv'>    </div>
+ 
+ <div class='box' id="hide">
    
-   
-   <div>
-     
-     <div id='canvasdiv'>
-     </div>
-     
-     <script>
-      
-     </script>
-     
-     <br>
-     <p id='warn'>  </p>
-   </body>
+ </div>
+ 
+ <p id='warn'>  </p>
+</div>
+</body>
    </html>
