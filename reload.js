@@ -2,7 +2,8 @@ function redraw(history){
   
  myNodes=deserialiseC(history);
  mylinks=deserialiseL(history);
- console.log(mylinks);
+ 
+ 
  if (myNodes == []) return;
  
  if(mode == "submission")
@@ -13,11 +14,13 @@ function redraw(history){
   }   
   
 }
+  
+  
+  
+  
 
-
-
-
-if(mode=="correct") { 
+ 
+if(mode=="correct" && answer_type=="precedence") { 
  var root = new Node();
  root = findrootnode();  
  var linkedArray= new Array(); 
@@ -174,10 +177,69 @@ if(mode=="correct") {
      for(n=0; n<myNodes.length;n++){ 
        var node= myNodes[n];
      //console.log(node);
-     drawnode(node);  
+        drawnode(node);  
    } 
+  addConnections(mylinks);
    
  }
+  else if(mode=="correct" && answer_type=="arrow"){
+    
+    for(n=0; n<myNodes.length;n++){ 
+       var node= myNodes[n];
+     console.log(node);
+     drawnode(node);  
+   } 
+    console.log(mylinks);
+    var root = new Node();
+    root = findrootnode(); 
+    
+     var predecessor= new Array(); 
+     var successor= new Array();  
+    
+        
+    for(n=0; n<mylinks.length;n++){
+         var link=mylinks[n]; 
+            if(  link.h == root.id)  
+            { var linkedconnection= new connectionClass(link); 
+          console.log(linkedconnection);
+          linkedconnection.prevNode=null;
+          linkedconnection.nextNode=findsuccessor(link);
+         //set up relationship? 
+          console.log(linkedconnection);}
+    
+    }
+      
+    function findpredessor(connector){
+    return null;
+    }
+    
+    function findsuccessor(connector){
+      var successor = new Array();
+       for(n=0; n<mylinks.length;n++){
+         var link =mylinks[n];
+         if(link.h == connector.t) 
+          successor.push(link);
+       }
+      return successor;
+    }
+      
+    
+     
+    
+/*
+    for(n=0; n<mylinks.length;n++){
+    var link=mylinks[n]; 
+    addConnection(link);  
+  }
+*/    
+    
+   
+  
+  }
+  
+  
+  
+  
  
  if(mode =="student"){ 
   console.log(myNodes);

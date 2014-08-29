@@ -59,7 +59,7 @@ function addConnection(link){
     
         //jsPlumb.detach(conn);  
        // if(box.isVisiable==true){box.setVisiable(false)} 
-       console.log(linkconn);
+     //  console.log(linkconn);
        
        if(box[1].visible==true){
          box[1].setVisible(false);}

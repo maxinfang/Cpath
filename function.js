@@ -65,6 +65,16 @@ function NodeClass(node) {
 }
 
 
+function connectionClass(connector) {  
+ 
+  this.prevNode=null;       
+  this.nextNodes=null;       
+  this.connector=connector;  
+  this.level=0; 
+  
+}
+
+
 
 function deserialiseL(string){  
  var array= new Array(); 

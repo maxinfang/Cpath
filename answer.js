@@ -1,9 +1,10 @@
  var myNodes=new Array();
  var mylinks=new Array();
  var mode ="correct";
-
+ var answer_type="default";
  var questionId=this.frameElement.attributes.id.value; 
  var array = questionId.split("_");
+ 
 
  
  if(array[0] != "question"){ 
@@ -19,15 +20,27 @@ var namespaceforLabel= array[0]+"_"+array[1]+"_label";
 var namespaceforDuration= array[0]+"_"+array[1]+"_duration"; 
 var namespaceforAnswer= array[0]+"_"+array[1]+"_answer"; var namespacefortype= array[0]+"_"+array[1]+"_type"; 
 var op= new Array();
-var answer_type=parent.document.getElementById(namespacefortype);
-console.log(answer_type);
+
 
 //console.log(namespaceforSub);
 if(parent.document.getElementById(namespaceforAnswer))
  {mode ="correct";
-console.log("11111");
+  answer_type=getType();
 }
 
+function getType(){
+  
+  var element=parent.document.getElementById(namespacefortype);
+ 
+  if ( typeof element !="undefined"&& element !=null ) { 
+  
+     return element.innerHTML;
+    
+  }
+
+
+
+}
 
 
 function getDuration(){
@@ -125,7 +138,7 @@ $(document).ready(function()  {
    //check wehter we need reload or not
    
    
-   if(mode=="correct"){history_page=getHistory();
+   if(mode=="correct" ){history_page=getHistory();
                       //console.log("studentpage:"+history);
                     }
                     
@@ -133,10 +146,10 @@ $(document).ready(function()  {
                     }
                     else{  
                     
-                   redraw(history_page); 
-                      console.log(mylinks);
-                   addConnections(mylinks);
-                   
+                    redraw(history_page); 
+               
+                 
+                
                      
                    }
                    
