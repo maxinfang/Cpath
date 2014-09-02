@@ -186,15 +186,58 @@ if(mode=="correct" && answer_type=="precedence") {
     
     for(n=0; n<myNodes.length;n++){ 
        var node= myNodes[n];
-     console.log(node);
-     drawnode(node);  
+    // console.log(node);
+       drawnode(node);  
    } 
-    console.log(mylinks);
+    
+    //data structure first
+    // nodelist
+    
+     var linkedArray= new Array(); 
+     var linkedArray2= new Array();  
+    
+     for(n=0; n<myNodes.length;n++){  
+        var node=myNodes[n];  
+       //console.log(node);
+       var linkedNode= new NodeClass(node);
+     // console.log(linkedNode);
+     linkedArray.push(linkedNode);  
+     linkedArray2.push(linkedNode);
+   } 
+    
+     for (j=0;j<linkedArray.length;j++){ 
+      
+      var linkedNode=linkedArray[j]; 
+      var children= new Array(); 
+      var parents= new Array(); 
+      for(var n=0; n<mylinks.length;n++){ 
+       var link= mylinks[n]; 
+       if (link.t==linkedNode.id){
+         parents.push(findlinkednode(link.h));
+       }
+       
+       if (link.h == linkedNode.id){
+         children.push(findlinkednode(link.t))
+       }
+     }    
+      linkedNode.prevNode=parents; 
+      linkedNode.nextNodes=children;  
+       console.log(linkedNode);
+  
+     } 
+    // connectionlist
+    
+      addConnections(mylinks);    
+    
+    
+    
+    /*
+    
     var root = new Node();
     root = findrootnode(); 
     
-     var predecessor= new Array(); 
-     var successor= new Array();  
+    var predecessor= new Array(); 
+    var successor= new Array();  
     
         
     for(n=0; n<mylinks.length;n++){
@@ -226,7 +269,7 @@ if(mode=="correct" && answer_type=="precedence") {
     
      
     
-/*
+
     for(n=0; n<mylinks.length;n++){
     var link=mylinks[n]; 
     addConnection(link);  
