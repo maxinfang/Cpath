@@ -67,8 +67,8 @@ function NodeClass(node) {
 
 function connectionClass(connector) {  
  
-  this.prevNode=null;       
-  this.nextNodes=null;       
+  this.prevLinks=null;       
+  this.prevLinks=null;       
   this.connector=connector;  
   this.level=0; 
   
@@ -234,6 +234,11 @@ function deserialiseC(string){
    
  }
 }
+
+
+
+
+
 
 function findrootnode(){
 

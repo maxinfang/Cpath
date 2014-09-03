@@ -222,12 +222,58 @@ if(mode=="correct" && answer_type=="precedence") {
      }    
       linkedNode.prevNode=parents; 
       linkedNode.nextNodes=children;  
-       console.log(linkedNode);
+     //  console.log(linkedNode);
   
      } 
+    
     // connectionlist
     
-      addConnections(mylinks);    
+   var linkedconnections=new Array(); 
+   var linkedconnectionsserach=new Array(); 
+    
+    for(x=0;x<mylinks.length; x++ ){
+    
+      var   connector =  mylinks[x];
+      var linkedconnector= new connectionClass(connector);  
+    
+    /*  var predecessor= new Array(); 
+      var successor= new Array();   
+      
+      linkedconnector.prevLinks=predecessor; 
+      linkedconnector.nextLinks=findsuccessor;            */
+      linkedconnections.push(linkedconnector); 
+      linkedconnectionsserach.push(linkedconnector);
+      
+    }
+    
+    
+    for (j=0;j<linkedArray.length;j++){ 
+    
+    
+    
+    
+    }
+    
+    
+    
+    
+    
+      function findpredessor(connector){
+       return  1;
+       }
+    
+      function findsuccessor(connector){
+         var successor = new Array();
+   
+         for(n=0; n<mylinkedArr.length;n++){
+         var link =mylinks[n];
+         if(link.h == connector.t) 
+          successor.push(link);
+       }
+      return successor;
+      }
+    
+     // addConnections(mylinks);    
     
     
     
@@ -252,19 +298,7 @@ if(mode=="correct" && answer_type=="precedence") {
     
     }
       
-    function findpredessor(connector){
-    return null;
-    }
-    
-    function findsuccessor(connector){
-      var successor = new Array();
-       for(n=0; n<mylinks.length;n++){
-         var link =mylinks[n];
-         if(link.h == connector.t) 
-          successor.push(link);
-       }
-      return successor;
-    }
+   
       
     
      
