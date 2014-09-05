@@ -34,7 +34,7 @@ function addCircle(dragzone) {
      length: 15}]],
   
      isSource:true,
-     isTarget:false,
+     isTarget:false
     
    };
  
