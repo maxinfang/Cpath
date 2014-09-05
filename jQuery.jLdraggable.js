@@ -22,7 +22,7 @@
            var selected= $("#"+x);
            index= index+2;
            selected.css("z-index",index);
-           console.log(index);
+          // console.log(index);
         });
       }
     

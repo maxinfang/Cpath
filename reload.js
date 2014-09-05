@@ -34,35 +34,7 @@ if(mode=="correct" && answer_type=="precedence") {
      linkedArray2.push(linkedNode);
    } 
    
-   function recursive(node){  
-    var currentnode= node;
-    var nextnodes= node.nextNodes;
-    var nodedata= node.node; 
-    var length= nextnodes.length;
-    
-     
-    if( length>0) {
-      var  prob=0;
-      var max = 0;
-      for (var x=0;x<length;x++){
-        var childnode = nextnodes[x];  
-        var childLevel = recursive(childnode);  
-        
-        if( max < childLevel){
-          max=childLevel;  
-          
-        }
-        
-      } 
-      node.level=max+1;
-      return node.level
-      
-    } 
-    
-    node.level=1;
-    return node.level;
-    
-  }
+  
   
   function findlinkednode(id){
     
@@ -222,7 +194,7 @@ if(mode=="correct" && answer_type=="precedence") {
      }    
       linkedNode.prevNode=parents; 
       linkedNode.nextNodes=children;  
-     //  console.log(linkedNode);
+      console.log(linkedNode);
   
      } 
     
@@ -231,7 +203,7 @@ if(mode=="correct" && answer_type=="precedence") {
    var linkedconnections=new Array(); 
    var linkedconnectionsserach=new Array(); 
     
-    for(x=0;x<mylinks.length; x++ ){
+    for(x=0; x<mylinks.length; x++ ){
     
       var   connector =  mylinks[x];
       var linkedconnector= new connectionClass(connector);  
@@ -242,89 +214,109 @@ if(mode=="correct" && answer_type=="precedence") {
       linkedconnector.prevLinks=predecessor; 
       linkedconnector.nextLinks=findsuccessor;            */
       linkedconnections.push(linkedconnector); 
-      linkedconnectionsserach.push(linkedconnector);
+      
       
     }
     
     
-    for (j=0;j<linkedArray.length;j++){ 
+   for (j=0;j<linkedArray.length;j++){ 
+      
+      var linkedNode=linkedArray[j]; 
+      var predessors=Array();
+      var successors=Array();
+     
+      predessors= linkedNode.prevNode;
+      successors=linkedNode.nextNodes;
+     
+       //findlink();
+       var prevlink=Array();
+      for (p=0; p<predessors.length;p++){
+        var head=predessors[p].id;
+        var link=findlink(head,linkedNode.id);
+         prevlink.push(link);  
+     }
+       linkedNode.prevconnectors=prevlink;
+     
+      var suclink=Array();
+      for (s=0; s<successors.length;s++){
+        var tail=successors[s].id;
+        var link=findlink(linkedNode.id,tail);
+         suclink.push(link);  
+     }
+       linkedNode.nextconnectors=suclink;
+     
+       
+   }
     
     
-    
-    
-    }
-    
-    
-    
-    
-    
-      function findpredessor(connector){
-       return  1;
-       }
-    
-      function findsuccessor(connector){
-         var successor = new Array();
    
-         for(n=0; n<mylinkedArr.length;n++){
-         var link =mylinks[n];
-         if(link.h == connector.t) 
-          successor.push(link);
-       }
-      return successor;
+    
+    var root = findrootnode(); 
+     var linkedrootnode= findlinkednode(root.id)
+     recursive(linkedrootnode); 
+    
+     var deep =linkedrootnode.level;
+    
+       for(var n=deep; n>0 ;n--){
+        
+         for (var j=0;j<linkedArray.length;j++){
+           var  lnode=  linkedArray[j];
+           if(lnode.level== n) {   
+             var parentlinks=lnode.prevconnectors;
+             var maxValudeofParentEFT=0;
+             for(var k=0; k<parentlinks.length; k++ ){
+              var linkdata= parentlinks[k];
+              
+              var parentEFT= linkdata.EFT;
+              if(maxValudeofParentEFT < parentEFT)
+                {maxValudeofParentEFT = parentEFT; }
+            }
+           
+             var nextlinks=lnode.nextconnectors; 
+             for(var k=0; k<nextlinks.length;k++ ){
+              var linkdata= nextlinks[k]; 
+                calculateEST(linkdata,maxValudeofParentEFT);
+                calculateEFT(linkdata); 
+            }
+             
+             
+             
+            
+          }
+        }
       }
     
-     // addConnections(mylinks);    
     
-    
-    
-    /*
-    
-    var root = new Node();
-    root = findrootnode(); 
-    
-    var predecessor= new Array(); 
-    var successor= new Array();  
-    
-        
-    for(n=0; n<mylinks.length;n++){
-         var link=mylinks[n]; 
-            if(  link.h == root.id)  
-            { var linkedconnection= new connectionClass(link); 
-          console.log(linkedconnection);
-          linkedconnection.prevNode=null;
-          linkedconnection.nextNode=findsuccessor(link);
-         //set up relationship? 
-          console.log(linkedconnection);}
-    
+     for( var i=1; i<=deep; i++ )   {
+       
+      for (var j=0;j<linkedArray.length;j++){
+       var  lnode=  linkedArray[j]; 
+       if(lnode.level==i) {
+        var childrelinks=lnode.nextconnectors;  
+        var maxvalue=findmaxlinks(lnode.prevconnectors); 
+        var minvalue=0;
+       
+        for(var k=0; k< childrelinks.length; k++ ){
+          var linkdata= childrelinks[k];
+          var childLST= linkdata.LST; 
+          if(childLST >minvalue){minvalue=childLST;}
+           
+         }
+           if(childrelinks.length>0){maxvalue = minvalue;}
+           var prelinks=lnode.prevconnectors; 
+             for(var k=0; k<prelinks.length;k++ ){
+               link=prelinks[k];
+         
+            calculateLFT(link,maxvalue);
+            calculateLST(link);  
+           //calculateFFTF(lnode.node,minValueofChildEST);   
+                } 
+        }
+      }
     }
-      
-   
-      
+      for (j=0;j<linkedArray.length;j++){ console.log(linkedArray[j]);}
     
-     
+     addConnections(mylinks);
     
-
-    for(n=0; n<mylinks.length;n++){
-    var link=mylinks[n]; 
-    addConnection(link);  
   }
-*/    
-    
-   
-  
-  }
-  
-  
-  
-  
- 
- if(mode =="student"){ 
-  console.log(myNodes);
-  for(n=0; n<myNodes.length;n++){ 
-   var node= myNodes[n];
-   console.log(node);
-   drawnode(node); 
- }
- sentToparentPage();
-}
 }

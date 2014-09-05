@@ -58,7 +58,9 @@ function Node(id,type,parent,top,left,activity,EST,EFT,LST,LFT,FF,TF){
 function NodeClass(node) {  
   this.id=node.id;
   this.prevNode=null;       
-  this.nextNodes=null;       
+  this.nextNodes=null;   
+  this.prevconnectors=null;       
+  this.nextconnectors=null;   
   this.node=node;  
   this.level=0; 
   
@@ -543,3 +545,43 @@ function deleteNode(node)
   return;
 }
 
+ function recursive(node){  
+    var currentnode= node;
+    var nextnodes= node.nextNodes;
+    var nodedata= node.node; 
+    var length= nextnodes.length;
+    
+     
+    if( length>0) {
+      var  prob=0;
+      var max = 0;
+      for (var x=0;x<length;x++){
+        var childnode = nextnodes[x];  
+        var childLevel = recursive(childnode);  
+        
+        if( max < childLevel){
+          max=childLevel;  
+          
+        }
+        
+      } 
+      node.level=max+1;
+      return node.level
+      
+    } 
+    
+    node.level=1;
+    return node.level;
+    
+  }
+
+function findmaxlinks(linksarray){
+    var max=0;
+   for(n=0; n<linksarray.length;n++){ 
+       var lin= linksarray[n];
+     if(lin.EFT>max){max=lin.EFT}
+   }
+  return max;
+
+
+}

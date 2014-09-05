@@ -47,6 +47,7 @@ function addConnection(link){
                 cssClass:"datatable"//,
                // id: cc.id
              }]); 
+  
   $(".datatable").jLzindex();
   
   if(link.activity==0){
@@ -55,16 +56,17 @@ function addConnection(link){
       strokeStyle:"#666",
       dashstyle:"4 2"
     })
-    var box= linkconn.getOverlays();
+   // var box= linkconn.getOverlays();
     
         //jsPlumb.detach(conn);  
        // if(box.isVisiable==true){box.setVisiable(false)} 
      //  console.log(linkconn);
        
-       if(box[1].visible==true){
-         box[1].setVisible(false);}
+      // if(box[1].visible==true){
+      //   box[1].setVisible(false);}
        }
        
 
      }
+
 

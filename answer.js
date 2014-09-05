@@ -154,21 +154,53 @@ $(document).ready(function()  {
                    }
                    
                    
-                   jsPlumb.bind("connection", function(info, originalEvent) {
-                    
-                    var conn = info.connection;
-                    var parentId=$('#'+conn.sourceId).parent().attr('id');
-                    var childId=$('#'+conn.targetId).parent().attr('id');
-                    
-                    var cc= new connector();
-                    cc.h=parentId;
-                    cc.t=childId; 
-                    addNewLink(cc);
-                   
-                    
-   //document.getElementById(" ").style.zIndex="1";
+       jsPlumb.bind("connection",
+    function(info, originalEvent) {
+      
+     var conn = info.connection;
+     var parentId=$('#'+conn.sourceId).parent().attr('id');
+     var childId=$('#'+conn.targetId).parent().attr('id');
+     
+     
+     if (parentId != childId) {
+      
+       var cc= findlink(parentId,childId);  
+       cc = new connector();
+       cc.h=parentId;
+       cc.t=childId;  
+       cc.id=generateLinkID(mylinks); 
+       addNewLink(cc);
+       
+       console.log(conn);       
+       conn.setPaintStyle({lineWidth: 2, 
+         strokeStyle:"#666",
+         dashstyle:"4 2"})   
+       if (conn.getOverlays().length<=1){
+        jsPlumb.select(conn).addOverlay( ["Custom", {
+          create:function(component) {  
+            var boxvalue= drawbox("line",cc,conn);  
+            return $(boxvalue);  
+          },
+          location:0.5,
+                cssClass:"datatable"//,
+               // id: cc.id
+             }]);  
+      }
+      
+       
+      var box= conn.getOverlays();
+      
+    console.log(box);
+    if(box[1].visible==true){
+     box[1].setVisible(false);} 
+     
+     $(".datatable").jLzindex(); 
+   }
+    
+    }  
    
- });
+
+   );                
    //initialzie button action to different buttons;
    
    
