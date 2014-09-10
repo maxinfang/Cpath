@@ -21,23 +21,35 @@
   <script type="text/javascript" src="dbltap.js"></script>
   
   <style>
-   div.delete{ 
+     .body{      }
+    
+    .container {  
+      position: absolute; 
+      width:100px;  
+       z-index:1000000000; 
+    } 
+ 
+    div.delete{ 
      display:none; 
    }
+     .droplist{
+      position:relative;
+      
+      width:100px;
+    }    
    .connectorClass{
+       position:absolute; 
     z-index:-1;
   } 
-  .container {  
+   ._jsPlumb_source_hover{
+      position:relative; 
+      z-index:10000000;
+    }
+    ._jsPlumb_endpoint_anchor_{
+      position:relative; 
+      z-index:10000000;
+    }  
    
-      position: relative;
-      top:20;
-      z-index:1000000000;
-      width: 100px;
-      height: 20px; 
-  } 
-  div.delete{ 
-    display:none;  
-  } 
   .datatable { 
     background-color: white;
     position:absolute; 

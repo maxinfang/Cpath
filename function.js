@@ -125,6 +125,8 @@ function deserialiseC(string){
        node.id= nodeAttribute[1]
        node.top=nodeAttribute[2];
        node.left=nodeAttribute[3];
+   console.log(node.id+"top:"+node.top+":"+node.left);
+   
        var dataAttribute=shapeanddata[1].split('d');
       // console.log(dataAttribute);
       node.activity=dataAttribute[1];
@@ -575,13 +577,22 @@ function deleteNode(node)
     
   }
 
-function findmaxlinks(linksarray){
+function findmaxEFTlinks(linksarray){
     var max=0;
    for(n=0; n<linksarray.length;n++){ 
        var lin= linksarray[n];
      if(lin.EFT>max){max=lin.EFT}
    }
-  return max;
+  return max; 
+}
 
+function findminsESTlink(linksarray){
+    var min=100000;
+  for(n=0; n<linksarray.length;n++){ 
+       var lin= linksarray[n];
+     if(lin.EST< min){min=lin.EST}
+   }
+  return min;
+  
 
 }

@@ -14,10 +14,7 @@ function redraw(history){
   }   
   
 }
-  
-  
-  
-  
+   
 
  
 if(mode=="correct" && answer_type=="precedence") { 
@@ -121,8 +118,7 @@ if(mode=="correct" && answer_type=="precedence") {
       for (var j=0;j<linkedArray.length;j++){
        var  lnode=  linkedArray[j]; 
        if(lnode.level==i) {
-        var childrenodes=lnode.nextNodes; 
-        
+        var childrenodes=lnode.nextNodes;  
         var minValueofChildLST=project_duration;
         var minValueofChildEST=project_duration;
         for(var k=0; k< childrenodes.length; k++ ){
@@ -293,23 +289,40 @@ if(mode=="correct" && answer_type=="precedence") {
        var  lnode=  linkedArray[j]; 
        if(lnode.level==i) {
         var childrelinks=lnode.nextconnectors;  
-        var maxvalue=findmaxlinks(lnode.prevconnectors); 
-        var minvalue=0;
+         var maxvalue=findmaxEFTlinks(lnode.prevconnectors);
+         var minValueofChildEST=findminsESTlink(lnode.prevconnectors);
+         var minvalue=0; 
+         var minvalueEST=0;
        
-        for(var k=0; k< childrelinks.length; k++ ){
+         for(var k=0; k< childrelinks.length; k++ ){
           var linkdata= childrelinks[k];
-          var childLST= linkdata.LST; 
-          if(childLST >minvalue){minvalue=childLST;}
-           
+          var childLST= linkdata.LST;  
+          var childEST= linkdata.EST;
+          if(childLST > minvalue){minvalue=childLST;
+                                   } 
+           if(childEST > minvalueEST){minvalueEST=childEST}
+          
          }
-           if(childrelinks.length>0){maxvalue = minvalue;}
+         
+         if(childrelinks.length>0){maxvalue = minvalue;
+                                  
+                                  
+                                    }
+        
+        
+         
+         
+         
+         
+         
+          
+         
            var prelinks=lnode.prevconnectors; 
              for(var k=0; k<prelinks.length;k++ ){
-               link=prelinks[k];
-         
-            calculateLFT(link,maxvalue);
-            calculateLST(link);  
-           //calculateFFTF(lnode.node,minValueofChildEST);   
+              link=prelinks[k];  
+              calculateLFT(link,maxvalue);
+              calculateLST(link);  
+              calculateFFTF(link,minValueofChildEST);   
                 } 
         }
       }

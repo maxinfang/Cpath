@@ -11,6 +11,7 @@ function drawnode(node){
      if(node.top==""){ 
      }
      else{
+       console.log("css:"+node.top+":"+node.left);
       $(newdiv).css({ top: node.top, left: node.left });
     } 
     
@@ -52,6 +53,8 @@ function drawnode(node){
         $(dropL).width('90%');
         
       }    
+     
+    
       
       var dataLeft= $(newdiv).position().left;
       var dataTop= $(newdiv).position().top; 
