@@ -500,6 +500,7 @@ function calculateFFTF(node,value){
 }
 
 
+
 function deleteNode(node)
 {
  var deletedNodeid=node.id; 

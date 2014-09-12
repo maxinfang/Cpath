@@ -252,6 +252,7 @@ if(mode=="correct" && answer_type=="precedence") {
      recursive(linkedrootnode); 
     
      var deep =linkedrootnode.level;
+     var maxvalueofEFT=0;
     
        for(var n=deep; n>0 ;n--){
         
@@ -259,13 +260,15 @@ if(mode=="correct" && answer_type=="precedence") {
            var  lnode=  linkedArray[j];
            if(lnode.level== n) {   
              var parentlinks=lnode.prevconnectors;
-             var maxValudeofParentEFT=0;
+             var maxValudeofParentEFT=0; 
              for(var k=0; k<parentlinks.length; k++ ){
               var linkdata= parentlinks[k];
               
               var parentEFT= linkdata.EFT;
               if(maxValudeofParentEFT < parentEFT)
-                {maxValudeofParentEFT = parentEFT; }
+                {maxValudeofParentEFT = parentEFT; 
+                 if(maxValudeofParentEFT>maxvalueofEFT){maxvalueofEFT=maxValudeofParentEFT;}
+                }
             }
            
              var nextlinks=lnode.nextconnectors; 
@@ -288,41 +291,24 @@ if(mode=="correct" && answer_type=="precedence") {
       for (var j=0;j<linkedArray.length;j++){
        var  lnode=  linkedArray[j]; 
        if(lnode.level==i) {
-        var childrelinks=lnode.nextconnectors;  
-         var maxvalue=findmaxEFTlinks(lnode.prevconnectors);
-         var minValueofChildEST=findminsESTlink(lnode.prevconnectors);
-         var minvalue=0; 
-         var minvalueEST=0;
+         var childrelinks=lnode.nextconnectors;   
+         var ValueofChildEST=maxvalueofEFT;
+         
        
          for(var k=0; k< childrelinks.length; k++ ){
-          var linkdata= childrelinks[k];
-          var childLST= linkdata.LST;  
+          var linkdata= childrelinks[k]; 
           var childEST= linkdata.EST;
-          if(childLST > minvalue){minvalue=childLST;
-                                   } 
-           if(childEST > minvalueEST){minvalueEST=childEST}
-          
+          if(childEST < ValueofChildEST  ){  
+            ValueofChildEST=childEST;   }  
          }
          
-         if(childrelinks.length>0){maxvalue = minvalue;
-                                  
-                                  
-                                    }
-        
-        
-         
-         
-         
-         
-         
-          
          
            var prelinks=lnode.prevconnectors; 
              for(var k=0; k<prelinks.length;k++ ){
               link=prelinks[k];  
-              calculateLFT(link,maxvalue);
+              calculateLFT(link, ValueofChildEST);
               calculateLST(link);  
-              calculateFFTF(link,minValueofChildEST);   
+              calculateFFTF(link,ValueofChildEST);   
                 } 
         }
       }
