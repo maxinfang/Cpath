@@ -297,9 +297,9 @@ if(mode=="correct" && answer_type=="precedence") {
        
          for(var k=0; k< childrelinks.length; k++ ){
           var linkdata= childrelinks[k]; 
-          var childEST= linkdata.EST;
-          if(childEST < ValueofChildEST  ){  
-            ValueofChildEST=childEST;   }  
+          var childLST= linkdata.LST;
+          if(childLST < ValueofChildEST){  
+            ValueofChildEST=childLST;   }  
          }
          
          

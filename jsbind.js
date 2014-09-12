@@ -17,13 +17,12 @@ jsPlumb.bind("connection",  function(info, originalEvent) {
  
  
  jsPlumb.bind("dblclick", function(conn) {
-        // console.log(mylinks);
-        // console.log(link.id); 
+        
         var box= conn.getOverlays(); 
        
-        //jsPlumb.detach(conn);  
-        // if(box.isVisiable==true){box.setVisiable(false)} 
-        //console.log(box);
+      
+       // if(box.isVisiable==true){box.setVisiable(false)} 
+        console.log(box);
       
         
         if(box[1].visible==true){
@@ -34,6 +33,7 @@ jsPlumb.bind("connection",  function(info, originalEvent) {
           }
    
      }); 
+
         
    
   
