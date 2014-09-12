@@ -292,21 +292,31 @@ if(mode=="correct" && answer_type=="precedence") {
        var  lnode=  linkedArray[j]; 
        if(lnode.level==i) {
          var childrelinks=lnode.nextconnectors;   
+         var ValueofChildEFT=maxvalueofEFT;
          var ValueofChildEST=maxvalueofEFT;
          
        
          for(var k=0; k< childrelinks.length; k++ ){
           var linkdata= childrelinks[k]; 
           var childLST= linkdata.LST;
-          if(childLST < ValueofChildEST){  
-            ValueofChildEST=childLST;   }  
+          var childEST= linkdata.EST;
+          if(childLST < ValueofChildEFT){  
+            ValueofChildEFT=childLST;   }  
+           
+           if(childEST< ValueofChildEST) {
+              ValueofChildEST=childEST; 
+              
+              }
+           
+           
          }
+         
          
          
            var prelinks=lnode.prevconnectors; 
              for(var k=0; k<prelinks.length;k++ ){
               link=prelinks[k];  
-              calculateLFT(link, ValueofChildEST);
+              calculateLFT(link, ValueofChildEFT);
               calculateLST(link);  
               calculateFFTF(link,ValueofChildEST);   
                 } 
