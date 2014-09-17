@@ -144,13 +144,8 @@ $(document).ready(function()  {
                     
                     if(history_page == "" ){ 
                     }
-                    else{  
-                    
-                    redraw(history_page); 
-               
-                 
-                
-                     
+                    else{   
+                    redraw(history_page);   
                    }
                    
                    
@@ -191,8 +186,9 @@ $(document).ready(function()  {
       var box= conn.getOverlays();
       
     console.log(box);
-    if(box[1].visible==true){
-     box[1].setVisible(false);} 
+   // if(box[1].visible==true){
+   //  box[1].setVisible(false);
+   // } 
      
      $(".datatable").jLzindex(); 
    }
@@ -201,7 +197,7 @@ $(document).ready(function()  {
    
 
    );                
-   //initialzie button action to different buttons;
+   
    
    
    

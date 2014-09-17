@@ -243,7 +243,7 @@ $("#"+containerId).draggable(
  }
 }
 );   
-      //connection
+    //connection
       
       var top= $('#'+containerId).position().top;
       var left=$('#'+containerId).position().left;
