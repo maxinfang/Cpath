@@ -18,29 +18,15 @@ jsPlumb.bind("connection",  function(info, originalEvent) {
  
  jsPlumb.bind("dblclick", function(conn) {
         
-        var box= conn.getOverlays();  
-       // if(box.isVisiable==true){box.setVisiable(false)} 
-      // console.log("test~~~~~~~~~~~~~~~~~~test");
-       // console.log(box);
-      //   console.log("test~~~~~~~~~~~~~~~~~~test");
-      
-        
+        var box= conn.getOverlays();   
        if(box[1].visible == true){
              box[1].setVisible(false);
-         }
-   
-       if(box[1].visible == true){
+        }
+        else{
              box[1].setVisible(true);
-         } 
-      
-   
-      
-   
+         }  
      }); 
-
-        
-   
-  
+ 
 jsPlumb.bind("connectionDetached", function(info, originalEvent) {
   
 })

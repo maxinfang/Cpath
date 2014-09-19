@@ -111,8 +111,7 @@ function drawnode(node){
    
    
    $(LSTdata).append(addlabel("LST")); 
-   
-   
+    
    var LST = (node.LST=="") ? addtext("LST") : addtext("LST",node.LST);
    
    $(LSTdata).append (LST);

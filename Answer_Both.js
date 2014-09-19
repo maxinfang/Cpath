@@ -123,11 +123,13 @@ $(document).ready(function()  {
     //initialize jsPlumb
     
     /*initialize endpoint Class*/
+     jsPlumb.setRenderMode(jsPlumb.SVG);
     jsPlumb.Defaults.Container = $("#canvasdiv"); 
     jsPlumb.DefaultDragOptions = {  cursor:"pointer",
     zIndex: 2000 };
     jsPlumb.endpointClass = "endpointClass";
     jsPlumb.connectorClass =  "connectorClass";   
+      $(".datatable").jLzindex();
     
     /*initialize bind function*/
    ///click
@@ -149,7 +151,7 @@ $(document).ready(function()  {
                    }
                    
                    
-       jsPlumb.bind("connection",
+       jsPlumb.bind("Connection",
     function(info, originalEvent) {
       
      var conn = info.connection;
@@ -183,12 +185,11 @@ $(document).ready(function()  {
       }
       
        
-      var box= conn.getOverlays();
-      
+      var box= conn.getOverlays(); 
     console.log(box);
-   // if(box[1].visible==true){
-   //  box[1].setVisible(false);
-   // } 
+    if(box[1].visible==true){
+     box[1].setVisible(false);
+    } 
      
      $(".datatable").jLzindex(); 
    }
