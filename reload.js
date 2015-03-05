@@ -6,7 +6,7 @@ function redraw(history){
  
  if (myNodes == []) return;
  
- if(mode == "submission")
+   if(mode == "submission" || mode == "student")
   { for(n=0; n<myNodes.length;n++){ 
     var node= myNodes[n];
     console.log(node);
@@ -150,6 +150,7 @@ if(mode=="correct" && answer_type=="precedence") {
   addConnections(mylinks);
    
  }
+  
   else if(mode=="correct" && answer_type=="arrow"){
     
     for(n=0; n<myNodes.length;n++){ 
