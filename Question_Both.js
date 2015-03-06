@@ -84,7 +84,8 @@ function getHistory(){
   var i = 0;
   var iarr = 0;
   var att;
-  for(; i < elem.length; i++) {
+   
+  for(i; i < elem.length; i++) {
     att = elem[i].getAttribute("type");
     if(att =="text") {
       return elem[i].value   
@@ -106,7 +107,7 @@ function getSubmission(){
 
 var op = getEntry();
 var du= getDuration();
-console.log(du);
+//console.log(du);
 
 
 $(document).ready(function()  {  
