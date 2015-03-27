@@ -110,7 +110,6 @@ function deserialiseL(string){
 
 
 
-
 function deserialiseC(string){ 
  var array= new Array(); 
  var stringwithCandL=string.split('a'); 
@@ -399,8 +398,107 @@ return;
 
 
 
-function  giveWarning(){
+function  giveWarning(myNodes,mylinks){
+  
+  
+  
+ var linkedArray= new Array();   //untested array
+ var linkedArray2= new Array();   
  
+  for(n=0; n<myNodes.length;n++){  
+ var node=myNodes[n];  
+       //console.log(node);
+       var linkedNode= new NodeClass(node)
+     // console.log(linkedNode);
+     linkedArray.push(linkedNode);  
+     linkedArray2.push(linkedNode);
+   } 
+  
+   function findlinkednode(id){
+    
+   for (x=0;x<linkedArray2.length;x++){ 
+     var li=linkedArray2[x];
+     if(li.id==id){return li;}
+   } 
+   return "none";
+ } 
+  
+
+   for (j=0;j<linkedArray.length;j++){ 
+      
+      var linkedNode=linkedArray[j]; 
+      var children= new Array(); 
+      var parents= new Array(); 
+      for(var n=0; n<mylinks.length;n++){ 
+       var link= mylinks[n]; 
+       if (link.t==linkedNode.id){
+         parents.push(findlinkednode(link.h));
+       }
+       
+       if (link.h == linkedNode.id){
+         children.push(findlinkednode(link.t))
+       }
+     }
+           // linkedNode.node.parentID;  
+         // console.log(children);
+         linkedNode.prevNode=parents; 
+         linkedNode.nextNodes=children;
+       }  
+    
+console.log("------------------------------------------------------");
+  
+  var testingArray= new Array(); 
+  var warningFlag = 0;
+  
+  if(linkedArray.length>0){testingArray.push(linkedArray.shift());}
+   
+  while(linkedArray.length>0){
+    
+    if(testingArray.length ==0) {warningFlag=1; break;}
+    
+    while(testingArray.length>0){
+      
+      if(linkedArray.length ==0) {break;} 
+      
+       var  lnode =testingArray.shift();
+       var index = linkedArray.indexOf(lnode); 
+      if(index >=0){ 
+         linkedArray.splice(index,1); 
+         if(linkedArray.length ==0) {break;}  
+      }
+      
+      var prevnodesArray =lnode.prevNode;
+      var nextnodesArray =lnode.nextNodes; 
+      
+       for (var p=0;p<prevnodesArray.length;p++){  
+            
+            var index1 = linkedArray.indexOf(prevnodesArray[p]);  
+            if(index1>=0){ 
+               //linkedArray.splice(index1,1);
+               testingArray.push(prevnodesArray[p]);
+            }
+            
+            }
+      
+       for (var n=0;n<nextnodesArray.length;n++){ 
+            
+            var index2 = linkedArray.indexOf(nextnodesArray[n]);   
+            console.log(index2);
+            if(index2 >=0){
+              //linkedArray.splice(index2,1);
+              testingArray.push(nextnodesArray[n]);}
+          } 
+      
+    }
+     
+     
+      
+}
+  
+  
+  
+  
+console.log("------------------------------------------------------");
  
  var numberOfnoParent=0;
  for(n=0; n<myNodes.length;n++){
@@ -416,7 +514,7 @@ function  giveWarning(){
 if (istailexist==0) numberOfnoParent++;
 }
 
-if (numberOfnoParent>1) {
+if (warningFlag) {
  
  $("body").css("background-color","#fee");
  $("p").text("Warning: Not all nodes are connected!");
@@ -433,7 +531,7 @@ else{
 
 
 function sentToparentPage()
-{   giveWarning();
+{ giveWarning(myNodes,mylinks);
   console.log(mylinks);
   answervalue= serialise(myNodes,mylinks);
   console.log(answervalue);

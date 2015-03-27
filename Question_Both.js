@@ -154,7 +154,7 @@ $(document).ready(function()  {
        cc.id=generateLinkID(mylinks); 
        addNewLink(cc);
        
-       console.log(conn);       
+       //console.log(conn);       
        conn.setPaintStyle({lineWidth: 2, 
          strokeStyle:"#666",
          dashstyle:"4 2"})   
