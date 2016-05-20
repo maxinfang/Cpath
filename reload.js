@@ -162,6 +162,15 @@ if(mode=="correct" && answer_type=="precedence") {
     //data structure first
     // nodelist
     
+     function findlinkednode(id){
+    
+   for (x=0;x<linkedArray2.length;x++){ 
+     var li=linkedArray2[x];
+     if(li.id==id){return li;}
+   } 
+   return "none";
+ } 
+    
      var linkedArray= new Array(); 
      var linkedArray2= new Array();  
     

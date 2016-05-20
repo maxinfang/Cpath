@@ -211,8 +211,7 @@ function deserialiseC(string){
 
   function generateID(myNodes){
     
-    if (typeof(myNodes) == "undefined" ) {return 1;}
-    
+    if (typeof(myNodes) == "undefined" ) {return 1;} 
     var myNodesArray=myNodes;
     var max=0;    
     for(n=0; n<myNodesArray.length;n++){ 
@@ -445,10 +444,12 @@ function  giveWarning(myNodes,mylinks){
          linkedNode.nextNodes=children;
        }  
     
-console.log("------------------------------------------------------");
+
   
-  var testingArray= new Array(); 
+  var testingArray= new Array();  
   var warningFlag = 0;
+  
+ 
   
   if(linkedArray.length>0){testingArray.push(linkedArray.shift());}
    
@@ -495,6 +496,41 @@ console.log("------------------------------------------------------");
       
 }
   
+console.log("------------------------------------------------------");
+/*
+  
+for(i=0; i<myNodes.length;i++){
+    
+  if (repeatflag == 1) {break;}
+    
+  var node= myNodes[i];
+  var activity= node.activity;
+    
+  if (activity) { // ie not a dummy activity
+    var numberOfactivity=0; 
+    for (j=0;j<myNodes.length;j++){  
+      var linkedNode=myNodes[j]; 
+      console.log("==="+activity+""+linkedNode.node.activity);
+      if (linkedNode.activity == activity){
+            numberOfactivity++;
+        if (numberOfactivity>1) repeatflag=1;
+      }
+    }    
+  }
+}
+
+ */ 
+var repeatflag=0;
+for(i=0; i<myNodes.length;i++){
+  if (myNodes[i].activity) { // ie not a dummy activity
+    for(j=i+1; j<myNodes.length;j++){
+      if(myNodes[i].activity ==myNodes[j].activity){
+        console.log("warning");
+        repeatflag = 1;
+      }
+    }
+  }
+}
   
   
   
@@ -513,8 +549,14 @@ console.log("------------------------------------------------------");
 }   
 if (istailexist==0) numberOfnoParent++;
 }
+ 
+if(repeatflag){
+ $("body").css("background-color","#fee");
+ $("p").text("Warning: Two activities use the same label!");
 
-if (warningFlag) {
+}
+
+else if (warningFlag) {
  
  $("body").css("background-color","#fee");
  $("p").text("Warning: Not all nodes are connected!");
