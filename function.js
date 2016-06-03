@@ -143,6 +143,8 @@ function deserialiseC(string){
   }
 
 
+
+
   function serialise(myNodes,mylinks){
     
     var answervalue ="";  
@@ -718,6 +720,25 @@ function deleteNode(node)
     return node.level;
     
   }
+
+
+
+  function validateInt(value)
+{
+    var num = value;
+    var regex=/^\d*$/;;
+    
+  
+  message="true";
+  
+  if (!num.match(regex)) { message="Numbers must be Integer"; 
+                          }
+      
+  return message;
+  
+  
+ }
+
 
 function findmaxEFTlinks(linksarray){
     var max=0;
