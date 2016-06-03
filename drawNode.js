@@ -144,32 +144,8 @@ function drawnode(node){
    var TF= (node.TF=="") ? addtext("TF") : addtext("TF",node.TF);
    
    $(FFdata).append (TF);
-   $(element).append( FFdata); 
+   $(element).append( FFdata);  
    
-  
-  EST.addEventListener("input", function(e) { 
-    var num = EST.value;
-     var message = validateInt(num);
-     if (message!="true"){
-         alert(message);
-        EST.value= EST.defaultValue;
-         }else{
-        EST.defaultValue= num; 
-      }
-    
-  }, false);
-  
-  EST.addEventListener("input", function(e) { 
-    var num = EST.value;
-     var message = validateInt(num);
-     if (message!="true"){
-         alert(message);
-        EST.value= EST.defaultValue;
-         }else{
-        EST.defaultValue= num; 
-      }
-    
-  }, false);
   
   EST.addEventListener("input", function(e) { 
     var num = EST.value;
