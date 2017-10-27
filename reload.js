@@ -29,9 +29,7 @@ if(mode=="correct" && answer_type=="precedence") {
      // console.log(linkedNode);
      linkedArray.push(linkedNode);  
      linkedArray2.push(linkedNode);
-   } 
-   
-  
+   }  
   
   function findlinkednode(id){
     

@@ -573,31 +573,8 @@ else{
 
 }
 
-function checkloop(){
-   
-    var allerrors = new Array();
-    for(n=0; n<myNodes.length;++n){
-       
-        var node= myNodes[n];
-        var li=[]; 
-        li.push(node);  
-        if(node.parentID!="") { 
-            var parentid =node.parentID;
-            var parentnode= findnode(parentid);  
-            var temp=  recursivecheck(parentnode, li )
-            if (temp!=true){ 
-                for (var l=0; l<temp.length;l++ ) {
-          if (! include(allerrors,temp[l])) {
-            allerrors.push(temp[l]);
-          }
-        }
-              
-            } 
-        }
-    
-    }  
-    giveloopWarning(allerrors);
-}
+
+
 
 
 function sentToparentPage()
@@ -606,7 +583,7 @@ function sentToparentPage()
   answervalue= serialise(myNodes,mylinks);
   console.log(answervalue);
   
-   checkloop();
+  // checkloop();
   
   var elem= parent.document.getElementsByTagName("input"); 
   var arr = new Array();

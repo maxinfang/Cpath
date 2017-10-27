@@ -1,6 +1,6 @@
 
 
-var Color="#fa0000";
+var Color="#fa0000"; //red
 if(mode=="correct") { Color= "#5cc902"};
 if(mode=="submission") { Color= "#0060bf"};  
 
