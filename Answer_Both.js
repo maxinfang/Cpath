@@ -69,6 +69,12 @@ function getDuration(){
 }
 
 
+function getSubmission(){
+  var element=parent.document.getElementById(namespaceforSub);
+  
+  //console.log(element.innerHTML);
+  return element.innerHTML;
+}
 
 function getEntry(){
  
@@ -101,6 +107,7 @@ function getCorrectAnswer(){
   return el;
   
 } 
+
 function getHistory(){
   
   var elem= getCorrectAnswer();
@@ -141,13 +148,14 @@ $(document).ready(function()  {
    
    
    if(mode=="correct" ){history_page=getHistory();
+                        student_submission=getSubmission();
                       //console.log("studentpage:"+history);
                     }
                     
                     if(history_page == "" ){ 
                     }
                     else{   
-                    redraw(history_page);   
+                    redraw(history_page,student_submission);   
                    }
                    
                    
@@ -212,6 +220,7 @@ $(document).ready(function()  {
      node.id =generateID(myNodes); 
      node= drawnode(node); 
      addNewNode(node);
+     
    });
     
     

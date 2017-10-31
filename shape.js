@@ -1,20 +1,22 @@
 
 
 var Color="#fa0000"; //red
+
+
 if(mode=="correct") { Color= "#5cc902"};
 if(mode=="submission") { Color= "#0060bf"};  
 
-function addShape(type,dragzone){
-  if (type=="C") {addCircle(dragzone);} 
+function addShape(type,dragzone,color){
+  if (type=="C") {addCircle(dragzone,color);} 
 }
  
  
-function addCircle(dragzone) {
+function addCircle(dragzone,color) {
   var paper = new Raphael(
     $(dragzone).get(0), 102, 102);   
   var circle =paper.circle(50, 50)
   .attr({
-    fill : Color, 
+    fill : color, 
     r : 45
   }); 
   

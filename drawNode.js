@@ -33,7 +33,7 @@ function drawnode(node){
 
      
       $(newdiv).append(dragzone);  
-      addShape("C",dragzone);  
+      addShape("C",dragzone,node.color);  
       
       
       var dropL;

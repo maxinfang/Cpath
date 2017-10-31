@@ -1,7 +1,11 @@
-function redraw(history){
+function redraw(history,submission){
   
  myNodes=deserialiseC(history);
  mylinks=deserialiseL(history);
+ 
+ submissionNodes=deserialiseC(submission);
+ submissionlinks=deserialiseL(submission);
+  
  
  
  if (myNodes == []) return;
@@ -21,7 +25,13 @@ if(mode=="correct" && answer_type=="precedence") {
  var root = new Node();
  root = findrootnode();  
  var linkedArray= new Array(); 
- var linkedArray2= new Array();  
+ var linkedArray2= new Array(); 
+ 
+ 
+ var linkedArray_sub=new Array();
+ var linkedArray2_sub=new Array(); 
+  
+  
  for(n=0; n<myNodes.length;n++){  
   var node=myNodes[n];  
        //console.log(node);
@@ -30,6 +40,16 @@ if(mode=="correct" && answer_type=="precedence") {
      linkedArray.push(linkedNode);  
      linkedArray2.push(linkedNode);
    }  
+  
+ for(n=0; n<submissionNodes.length;n++){  
+  var node=submissionNodes[n];  
+       console.log(node);
+       var linkedNode= new NodeClass(node)
+     // console.log(linkedNode);
+     linkedArray_sub.push(linkedNode);  
+     linkedArray2_sub.push(linkedNode);
+   }  
+  
   
   function findlinkednode(id){
     
@@ -40,13 +60,7 @@ if(mode=="correct" && answer_type=="precedence") {
    return "none";
  } 
  
- 
- 
-    // console.log(du[root.activity]);
-    // console.log(du[root.activity]);
-    
-    
-    
+  
     
     
      //set children and parents; 
@@ -71,6 +85,12 @@ if(mode=="correct" && answer_type=="precedence") {
          linkedNode.prevNode=parents; 
          linkedNode.nextNodes=children;
        }
+  
+  
+  
+  
+  
+  
        
        var linkedrootnode=findlinkednode(root.id)
        recursive(linkedrootnode); 
@@ -115,6 +135,7 @@ if(mode=="correct" && answer_type=="precedence") {
     for( var i=1; i<=deep; i++ )   {
       for (var j=0;j<linkedArray.length;j++){
        var  lnode=  linkedArray[j]; 
+        console.log(lnode);
        if(lnode.level==i) {
         var childrenodes=lnode.nextNodes;  
         var minValueofChildLST=project_duration;
@@ -142,9 +163,10 @@ if(mode=="correct" && answer_type=="precedence") {
      
      for(n=0; n<myNodes.length;n++){ 
        var node= myNodes[n];
-     //console.log(node);
+        console.log(node);
         drawnode(node);  
    } 
+   
   addConnections(mylinks);
    
  }
@@ -331,7 +353,17 @@ if(mode=="correct" && answer_type=="precedence") {
         }
       }
     }
-      for (j=0;j<linkedArray.length;j++){ console.log(linkedArray[j]);}
+    
+    
+    
+      for (j=0;j<myNodes.length;j++){  
+         for (k=0;k< submissionNodes.length;k++){  
+             console.log(myNodes[j]); 
+           //  console.log(submissionNodes[k]);
+       }
+      
+      
+      }
     
      addConnections(mylinks);
     
