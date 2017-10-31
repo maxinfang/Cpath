@@ -167,6 +167,21 @@ if(mode=="correct" && answer_type=="precedence") {
         drawnode(node);  
    } 
    
+  
+     console.log("~~~~~~");
+    
+      for (j=0;j<myNodes.length;j++){  
+          node.color= "red";
+         for (k=0;k< submissionNodes.length;k++){   
+              node =   myNodes[j] ;
+              node.co= "red";
+         }
+      
+      
+      }
+    
+   console.log("~~~~~~");
+   
   addConnections(mylinks);
    
  }
@@ -355,15 +370,7 @@ if(mode=="correct" && answer_type=="precedence") {
     }
     
     
-    
-      for (j=0;j<myNodes.length;j++){  
-         for (k=0;k< submissionNodes.length;k++){  
-             console.log(myNodes[j]); 
-           //  console.log(submissionNodes[k]);
-       }
-      
-      
-      }
+  
     
      addConnections(mylinks);
     
