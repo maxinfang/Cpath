@@ -18,6 +18,7 @@ var namespaceforSub = array[0]+"_"+array[1]+"_submission";
 var namespaceforEntry = array[0]+"_"+array[1]+"_entry"; 
 var namespaceforLabel= array[0]+"_"+array[1]+"_label"; 
 var namespaceforDuration= array[0]+"_"+array[1]+"_duration"; 
+var namespaceforAnswer= array[0]+"_"+array[1]+"_answer";
 var op= new Array();
 
  
@@ -145,7 +146,7 @@ $(document).ready(function()  {
     if(history_page == "" ){ 
     }
     else{  
-      
+       
      redraw(history_page,correct_string); //
      addConnections(mylinks);
    }
