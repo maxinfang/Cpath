@@ -199,25 +199,24 @@ if(mode=="correct" && answer_type=="precedence") {
   
     
      for(var n=0; n<linkedArray.length;n++){
+        
+        var node= linkedArray[n].node;
        
-       
-        var   node= linkedArray[n].node; 
-        node.color="red";
-         
         for(var m=0; m<linkedArray_sub.length;m++){ 
         var   student_node= linkedArray_sub[m].node;  
-        if( student_node.activity ==  node.activity) {node.color= "green"; break;}
-      
-       
+          
+           console.log(node.activity);
+          console.log(student_node.activity);
+        if( student_node.activity ==  node.activity) { node.color= "green";    break;}else { node.color="red";} 
        }
-      
-        
+       
+     //repeated will be marked as missing as well
       } 
        
   
       for(var n=0; n<linkedArray.length;n++){
            var   node= linkedArray[n].node;
-            console.log(node);
+           
             drawnode(node); 
         }
    

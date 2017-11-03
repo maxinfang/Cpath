@@ -10,7 +10,7 @@ if(mode=="submission") { Color= "#0060bf"};
 function addShape(type,dragzone,node){
   console.log("~~~~~~");
    console.log(node);
-  if(node.color = "red"){ Color="red";}else{Color="#5cc902"; }//missing change the node color to red;
+  if(node.color == "red"){ Color="red";}else{Color="#5cc902"; }//missing change the node color to red;
   if (type=="C") {addCircle(dragzone,node);} 
 }
  
@@ -27,18 +27,21 @@ function addCircle(dragzone,node) {
   
   var sourcePoint= {
     anchor:"Right",  
-    // deleteEndpointsOnDetach: false,
+     // paintStyle:{ fill:"blue", outlineStroke:"red", outlineWidth:1 },
+    // deleteEndpointsOnDetach: false,,
     connectorStyle: {
-      lineWidth: 2,
-      strokeStyle: '#666' 
+     lineWidth: 2,
+     strokeStyle: '#666'
+      // strokeStyle: '#666' , change the color 
        
     }, 
+     paintStyle:{ fillStyle:"red"},
      maxConnections: -1,
-    connector: ["Straight"], 
+     connector: ["Straight"], 
      connectorOverlays: [["Arrow",
     { width: 15,
      length: 15}]],
-  
+    
      isSource:true,
      isTarget:false
     
@@ -63,7 +66,7 @@ function addCircle(dragzone,node) {
   var currentId = $(dragzone).attr('id'); 
   
 
-  e1= jsPlumb.addEndpoint(currentId, sourcePoint);
+  e1= jsPlumb.addEndpoint(currentId, sourcePoint,);
   e2= jsPlumb.addEndpoint(currentId, targetPoint); 
  
   //jsPlumb.makeTarget(currentId, targetPoint);
