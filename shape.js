@@ -1,6 +1,6 @@
 
 
-var Color="#fa0000"; //red
+var Color="#d9534f"; //red
  
 
 
@@ -10,7 +10,7 @@ if(mode=="submission") { Color= "#0060bf"};
 function addShape(type,dragzone,node){
   console.log("~~~~~~");
    console.log(node);
-  if(node.color == "red"){ Color="red";}else{Color="#5cc902"; }//missing change the node color to red;
+  if(node.color == "red"){ Color="#d9534f";}else{Color="#5cc902"; }//missing change the node color to red;
   if (type=="C") {addCircle(dragzone,node);} 
 }
  
