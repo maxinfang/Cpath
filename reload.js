@@ -3,8 +3,7 @@ function redraw(history,submission){
  myNodes=deserialiseC(history);
  mylinks=deserialiseL(history);
  
- submissionNodes=deserialiseC(submission);
- submissionlinks=deserialiseL(submission);
+
   
  
  
@@ -22,6 +21,10 @@ function redraw(history,submission){
 
  
 if(mode=="correct" && answer_type=="precedence") { 
+  
+ submissionNodes=deserialiseC(submission);
+ submissionlinks=deserialiseL(submission);
+  
  var root = new Node();
  root = findrootnode();  
  var linkedArray= new Array(); 
@@ -59,13 +62,44 @@ if(mode=="correct" && answer_type=="precedence") {
    } 
    return "none";
  } 
+  
+  function findsublinkednode(id){
+    
+   for (x=0;x<linkedArray2_sub.length;x++){ 
+     var li=linkedArray2_sub[x];
+     if(li.id==id){return li;}
+   } 
+   return "none";
+ } 
  
   
     
     
-     //set children and parents; 
+     //set children and parents for submission nodes; 
      
-     for (j=0;j<linkedArray.length;j++){ 
+     for (j=0;j<linkedArray_sub.length;j++){ 
+      
+      var linkedNode=linkedArray_sub[j]; 
+      var children= new Array(); 
+      var parents= new Array(); 
+      for(var n=0; n<submissionlinks.length;n++){ 
+       var link= submissionlinks[n]; 
+       if (link.t==linkedNode.id){
+         parents.push(findsublinkednode(link.h));
+       }
+       
+       if (link.h == linkedNode.id){
+         children.push(findsublinkednode(link.t))
+       }
+     }
+         // linkedNode.node.parentID;  
+         // console.log(children);
+         linkedNode.prevNode=parents; 
+         linkedNode.nextNodes=children;
+       }
+  
+    //set children and parents
+    for (j=0;j<linkedArray.length;j++){ 
       
       var linkedNode=linkedArray[j]; 
       var children= new Array(); 
@@ -80,20 +114,18 @@ if(mode=="correct" && answer_type=="precedence") {
          children.push(findlinkednode(link.t))
        }
      }
-           // linkedNode.node.parentID;  
+         // linkedNode.node.parentID;  
          // console.log(children);
          linkedNode.prevNode=parents; 
          linkedNode.nextNodes=children;
        }
   
   
-  
-  
-  
-  
        
        var linkedrootnode=findlinkednode(root.id)
        recursive(linkedrootnode); 
+  
+       
        var deep =linkedrootnode.level;
        console.log(linkedrootnode);
    
@@ -119,6 +151,7 @@ if(mode=="correct" && answer_type=="precedence") {
           }
         }
       }
+  
       var project_duration=0; 
       
       for( var i=1; i<=deep; i++ )   {
@@ -161,26 +194,33 @@ if(mode=="correct" && answer_type=="precedence") {
       
     }
      
-     for(n=0; n<myNodes.length;n++){ 
-       var node= myNodes[n];
-        console.log(node);
-        drawnode(node);  
-   } 
+    
    
   
-     console.log("~~~~~~");
     
-      for (j=0;j<myNodes.length;j++){  
-          node.color= "red";
-         for (k=0;k< submissionNodes.length;k++){   
-              node =   myNodes[j] ;
-              node.co= "red";
-         }
+     for(var n=0; n<linkedArray.length;n++){
+       
+       
+        var   node= linkedArray[n].node; 
+        node.color="red";
+         
+        for(var m=0; m<linkedArray_sub.length;m++){ 
+        var   student_node= linkedArray_sub[m].node;  
+        if( student_node.activity ==  node.activity) {node.color= "green"; break;}
       
+       
+       }
       
-      }
-    
-   console.log("~~~~~~");
+        
+      } 
+       
+  
+      for(var n=0; n<linkedArray.length;n++){
+           var   node= linkedArray[n].node;
+            console.log(node);
+            drawnode(node); 
+        }
+   
    
   addConnections(mylinks);
    
@@ -290,9 +330,17 @@ if(mode=="correct" && answer_type=="precedence") {
    }
     
     
+    
+
+    
+    
    
     
-    var root = findrootnode(); 
+     var root = findrootnode(); 
+    
+      var sub_root= findsubrootnode();
+    
+      console.log(sub_root);
      var linkedrootnode= findlinkednode(root.id)
      recursive(linkedrootnode); 
     

@@ -33,9 +33,7 @@ function drawnode(node){
 
      
       $(newdiv).append(dragzone);  
-      console.log("!!!!");
-      console.log(node);
-      console.log(node);
+      
   
       addShape("C",dragzone,node);  
       

@@ -41,7 +41,7 @@ function connector(id,h,t,EST,EFT,LST,LFT,FF,TF){
  this.activity="";
 }
 
-function Node(id,type,parent,top,left,activity,EST,EFT,LST,LFT,FF,TF){     
+function Node(id,type,parent,top,left,activity,EST,EFT,LST,LFT,FF,TF,color){     
  this.id = ""; 
  this.top ="";
  this.left=""; 
@@ -51,7 +51,8 @@ function Node(id,type,parent,top,left,activity,EST,EFT,LST,LFT,FF,TF){
  this.LST="";
  this.LFT="";
  this.FF="";
- this.TF="";                                                         
+ this.TF="";
+ this.color="";  
 }  
 
 
@@ -239,7 +240,44 @@ function deserialiseC(string){
    
  }
 }
+ function findsubnode(id){ 
+  for(n=0; n<submissionNode.length;n++){
+    
+    var node=submissionNode[n];
+    
+    if (node.id==id) {
+     return node; 
+   } 
+   
+   
+ }
+}    
+       
+function findsubrootnode(){
 
+ for(var m=0; m<submissionNode.length;m++){ 
+   
+   var node= submissionNode[m]; 
+   var id = node.id; 
+   
+   var count =0;
+   for(var n=0; n<submissionlinks.length;n++){
+    var link=submissionlinks[n];
+    if (link.t==id) {
+      count++;
+      console.log("link:++"+link);
+    }
+  }
+  if (count==0) {
+   console.log("root:"+id); 
+   return findsubnode(id);
+ }
+ 
+
+}
+
+
+}
 
 
 
@@ -270,6 +308,7 @@ function findrootnode(){
 
 
 }
+
 
 function findlink(h,t){
   
