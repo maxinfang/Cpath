@@ -11,7 +11,7 @@ function drawnode(node){
      if(node.top==""){ 
      }
      else{
-       console.log("css:"+node.top+":"+node.left);
+    //   console.log("css:"+node.top+":"+node.left);
       $(newdiv).css({ top: node.top, left: node.left });
     } 
     

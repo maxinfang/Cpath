@@ -4,15 +4,14 @@ function redraw(history,submission){
  mylinks=deserialiseL(history);
  
 
+   
   
- 
- 
  if (myNodes == []) return;
  
    if(mode == "submission" || mode == "student")
   { for(n=0; n<myNodes.length;n++){ 
     var node= myNodes[n];
-    console.log(node);
+   // console.log(node);
     drawnode(node);
   }   
   
@@ -71,9 +70,6 @@ if(mode=="correct" && answer_type=="precedence") {
    } 
    return "none";
  } 
- 
-  
-    
     
      //set children and parents for submission nodes; 
      
@@ -195,21 +191,80 @@ if(mode=="correct" && answer_type=="precedence") {
     }
      
     
-   
+     
   
-    
-     for(var n=0; n<linkedArray.length;n++){
+  for(var n=0; n<linkedArray.length;n++){
+     var linkednode = linkedArray[n];
+     var node= linkedArray[n].node;  
+        for(var m=0; m<linkedArray_sub.length;m++){ 
+        var student_linkednode=linkedArray_sub[m];
+        var   student_node= linkedArray_sub[m].node;   
+        if(student_node.activity ==  node.activity) 
+          
+           { node.color= "green";  
+             // compare the pre and next
+             // pre 
+            console.log(linkednode.prevNode);
+            console.log(student_linkednode.prevNode);
+             var correctbox = new Array();
+             var studentbox  = new Array();
+             
+             
+             for(var k=0; k<linkednode.prevNode.length; k++){
+               var temp=  findnode(linkednode.prevNode[k].id); 
+                correctbox.push(temp.activity);
+               
+             }
+             
+             for(var k=0; k<student_linkednode.prevNode.length; k++){
+               var temp=  findnode(student_linkednode.prevNode[k].id); 
+                studentbox.push(temp.activity);
+               
+             }
+             if( !correctbox.sort().compare(studentbox.sort())) { node.left_red="red";}
+             
+             //next 
+             
+              var correctbox_next = new Array();
+              var studentbox_next  = new Array();
+               for(var k=0; k<linkednode.nextNodes.length; k++){
+               var temp=  findsubnode(linkednode.nextNodes[k].id); 
+                correctbox_next.push(temp.activity);
+               
+             }
+             
+             for(var k=0; k<student_linkednode.nextNodes.length; k++){
+               var temp=  findsubnode(student_linkednode.nextNodes[k].id); 
+                studentbox_next.push(temp.activity);
+               
+             }
+             if(! correctbox.sort().compare(studentbox.sort())) {   node.right_red="red";}
+           
+            break;
+            }
+         else {
+          node.color="red";
+        
+           } 
+       }
+      
+    }
+   
+   for(var n=0; n<linkedArray.length;n++){
         
         var node= linkedArray[n].node;
-       
+        var flag =false;
+        var repeat =0;
+         
         for(var m=0; m<linkedArray_sub.length;m++){ 
         var   student_node= linkedArray_sub[m].node;  
           
-           console.log(node.activity);
+        
           console.log(student_node.activity);
-        if( student_node.activity ==  node.activity) { node.color= "green";    break;}else { node.color="red";} 
+        if( student_node.activity ==  node.activity) {  
+          repeat++;} 
        }
-       
+        if(repeat >1) {node.color="red";}
      //repeated will be marked as missing as well
       } 
        
@@ -236,13 +291,13 @@ if(mode=="correct" && answer_type=="precedence") {
     //data structure first
     // nodelist
     
-     function findlinkednode(id){
+  function findlinkednode(id){ 
     
-   for (x=0;x<linkedArray2.length;x++){ 
-     var li=linkedArray2[x];
-     if(li.id==id){return li;}
-   } 
-   return "none";
+    for (x=0;x<linkedArray2.length;x++){ 
+      var li=linkedArray2[x];
+      if(li.id==id){return li;}
+    } 
+    return "none";
  } 
     
      var linkedArray= new Array(); 
@@ -250,9 +305,7 @@ if(mode=="correct" && answer_type=="precedence") {
     
      for(n=0; n<myNodes.length;n++){  
         var node=myNodes[n];  
-       //console.log(node);
        var linkedNode= new NodeClass(node);
-     // console.log(linkedNode);
      linkedArray.push(linkedNode);  
      linkedArray2.push(linkedNode);
    } 
@@ -328,18 +381,12 @@ if(mode=="correct" && answer_type=="precedence") {
        
    }
     
+     
     
-    
-
-    
-    
-   
-    
-     var root = findrootnode(); 
-    
+     var root = findrootnode();  
       var sub_root= findsubrootnode();
     
-      console.log(sub_root);
+    
      var linkedrootnode= findlinkednode(root.id)
      recursive(linkedrootnode); 
     

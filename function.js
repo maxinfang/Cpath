@@ -28,6 +28,28 @@ if (!Array.prototype.indexOf)
     return -1;
   };
 }
+
+if (!Array.prototype.compare)
+{
+Array.prototype.compare = function(testArr) {
+  //console.log("*****************************************************************");
+ // console.log(this);
+//  console.log(testArr);
+    if (this.length != testArr.length) return false;
+    for (var i = 0; i < testArr.length; i++) {
+        if ((this[i] == "" && testArr[i] == "0") ||
+        (this[i] == "0" && testArr[i] == "")) {
+          // accept empty string = 0
+                continue;
+        }
+        else if (this[i] != testArr[i]) return false;
+    }
+  console.log("found!");
+    return true;
+}
+  }
+
+
  
 function connector(id,h,t,EST,EFT,LST,LFT,FF,TF){ 
  this.h="";
@@ -90,7 +112,7 @@ function deserialiseL(string){
    var shapeanddata=link[i].split('D');  
    var linkAttribute= shapeanddata[0].split('c'); 
    var dataAttribute=shapeanddata[1].split('d');
-   console.log(linkAttribute);
+  // console.log(linkAttribute);
    var cc = new connector(); 
    cc.h= linkAttribute[1]
    cc.t= linkAttribute[2]; 
@@ -241,9 +263,9 @@ function deserialiseC(string){
  }
 }
  function findsubnode(id){ 
-  for(n=0; n<submissionNode.length;n++){
+  for(n=0; n<submissionNodes.length;n++){
     
-    var node=submissionNode[n];
+    var node=submissionNodes[n];
     
     if (node.id==id) {
      return node; 
@@ -255,9 +277,9 @@ function deserialiseC(string){
        
 function findsubrootnode(){
 
- for(var m=0; m<submissionNode.length;m++){ 
+ for(var m=0; m<submissionNodes.length;m++){ 
    
-   var node= submissionNode[m]; 
+   var node= submissionNodes[m]; 
    var id = node.id; 
    
    var count =0;
