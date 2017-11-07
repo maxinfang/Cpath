@@ -229,13 +229,16 @@ if(mode=="correct" && answer_type=="precedence") {
               var studentbox_next  = new Array();
                for(var k=0; k<linkednode.nextNodes.length; k++){
                var temp=  findsubnode(linkednode.nextNodes[k].id); 
-                correctbox_next.push(temp.activity);
+                
+              if(typeof temp.activity != 'undefined' ){
+                 correctbox_next.push(temp.activity);}
                
              }
              
              for(var k=0; k<student_linkednode.nextNodes.length; k++){
                var temp=  findsubnode(student_linkednode.nextNodes[k].id); 
-                studentbox_next.push(temp.activity);
+               if(typeof temp.activity != 'undefined' ){
+                studentbox_next.push(temp.activity);}
                
              }
              if(! correctbox.sort().compare(studentbox.sort())) {   node.right_red="red";}
