@@ -241,7 +241,7 @@ if(mode=="correct" && answer_type=="precedence") {
                 studentbox_next.push(temp.activity);}
                
              }
-             if(! correctbox.sort().compare(studentbox.sort())) {   node.right_red="red";}
+             if(! correctbox_next.sort().compare(studentbox_next.sort())) {   node.right_red="red";}
            
             break;
             }
