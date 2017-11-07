@@ -11,10 +11,12 @@ if(mode=="submission") { Color= "#0060bf"};
 function addShape(type,dragzone,node){
  // console.log("~~~~~~");
    console.log(node);
-  if(node.color == "red"){ Color="#d9534f";left_end="#d9534f";right_end="#d9534f";}else{Color="#5cc902"; }//missing change the node color to red;
+  if(node.color == "red"){
+    Color="#d9534f";left_end="#d9534f";right_end="#d9534f";}
+   else{Color="#5cc902"; }//missing change the node color to red;
   
-   if(node.left_red=="red"){ left_end="#d9534f";} else{left_end="#445566";} 
-   if(node.right_red=="red"){ right_end="#d9534f";} else{right_end="#445566";} 
+   if(node.left_red=="red"){ left_end="#d9534f";} else if(node.color != "red"){left_end="#445566";} 
+   if(node.right_red=="red"){ right_end="#d9534f";} else if(node.color != "red"){right_end="#445566";} 
   if (type=="C") {addCircle(dragzone,node);} 
 }
  
