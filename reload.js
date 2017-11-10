@@ -231,7 +231,7 @@ if(mode=="correct" && answer_type=="precedence") {
              }
              
              for(var k=0; k<student_linkednode.prevNode.length; k++){
-               var temp=  findnode(student_linkednode.prevNode[k].id); 
+               var temp=  findsubnode(student_linkednode.prevNode[k].id); 
                 studentbox.push(temp.activity);
                
              }
