@@ -4,6 +4,8 @@ function addConnections(linklist){
   
   for(n=0; n<arraynodes.length;n++){
     var link= arraynodes[n]; 
+    
+    console.log(link);
     addConnection(link);  
   }
   
@@ -33,7 +35,10 @@ function addConnection(link){
   
   var linkconn= jsPlumb.connect({
    source:s,
-   target:t 
+   target:t,
+  
+   
+   
  }); 
   
   linkconn.addOverlay( ["Custom", {
@@ -48,11 +53,11 @@ function addConnection(link){
   
   $(".datatable").jLzindex();
   
-  if(link.activity==0){
-    
-    linkconn.setPaintStyle({lineWidth: 2, 
-      strokeStyle:"#666",
-      dashstyle:"4 2"
+  if(link.activity==0){ 
+    linkconn.setPaintStyle({
+      lineWidth: 2, 
+      strokeStyle: link.strokestyle, 
+      dashstyle:"4 2" 
     })
    
       var box= linkconn.getOverlays();

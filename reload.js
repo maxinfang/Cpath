@@ -81,10 +81,13 @@ if(mode=="correct" && answer_type=="precedence") {
       for(var n=0; n<submissionlinks.length;n++){ 
        var link= submissionlinks[n]; 
        if (link.t==linkedNode.id){
+          
+         link.Tactivity=linkedNode.node.activity;
          parents.push(findsublinkednode(link.h));
        }
        
        if (link.h == linkedNode.id){
+         link.Hactivity=linkedNode.node.activity;
          children.push(findsublinkednode(link.t))
        }
      }
@@ -95,6 +98,7 @@ if(mode=="correct" && answer_type=="precedence") {
        }
   
     //set children and parents
+  
     for (j=0;j<linkedArray.length;j++){ 
       
       var linkedNode=linkedArray[j]; 
@@ -102,11 +106,18 @@ if(mode=="correct" && answer_type=="precedence") {
       var parents= new Array(); 
       for(var n=0; n<mylinks.length;n++){ 
        var link= mylinks[n]; 
+        
+        console.log(link);
        if (link.t==linkedNode.id){
+         console.log(linkedNode.node.activity);
+         link.Tactivity=linkedNode.node.activity;
          parents.push(findlinkednode(link.h));
+           
        }
        
        if (link.h == linkedNode.id){
+         console.log(linkedNode.node.activity);
+         link.Hactivity=linkedNode.node.activity;
          children.push(findlinkednode(link.t))
        }
      }
@@ -116,6 +127,9 @@ if(mode=="correct" && answer_type=="precedence") {
          linkedNode.nextNodes=children;
        }
   
+  
+  
+     
   
        
        var linkedrootnode=findlinkednode(root.id)
@@ -252,6 +266,26 @@ if(mode=="correct" && answer_type=="precedence") {
        }
       
     }
+  
+  
+   for(var n=0; n<mylinks.length;n++){ 
+       var link= mylinks[n]; 
+          link.strokestyle="red";
+       //console.log(link);
+        for(var m=0; m<submissionlinks.length;m++){ 
+          var sublink= submissionlinks[m]; 
+          //console.log(sublink);
+           if(link.Tactivity== sublink.Tactivity &&link.Hactivity== sublink.Hactivity ){
+            link.strokestyle="#666"; break;} 
+     }
+  
+  
+     
+     
+        
+        
+     }
+ 
    
    for(var n=0; n<linkedArray.length;n++){
         
@@ -263,7 +297,7 @@ if(mode=="correct" && answer_type=="precedence") {
         var   student_node= linkedArray_sub[m].node;  
           
         
-          console.log(student_node.activity);
+        
         if( student_node.activity ==  node.activity) {  
           repeat++;} 
        }

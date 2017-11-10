@@ -9,11 +9,10 @@ if(mode=="correct") { Color= "#5cc902"};
 if(mode=="submission") { Color= "#0060bf"};  
 
 function addShape(type,dragzone,node){
- // console.log("~~~~~~");
-   console.log(node);
+ 
   if(node.color == "red"){
     Color="#d9534f";left_end="#d9534f";right_end="#d9534f";}
-   else{Color="#5cc902"; }//missing change the node color to red;
+   else{Color="#5cc902"; } 
   
    if(node.left_red=="red"){ left_end="#d9534f";} else if(node.color != "red"){left_end="#445566";} 
    if(node.right_red=="red"){ right_end="#d9534f";} else if(node.color != "red"){right_end="#445566";} 
@@ -33,7 +32,7 @@ function addCircle(dragzone,node) {
   
   var sourcePoint= {
     anchor:"Right",  
-     // paintStyle:{ fill:"blue", outlineStroke:"red", outlineWidth:1 },
+    // paintStyle:{ fill:"blue", outlineStroke:"red", outlineWidth:1 },
     // deleteEndpointsOnDetach: false,,
     connectorStyle: {
      lineWidth: 2,
@@ -46,7 +45,8 @@ function addCircle(dragzone,node) {
      connector: ["Straight"], 
      connectorOverlays: [["Arrow",
     { width: 15,
-     length: 15}]],
+     length: 15}
+                         ]],
     
      isSource:true,
      isTarget:false
