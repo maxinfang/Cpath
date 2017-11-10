@@ -56,7 +56,7 @@ function addConnection(link){
   if(link.activity==0){ 
     linkconn.setPaintStyle({
       lineWidth: 2, 
-      strokeStyle: link.strokestyle, 
+      strokeStyle: "#666", 
       dashstyle:"4 2" 
     })
    
@@ -64,6 +64,16 @@ function addConnection(link){
       if(box.isVisiable==true){box.setVisiable(false)} 
        box[1].setVisible(false); 
        }
+  
+  if(link.strokestyle=="red"){ 
+    
+     linkconn.setPaintStyle({
+      lineWidth: 2, 
+      strokeStyle: "red", 
+      dashstyle:"10 2" 
+    })
+  
+  }
        
 
      }
