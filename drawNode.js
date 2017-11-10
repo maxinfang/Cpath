@@ -290,13 +290,13 @@ function drawnode(node){
    
   
     
-   $(datadiv).bind("dblclick","doubletap",
+   $(datadiv).bind("click",
      function() {  
      
        $("#"+datadivId).toggle("slow") ;
      });
    
-   $(dragzone).bind("dblclick","doubletap",
+   $(dragzone).bind( "click",
       function() { 
      $("#"+datadivId).toggle("slow") ;
    }
@@ -310,11 +310,13 @@ function drawnode(node){
 
 jsPlumb.draggable(containerId);
 
-$("#"+containerId).draggable(    
+$("#"+containerId).draggable( 
+     
   {   containment: $("#canvasdiv").parent(),
   scroll:false,
   handle:  "#"+currentId,
-  stop: function(event, ui ){ 
+  stop: function(event, ui ){
+  $( event.originalEvent.target ).one('click', function(e){ e.stopImmediatePropagation(); } ); 
    position = ui.position; 
    value="top:"+position.top+"left"+position.left;
    node.top=position.top;
