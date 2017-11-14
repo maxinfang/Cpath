@@ -291,10 +291,10 @@ function drawnode(node){
   
   
   
- 
+ var myElement = document.getElementById(containerId);
 
 // We create a manager object, which is the same as Hammer(), but without the presetted recognizers. 
-var mc = new Hammer.Manager(datadiv); 
+var mc = new Hammer.Manager(myElement); 
 // Tap recognizer with minimal 2 taps
 mc.add( new Hammer.Tap({ event: 'doubletap', taps: 2 }) );
 // Single tap recognizer
@@ -307,8 +307,8 @@ mc.get('doubletap').recognizeWith('singletap');
 mc.get('singletap').requireFailure('doubletap');
 
 
-mc.on("singletap doubletap", function(ev) {
-    alert("doublectap");
+mc.on("doubletap", function(ev) {
+    $("#"+datadivId).toggle("slow") ;
 });
   
     
