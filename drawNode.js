@@ -328,7 +328,7 @@ function handleDrag(ev) {
 
 jsPlumb.draggable(containerId);
 
-$("#"+containerId).draggable( 
+/*$("#"+containerId).draggable( 
      
   {   containment: $("#canvasdiv").parent(),
   scroll:false,
@@ -343,7 +343,7 @@ $("#"+containerId).draggable(
    updateNode(node,"left"); 
  }
 }
-);   
+);   */
     //connection
       
       var top= $('#'+containerId).position().top;
