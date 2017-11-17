@@ -13,10 +13,11 @@ jsPlumb.bind("connection",  function(info, originalEvent) {
   
          
     })
- 
- 
- 
- jsPlumb.bind("click", function(conn) {
+  
+
+
+
+ jsPlumb.bind("dblclick", function(conn) {
         
         var box= conn.getOverlays();   
        if(box[1].visible == true){
@@ -26,6 +27,7 @@ jsPlumb.bind("connection",  function(info, originalEvent) {
              box[1].setVisible(true);
          }  
      }); 
+
  
 jsPlumb.bind("connectionDetached", function(info, originalEvent) {
   

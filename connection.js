@@ -7,6 +7,10 @@ function addConnections(linklist){
     
     console.log(link);
     addConnection(link);  
+    
+    
+   
+    
   }
   
 }
@@ -40,6 +44,12 @@ function addConnection(link){
    
    
  }); 
+  
+  //var myElement = document.getElementById(linkconn.getId()); 
+  //var mc = new Hammer.Manager(myElement);  
+ // mc.add( new Hammer.Tap({ event: 'doubletap', taps: 2 }) ); 
+  
+  
   
   linkconn.addOverlay( ["Custom", {
     create:function(component) {  

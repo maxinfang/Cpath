@@ -296,6 +296,10 @@ function drawnode(node){
 var mc = new Hammer.Manager(myElement); 
 // Tap recognizer with minimal 2 taps
 mc.add( new Hammer.Tap({ event: 'doubletap', taps: 2 }) ); 
+  mc.add( new Hammer.Pan({ direction: Hammer.DIRECTION_ALL, threshold: 0 }) );
+
+// tie in the handler that will be called
+mc.on("pan", handleDrag);
 
 mc.on("doubletap", function(ev) {
     $("#"+datadivId).toggle("slow") ;
@@ -318,7 +322,9 @@ mc.on("doubletap", function(ev) {
     
 //  if(mode != "correct") {$(datadiv).hide();  }
 
-
+function handleDrag(ev) {
+  
+  }
 
 jsPlumb.draggable(containerId);
 
