@@ -322,13 +322,12 @@ mc.on("doubletap", function(ev) {
     
 //  if(mode != "correct") {$(datadiv).hide();  }
 
-function handleDrag(ev,ui) { 
-  console.log(ev);
-   console.log(ui);
+function handleDrag(ev) { 
+ // console.log(ev);
+  // console.log(ui);
   
   }
 
- 
   
   
 jsPlumb.draggable(containerId, {

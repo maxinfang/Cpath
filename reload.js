@@ -16,7 +16,7 @@ function redraw(history,submission){
   }   
   
 }
-   if (mode == "submission" && answer_type=="precedence")
+   if (mode == "submission" )
      
   {
      
