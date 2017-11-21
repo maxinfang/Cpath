@@ -298,13 +298,13 @@ function redraw(history,submission){
         if( student_node.activity ==  node.activity) {  
           repeat++;} 
        }
-        if(repeat >1) {student_node.color="red";}
+        if(repeat >1) {node.color="red";}
      //repeated will be marked as missing as well
       } 
        
   
-      for(var n=0; n<linkedArray_sub.length;n++){
-           var   node= linkedArray_sub[n].node;
+      for(var n=0; n<linkedArray.length;n++){
+           var   node= linkedArray[n].node;
            
             drawnode(node); 
         }
