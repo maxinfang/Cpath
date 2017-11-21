@@ -15,7 +15,7 @@ jsPlumb.bind("connection",  function(info, originalEvent) {
     })
   
 
- 
+
 
  jsPlumb.bind("dblclick", function(conn) {
         
@@ -27,7 +27,6 @@ jsPlumb.bind("connection",  function(info, originalEvent) {
              box[1].setVisible(true);
          }  
      }); 
- 
  
 jsPlumb.bind("connectionDetached", function(info, originalEvent) {
   

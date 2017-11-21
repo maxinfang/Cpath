@@ -308,18 +308,12 @@ function redraw(history,submission){
            
             drawnode(node); 
         }
-   
- 
-    
-    
+       
     
     
  }
   
-  
    
-
- 
 if(mode=="correct" && answer_type=="precedence") { 
   
  submissionNodes=deserialiseC(submission);
