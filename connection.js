@@ -40,15 +40,26 @@ function addConnection(link){
   var linkconn= jsPlumb.connect({
    source:s,
    target:t,
+   id:"x",
   
    
    
  }); 
   
-  //var myElement = document.getElementById(linkconn.getId()); 
-  //var mc = new Hammer.Manager(myElement);  
- // mc.add( new Hammer.Tap({ event: 'doubletap', taps: 2 }) ); 
+   var myElement = linkconn.canvas; 
+  var mc = new Hammer.Manager(myElement);  
+  mc.add( new Hammer.Tap({ event: 'doubletap', taps: 2 }) ); 
   
+  //console.log();
+  
+  mc.on("doubletap", function(ev) {
+      var box= linkconn.getOverlays();
+    
+      if(box.isVisiable==true){box.setVisiable(false)} 
+      else {box.setVisiable(false)}
+       
+    
+});
   
   
   linkconn.addOverlay( ["Custom", {
