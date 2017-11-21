@@ -322,19 +322,36 @@ mc.on("doubletap", function(ev) {
     
 //  if(mode != "correct") {$(datadiv).hide();  }
 
-function handleDrag(ev) {
+function handleDrag(ev,ui) { 
+  console.log(ev);
+   console.log(ui);
   
   }
 
-jsPlumb.draggable(containerId);
-
-/*$("#"+containerId).draggable( 
-     
-  {   containment: $("#canvasdiv").parent(),
-  scroll:false,
-  handle:  "#"+currentId,
-  stop: function(event, ui ){
+ 
   
+  
+jsPlumb.draggable(containerId, {
+   containment: $("#canvasdiv").parent(),
+   scroll:false,
+   handle:  "#"+currentId,
+   stop: function(event, ui ){ 
+   position = ui.position; 
+   value="top:"+position.top+"left"+position.left;
+   node.top=position.top;
+   node.left=position.left; 
+   updateNode(node,"top");
+   updateNode(node,"left"); 
+  }
+});
+  
+  
+ /*$("#"+containerId).draggable(  
+   {  
+   containment: $("#canvasdiv").parent(),
+   scroll:false,
+   handle:  "#"+currentId,
+   stop: function(event, ui ){ 
    position = ui.position; 
    value="top:"+position.top+"left"+position.left;
    node.top=position.top;
@@ -344,7 +361,7 @@ jsPlumb.draggable(containerId);
  }
 }
 );   */
-    //connection
+     
       
       var top= $('#'+containerId).position().top;
       var left=$('#'+containerId).position().left;

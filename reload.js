@@ -16,14 +16,12 @@ function redraw(history,submission){
   }   
   
 }
-   if (mode == "submission")
+   if (mode == "submission" && answer_type=="precedence")
      
   {
+     
     
-    
-    
-    
-   submissionNodes=deserialiseC(submission);
+ submissionNodes=deserialiseC(submission);
  submissionlinks=deserialiseL(submission);
   
  var root = new Node();
@@ -280,10 +278,7 @@ function redraw(history,submission){
            if(link.Tactivity== sublink.Tactivity &&link.Hactivity== sublink.Hactivity ){
             link.strokestyle="#666"; break;} 
      }
-  
-  
-     
-     
+   
         
         
      }
@@ -303,13 +298,13 @@ function redraw(history,submission){
         if( student_node.activity ==  node.activity) {  
           repeat++;} 
        }
-        if(repeat >1) {node.color="red";}
+        if(repeat >1) {student_node.color="red";}
      //repeated will be marked as missing as well
       } 
        
   
-      for(var n=0; n<linkedArray.length;n++){
-           var   node= linkedArray[n].node;
+      for(var n=0; n<linkedArray_sub.length;n++){
+           var   node= linkedArray_sub[n].node;
            
             drawnode(node); 
         }
