@@ -297,13 +297,26 @@ var mc = new Hammer.Manager(myElement);
 // Tap recognizer with minimal 2 taps
 mc.add( new Hammer.Tap({ event: 'doubletap', taps: 2 }) ); 
 mc.add( new Hammer.Pan({ direction: Hammer.DIRECTION_ALL, threshold: 0 }) );
+var Press = new Hammer.Press({
+  time: 500
+});
 
+// Add the recognizer to the manager
+mc.add(Press);
 // tie in the handler that will be called
-mc.on("pan", handleDrag);
+mc.off("pan", handleDrag);
 
 mc.on("doubletap", function(ev) {
     $("#"+datadivId).toggle("slow") ;
 });
+  
+
+
+// Subscribe to desired event
+mc.on('press', function(e) {
+   $("#"+datadivId).toggle("slow") ;
+});
+ 
   
     
    $(datadiv).bind("dbclick",
@@ -320,7 +333,7 @@ mc.on("doubletap", function(ev) {
    
    if(node.activity==0){$(datadiv).hide()}
     
-//  if(mode != "correct") {$(datadiv).hide();  }
+ 
 
 function handleDrag(ev) { 
  // console.log(ev);

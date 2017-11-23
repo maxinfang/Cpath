@@ -17,8 +17,7 @@ jsPlumb.bind("connection",  function(info, originalEvent) {
 
 
 
- jsPlumb.bind("dblclick", function(conn) {
-        
+ jsPlumb.bind("dblclick", function(conn) { 
         var box= conn.getOverlays();   
        if(box[1].visible == true){
              box[1].setVisible(false);

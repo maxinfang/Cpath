@@ -83,8 +83,8 @@ function addConnection(link){
    
       var box= linkconn.getOverlays();
     
-      if(box.isVisiable==true){box.setVisiable(false)} 
-       box[1].setVisible(false); 
+     // if(box[1].isVisiable==true){box[1].setVisiable(false)} 
+      // box[1].setVisible(false); 
        }
   
   if(link.strokestyle=="red"){ 
