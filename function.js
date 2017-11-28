@@ -668,10 +668,11 @@ function calculateEFT(node){
 }
 
 function compareEFT(node){
-    node.EFTcolor="red";
+   if  (node.EFT != +du[node.activity] +  +node.EST) { node.EFTcolor="red";};
+ 
 }
-
-
+  
+ 
 
 function  calculateEST(node,value){
   if(value == 0) {value = "0";}
@@ -681,7 +682,7 @@ function  calculateEST(node,value){
 };
 
 function compareEST(node,value){
-  
+  if (node.EST != value){ node.ESTcolor="red";}
 }
 
 
@@ -696,6 +697,7 @@ function calculateLFT(node,value){
 
 
 function compareLFT(node, value){
+   if (node.LFT != value){ node.LFTcolor="red";}
 
 
 }
@@ -711,6 +713,8 @@ function calculateLST(node){
 }
 
 function compareLST(node){
+  if (node.LST !=  +node.LFT - +du[node.activity]){ node.LSTcolor="red";}
+  
 
 
 }
@@ -727,9 +731,8 @@ function calculateFFTF(node,value){
 function compareFFTF(node,value){
 
 
-
-
-
+  if(node.FF != value-node.EFT){ node.FFcolor="red";}
+  if(node.TF !=  node.LFT - +node.EFT ) {node.TFcolor="red";}
 
 }
 
