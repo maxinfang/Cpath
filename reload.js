@@ -157,7 +157,7 @@ function redraw(history,submission){
             
            // calculateEST(lnode.node,maxValudeofParentEFT);
               compareEFT(lnode.node);
-             
+              compareEST(lnode.node,maxValudeofParentEFT)
               console.log(lnode);
             
           }
@@ -200,7 +200,9 @@ function redraw(history,submission){
         // calculateLFT(lnode.node,minValueofChildLST);
         // calculateLST(lnode.node);  
         // calculateFFTF(lnode.node,minValueofChildEST); 
-       
+          compareLFT(lnode.node,minValueofChildLST);
+          compareLST(lnode.node)
+          compareFFTF(lnode.node,minValueofChildEST);
        
         }
         
