@@ -27,12 +27,14 @@ function addlabel(lable){
   return newlabel;
 };
 
-function addtext(lable,value){ 
+function addtext(lable,value,color){ 
   var text= document.createElement('input');
   $(text).uniqueId();  
   text.type="text";
   text.style.width='30px';
-
+  if (typeof value=== 'undefined') {text.style.borderColor="red"; }
+  // if(value=""){text.style.borderColor="red";};
+  else{ text.style.borderColor = color;}
   text.name=lable; 
   if(typeof(value) != "undefined")
   {

@@ -91,7 +91,7 @@ function drawnode(node){
     
    //$(element).append(addlabel("EST"));
    
-   var EST = (node.EST=="") ? addtext("EST") :     addtext("EST",node.EST);
+   var EST = (node.EST=="") ? addtext("EST") :     addtext("EST",node.EST,node.ESTcolor);
    
    var ESTdata = document.createElement("div");
    ESTdata.style.display = 'block';
@@ -102,7 +102,7 @@ function drawnode(node){
    
    
    
-   var EFT = (node.EFT=="") ? addtext("EFT") :     addtext("EFT",node.EFT);
+   var EFT = (node.EFT=="") ? addtext("EFT") :     addtext("EFT",node.EFT,node.EFTcolor);
    
    
    $(ESTdata).append(addlabel("EFT"));
@@ -116,11 +116,11 @@ function drawnode(node){
    
    $(LSTdata).append(addlabel("LST")); 
     
-   var LST = (node.LST=="") ? addtext("LST") : addtext("LST",node.LST);
+   var LST = (node.LST=="") ? addtext("LST") : addtext("LST",node.LST,node.LSTcolor);
    
    $(LSTdata).append (LST);
    
-   var LFT = (node.LFT=="") ? addtext("LFT") : addtext("LFT",node.LFT);
+   var LFT = (node.LFT=="") ? addtext("LFT") : addtext("LFT",node.LFT,node.LFTcolor);
    
    $(LSTdata).append(addlabel("LFT"));
    $(LSTdata).append (LFT);
@@ -134,7 +134,7 @@ function drawnode(node){
    
    
    $(FFdata).append(addlabel("FF"+"&nbsp&nbsp")); 
-   var FF= (node.FF=="") ? addtext("FF") : addtext("FF",node.FF);
+   var FF= (node.FF=="") ? addtext("FF") : addtext("FF",node.FF,node.FFcolor);
    
    
    
@@ -145,7 +145,7 @@ function drawnode(node){
    
    
    
-   var TF= (node.TF=="") ? addtext("TF") : addtext("TF",node.TF);
+   var TF= (node.TF=="") ? addtext("TF") : addtext("TF",node.TF,node.TFcolor);
    
    $(FFdata).append (TF);
    $(element).append( FFdata);  

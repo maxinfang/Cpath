@@ -46,16 +46,17 @@ function drawbox(type,data,conn){
     $(datadiv).append(dropL.show());
     $(datadiv).append(oNewP);
     $(datadiv).append(element);
-    
+    console.log(data);
    //$(element).append(addlabel("EST"));
    //  console.log("test"+data.EST);
-   var EST = (data.EST=="") ? addtext("EST") : addtext("EST",data.EST);
+   var EST = (data.EST=="") ? addtext("EST") : addtext("EST",data.EST,data.ESTcolor);
    var ESTdata = document.createElement("div");
    ESTdata.style.display = 'block'; 
+       
    $(ESTdata).append(addlabel("EST"));
    $(ESTdata).append(EST); 
    
-   var EFT = (data.EFT=="") ? addtext("EFT") :     addtext("EFT",data.EFT);
+   var EFT = (data.EFT=="") ? addtext("EFT") :     addtext("EFT",data.EFT,data.EFTcolor);
    
    
    $(ESTdata).append(addlabel("EFT"));
@@ -64,19 +65,19 @@ function drawbox(type,data,conn){
    var LSTdata = document.createElement("div");
    ESTdata.style.display = 'block'; 
    $(LSTdata).append(addlabel("LST"));  
-   var LST = (data.LST=="") ? addtext("LST") : addtext("LST",data.LST); 
+   var LST = (data.LST=="") ? addtext("LST") : addtext("LST",data.LST,data.LSTcolor); 
    $(LSTdata).append (LST); 
-   var LFT = (data.LFT=="") ? addtext("LFT") : addtext("LFT",data.LFT); 
+   var LFT = (data.LFT=="") ? addtext("LFT") : addtext("LFT",data.LFT,data.LFTcolor); 
    $(LSTdata).append(addlabel("LFT"));
    $(LSTdata).append (LFT); 
    $(element).append( LSTdata);
    var FFdata = document.createElement("div");
    ESTdata.style.display = 'block';
    $(FFdata).append(addlabel("FF"+"&nbsp&nbsp")); 
-   var FF= (data.FF=="") ? addtext("FF") : addtext("FF",data.FF);
+   var FF= (data.FF=="") ? addtext("FF") : addtext("FF",data.FF,data.FFcolor);
    $(FFdata).append (FF); 
    $(FFdata).append(addlabel("TF" +"&nbsp&nbsp")); 
-   var TF= (data.TF=="") ? addtext("TF") : addtext("TF",data.TF);
+   var TF= (data.TF=="") ? addtext("TF") : addtext("TF",data.TF,data.TFcolor);
    $(FFdata).append (TF);
    $(element).append( FFdata); 
         

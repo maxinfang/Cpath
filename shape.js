@@ -9,7 +9,7 @@ if(mode=="correct") { Color= "#5cc902"};
 if(mode=="submission") { Color= "#0060bf"};  
 
 function addShape(type,dragzone,node){
- 
+  if(node.color =="blue"){ Color ="#0060bf";}
   if(node.color == "red"){
     Color="#d9534f";left_end="#d9534f";right_end="#d9534f";}
    else{Color="#5cc902"; } 

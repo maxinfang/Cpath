@@ -50,6 +50,7 @@ function addConnection(link){
   var mc = new Hammer.Manager(myElement);  
   mc.add( new Hammer.Tap({ event: 'doubletap', taps: 2 }) ); 
   
+  
   //console.log();
   
   mc.on("doubletap", function(ev) {
@@ -83,8 +84,8 @@ function addConnection(link){
    
       var box= linkconn.getOverlays();
     
-     // if(box[1].isVisiable==true){box[1].setVisiable(false)} 
-      // box[1].setVisible(false); 
+      if(box[1].isVisiable==true){box[1].setVisiable(false)} 
+        box[1].setVisible(false); 
        }
   
   if(link.strokestyle=="red"){ 

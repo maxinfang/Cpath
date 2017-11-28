@@ -155,8 +155,10 @@ function redraw(history,submission){
                 {maxValudeofParentEFT = parentEFT; }
             }
             
-            calculateEST(lnode.node,maxValudeofParentEFT);
-            calculateEFT(lnode.node);
+           // calculateEST(lnode.node,maxValudeofParentEFT);
+              compareEFT(lnode.node);
+             
+              console.log(lnode);
             
           }
         }
@@ -178,7 +180,7 @@ function redraw(history,submission){
     for( var i=1; i<=deep; i++ )   {
       for (var j=0;j<linkedArray.length;j++){
        var  lnode=  linkedArray[j]; 
-        console.log(lnode);
+      //  console.log(lnode);
        if(lnode.level==i) {
         var childrenodes=lnode.nextNodes;  
         var minValueofChildLST=project_duration;
@@ -195,9 +197,11 @@ function redraw(history,submission){
            }
          }
          
-         calculateLFT(lnode.node,minValueofChildLST);
-         calculateLST(lnode.node);  
-         calculateFFTF(lnode.node,minValueofChildEST);   
+        // calculateLFT(lnode.node,minValueofChildLST);
+        // calculateLST(lnode.node);  
+        // calculateFFTF(lnode.node,minValueofChildEST); 
+       
+       
         }
         
       }
@@ -215,9 +219,26 @@ function redraw(history,submission){
         var   student_node= linkedArray_sub[m].node;   
         if(student_node.activity ==  node.activity) 
           
-           { node.color= "green";  
+           { node.color= "blue";  
+             
+              console.log(node);
              // compare the pre and next
              // pre 
+             
+            /* 
+              if(node.EFT!=student_node.EFT){node.EFTcolor="red";}else{//node.EFTcolor="black";
+                    }
+               if(node.EST!=student_node.EST){node.ESTcolor="red";}else{node.ESTcolor="black";}
+               if(node.FF!=student_node.FF){node.FFcolor="red";}else{node.FFcolor="black";}
+              if(node.LFT!=student_node.LFT){node.LFTcolor="red";}else{node.LFTcolor="black";}
+            
+               if(node.LST!=student_node.LST){node.LSTcolor="red";}else{node.LSTcolor="black";}
+           
+              if(node.TF!=student_node.TF){node.TFcolor="red";}else{node.TFcolor="black";}
+             console.log(node);
+             
+             */
+             
             console.log(linkednode.prevNode);
             console.log(student_linkednode.prevNode);
              var correctbox = new Array();
@@ -510,8 +531,25 @@ if(mode=="correct" && answer_type=="precedence") {
         var   student_node= linkedArray_sub[m].node;   
         if(student_node.activity ==  node.activity) 
           
-           { node.color= "green";  
-             // compare the pre and next
+           { node.color= "green"; 
+            
+              
+             
+             
+             //
+             console.log(node);
+             console.log(student_node);
+             
+             if(node.EFT!=student_node.EFT){node.EFTcolor="red";}else{node.EFTcolor="black";}
+               if(node.EST!=student_node.EST){node.ESTcolor="red";}else{node.ESTcolor="black";}
+               if(node.FF!=student_node.FF){node.FFcolor="red";}else{node.FFcolor="black";}
+              if(node.LFT!=student_node.LFT){node.LFTcolor="red";}else{node.LFTcolor="black";}
+            
+               if(node.LST!=student_node.LST){node.LSTcolor="red";}else{node.LSTcolor="black";}
+           
+              if(node.TF!=student_node.TF){node.TFcolor="red";}else{node.TFcolor="black";}
+             console.log(node);
+           //  // compare the pre and next
              // pre 
             console.log(linkednode.prevNode);
             console.log(student_linkednode.prevNode);

@@ -667,6 +667,9 @@ function calculateEFT(node){
    return node.EFT;
 }
 
+function compareEFT(node){
+    node.EFTcolor="red";
+}
 
 
 
@@ -677,6 +680,9 @@ function  calculateEST(node,value){
   
 };
 
+function compareEST(node,value){
+  
+}
 
 
 
@@ -685,15 +691,27 @@ function calculateLFT(node,value){
   if (value==0) value="0";
   // console.log(node.EFT);
   node.LFT=value;
-  
-  return true;
-  
+  return true; 
 }
+
+
+function compareLFT(node, value){
+
+
+}
+
+
+
 
 function calculateLST(node){
  node.LST=    +node.LFT - +du[node.activity];
  if(node.LST==0) {node.LST="0";}
  return node.EFT;
+
+}
+
+function compareLST(node){
+
 
 }
 
@@ -704,6 +722,15 @@ function calculateFFTF(node,value){
  if(node.FF == 0) { node.FF ="0";}
  if(node.TF == 0)  { node.TF= "0";}
  
+}
+
+function compareFFTF(node,value){
+
+
+
+
+
+
 }
 
 
