@@ -386,16 +386,16 @@ function redraw(history,submission){
      }
  
    
-   for(var n=0; n<linkedArray.length;n++){
+   for(var n=0; n<linkedArray_sub.length;n++){
         
-        var node= linkedArray[n].node;
+        var node= linkedArray_sub[n].node;
         var flag =false;
         var repeat =0;
          
-        for(var m=0; m<linkedArray_sub.length;m++){ 
-        var   correct_node= linkedArray_sub[m].node;  
+        for(var m=0; m<linkedArray.length;m++){ 
+        var   correct_node= linkedArray[m].node;  
           
-        console.log(correct_node);
+      
         
         if( node.activity == correct_node.activity) {  
           repeat++;} 
