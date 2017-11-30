@@ -311,10 +311,9 @@ function redraw(history,submission){
              // compare the pre and next
              // pre  
              
-              if(node.EFT!=student_node.EFT){node.EFTcolor="red";}else{//node.EFTcolor="black";
-                    }
+             if(node.EFT==student_node.EFT){node.EFTcolor="black";}  
              if(node.EST==student_node.EST){node.ESTcolor="black";} 
-             if(node.FF==student_node.FF){node.FFcolor="black";} 
+             if(node.FF==student_node.FF){node.FFcolor="black";}  
              if(node.LFT==student_node.LFT){node.LFTcolor="black";} 
              if(node.LST==student_node.LST){node.LSTcolor="black";} 
              if(node.TF==student_node.TF){node.TFcolor="black";} 
@@ -391,12 +390,11 @@ function redraw(history,submission){
         var node= linkedArray_sub[n].node;
         var flag =false;
         var repeat =0;
-         
-        for(var m=0; m<linkedArray.length;m++){ 
-        var   correct_node= linkedArray[m].node;  
-          
-      
+         console.log(node);
         
+        for(var m=0; m<linkedArray.length;m++){ 
+        var   correct_node= linkedArray[m].node;   
+           console.log(correct_node);
         if( node.activity == correct_node.activity) {  
           repeat++;} 
        }
