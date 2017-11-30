@@ -25,11 +25,12 @@ function redraw(history,submission){
  submissionlinks=deserialiseL(submission);
   
  var root = new Node();
- root = findrootnode();  
+ root = findrootnode(); 
+ var sub_root= new Node();
+ sub_root= findsubrootnode(); 
+ console.log(sub_root);
  var linkedArray= new Array(); 
- var linkedArray2= new Array(); 
- 
- 
+ var linkedArray2= new Array();  
  var linkedArray_sub=new Array();
  var linkedArray2_sub=new Array(); 
   
@@ -133,8 +134,8 @@ function redraw(history,submission){
   
        
        var linkedrootnode=findlinkednode(root.id);
-       var linkedsubrootnode=findsublinkednode(root.id);
-    
+       var linkedsubrootnode=findsublinkednode(sub_root.id);
+  //      console.log(linkedsubrootnode);
        recursive(linkedrootnode); 
        recursive(linkedsubrootnode);
   
@@ -242,7 +243,7 @@ function redraw(history,submission){
            // calculateEST(lnode.node,maxValudeofParentEFT);
               calculateEFT(lnode.node);
               calculateEST(lnode.node,maxValudeofParentEFT)
-              console.log(lnode);
+             
             
           }
         }
