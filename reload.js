@@ -308,21 +308,17 @@ function redraw(history,submission){
              
               console.log(node);
              // compare the pre and next
-             // pre 
-             
+             // pre  
              
               if(node.EFT!=student_node.EFT){node.EFTcolor="red";}else{//node.EFTcolor="black";
                     }
-               if(node.EST==student_node.EST){node.ESTcolor="black";} 
-               if(node.FF==student_node.FF){node.FFcolor="black";} 
-              if(node.LFT==student_node.LFT){node.LFTcolor="black";} 
-               if(node.LST==student_node.LST){node.LSTcolor="black";} 
-           
-              if(node.TF==student_node.TF){node.TFcolor="black";} 
-             console.log(node);
+             if(node.EST==student_node.EST){node.ESTcolor="black";} 
+             if(node.FF==student_node.FF){node.FFcolor="black";} 
+             if(node.LFT==student_node.LFT){node.LFTcolor="black";} 
+             if(node.LST==student_node.LST){node.LSTcolor="black";} 
+             if(node.TF==student_node.TF){node.TFcolor="black";} 
              
               
-             
             console.log(linkednode.prevNode);
             console.log(student_linkednode.prevNode);
              var correctbox = new Array();
@@ -431,7 +427,7 @@ if(mode=="correct" && answer_type=="precedence") {
  var root = new Node();
  root = findrootnode();  
  var sub_root= new Node();
- sub_root=  findcorrectrootnode();
+ 
  var linkedArray= new Array(); 
  var linkedArray2= new Array(); 
  
