@@ -539,7 +539,7 @@ if(mode=="correct" && answer_type=="precedence") {
   
        
        var linkedrootnode=findlinkednode(root.id);
-       var linkedsubrootnode=findlinkedsubnode(sub_root.id);
+     //  var linkedsubrootnode=findlinkedsubnode(sub_root.id);
        
        recursive(linkedrootnode); 
   
