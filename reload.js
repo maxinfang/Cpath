@@ -316,12 +316,12 @@ function redraw(history,submission){
              // compare the pre and next
              // pre  
              
-             if(node.EFT==student_node.EFT){node.EFTcolor="black";}  
-             if(node.EST==student_node.EST){node.ESTcolor="black";} 
-             if(node.FF==student_node.FF){node.FFcolor="black";}  
-             if(node.LFT==student_node.LFT){node.LFTcolor="black";} 
-             if(node.LST==student_node.LST){node.LSTcolor="black";} 
-             if(node.TF==student_node.TF){node.TFcolor="black";} 
+             if(node.EFT==student_node.EFT &&node.EFTcolor=="red"){node.EFTcolor="black";} else{node.EFTcolor=="default"}
+             if(node.EST==student_node.EST &&node.ESTcolor=="red"){node.ESTcolor="default";}  else{node.ESTcolor=="default"}
+             if(node.FF==student_node.FF &&node.FFcolor=="red"){node.FFcolor="black";}  else{node.FFcolor=="default"}
+             if(node.LFT==student_node.LFT &&node.LFTcolor=="red"){node.LFTcolor="black";} else{node.LTFcolor=="default"}
+             if(node.LST==student_node.LST &&node.LSTcolor=="red"){node.LSTcolor="black";} else{node.LSTcolor=="default"}
+             if(node.TF==student_node.TF &&node.TFcolor=="red"){node.TFcolor="black";} else{node.TFcolor=="default"}
              
               
             console.log(linkednode.prevNode);
