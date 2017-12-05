@@ -9,13 +9,15 @@ if(mode=="correct") { Color= "#5cc902"};
 if(mode=="submission") { Color= "#0060bf"};  
 
 function addShape(type,dragzone,node){
-  if(node.color =="blue"){ Color ="#0060bf";}
+   console.log(node);
+   
   if(node.color == "red"){
     Color="#d9534f";left_end="#d9534f";right_end="#d9534f";}
-   else{Color="#5cc902"; } 
+   else if(mode=="submission"){Color="#0060bf";}else{Color="#5cc902"; } 
   
    if(node.left_red=="red"){ left_end="#d9534f";} else if(node.color != "red"){left_end="#445566";} 
    if(node.right_red=="red"){ right_end="#d9534f";} else if(node.color != "red"){right_end="#445566";} 
+  
   if (type=="C") {addCircle(dragzone,node);} 
 }
  

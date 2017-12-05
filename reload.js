@@ -135,7 +135,7 @@ function redraw(history,submission){
        
        var linkedrootnode=findlinkednode(root.id);
        var linkedsubrootnode=findsublinkednode(sub_root.id);
-  //      console.log(linkedsubrootnode);
+       console.log(linkedsubrootnode);
        recursive(linkedrootnode); 
        recursive(linkedsubrootnode);
   
@@ -161,7 +161,7 @@ function redraw(history,submission){
            // calculateEST(lnode.node,maxValudeofParentEFT);
               compareEFT(lnode.node);
               compareEST(lnode.node,maxValudeofParentEFT)
-              console.log(lnode);
+             // console.log(lnode);
             
           }
         }
@@ -223,7 +223,7 @@ function redraw(history,submission){
     */
     
      var deep =linkedsubrootnode.level;
-       
+      
        for(var n=deep; n>0 ;n--){
         
          for (var j=0;j<linkedArray_sub.length;j++){
@@ -240,13 +240,14 @@ function redraw(history,submission){
                 {maxValudeofParentEFT = parentEFT; }
             }
             
-           // calculateEST(lnode.node,maxValudeofParentEFT);
+              calculateEST(lnode.node,maxValudeofParentEFT);
               calculateEFT(lnode.node);
-              calculateEST(lnode.node,maxValudeofParentEFT)
+           //   calculateEST(lnode.node,maxValudeofParentEFT)
              
             
           }
         }
+         
       }
   
       var project_duration=0; 
@@ -295,6 +296,7 @@ function redraw(history,submission){
       
     }
     
+    
      
   
   for(var n=0; n<linkedArray.length;n++){
@@ -302,12 +304,15 @@ function redraw(history,submission){
      var node= linkedArray[n].node;  
         for(var m=0; m<linkedArray_sub.length;m++){ 
         var student_linkednode=linkedArray_sub[m];
-        var   student_node= linkedArray_sub[m].node;   
+        var   student_node= linkedArray_sub[m].node; 
+        console.log(student_node); 
+         console.log(node); 
         if(student_node.activity ==  node.activity) 
           
            { node.color= "blue";  
              
               console.log(node);
+               console.log(student_node);
              // compare the pre and next
              // pre  
              
@@ -385,9 +390,9 @@ function redraw(history,submission){
      }
  
    
-   for(var n=0; n<linkedArray_sub.length;n++){
+   for(var n=0; n<linkedArray.length;n++){
         
-        var node= linkedArray_sub[n].node;
+        var node= linkedArray[n].node;
         var flag =false;
         var repeat =0;
          console.log(node);
@@ -398,7 +403,7 @@ function redraw(history,submission){
         if( node.activity == correct_node.activity) {  
           repeat++;} 
        }
-        if(repeat >1) {node.color="red";}
+        if(repeat >1) {node.color="red"; console.log("test"); console.log(node);}
      //repeated will be marked as missing as well
       } 
        
@@ -426,7 +431,8 @@ if(mode=="correct" && answer_type=="precedence") {
  var root = new Node();
  root = findrootnode();  
  var sub_root= new Node();
- 
+  
+ sub_root= findsubrootnode(); 
  var linkedArray= new Array(); 
  var linkedArray2= new Array(); 
  
@@ -533,13 +539,95 @@ if(mode=="correct" && answer_type=="precedence") {
      
   
   
-     
   
        
-       var linkedrootnode=findlinkednode(root.id);
-     //  var linkedsubrootnode=findlinkedsubnode(sub_root.id);
-       
+    var linkedrootnode=findlinkednode(root.id); 
+  
+   var linkedsubrootnode=findsublinkednode(sub_root.id);
+     
        recursive(linkedrootnode); 
+      recursive(linkedsubrootnode);
+   
+       var deep =linkedsubrootnode.level;
+       
+       for(var n=deep; n>0 ;n--){
+        
+         for (var j=0;j<linkedArray_sub.length;j++){
+           var  lnode=  linkedArray_sub[j];
+           if(lnode.level== n) {  
+            
+             var parentnodes=lnode.prevNode;  
+             var maxValudeofParentEFT=0;
+             for(var k=0; k<parentnodes.length; k++ ){
+              var nodedata= parentnodes[k].node;
+              var parentEFT= nodedata.EFT;
+              if(maxValudeofParentEFT < parentEFT)
+                {maxValudeofParentEFT = parentEFT; }
+            }
+            
+           // calculateEST(lnode.node,maxValudeofParentEFT);
+              compareEFT(lnode.node);
+              compareEST(lnode.node,maxValudeofParentEFT)
+              console.log(lnode);
+            
+          }
+        }
+      }
+  
+      var project_duration=0;  
+      for( var i=1; i<=deep; i++ ) {
+       for (var j=0;j<linkedArray_sub.length;j++){
+         var lnode= linkedArray_sub[j];
+         var nodeEFT= lnode.node.EFT;
+         if(project_duration < nodeEFT){
+          project_duration =nodeEFT;
+          
+        } 
+      }
+    }
+     
+    for( var i=1; i<=deep; i++ )   {
+      for (var j=0;j<linkedArray_sub.length;j++){
+       var  lnode=  linkedArray_sub[j]; 
+      //  console.log(lnode);
+       if(lnode.level==i) {
+        var childrenodes=lnode.nextNodes;  
+        var minValueofChildLST=project_duration;
+        var minValueofChildEST=project_duration;
+        for(var k=0; k< childrenodes.length; k++ ){
+          var nodedata= childrenodes[k].node;
+          var childLST= nodedata.LST; 
+          var childEST =  nodedata.EST;
+          if( minValueofChildLST > childLST)
+            {minValueofChildLST = childLST;
+            }
+            if(  minValueofChildEST > childEST){
+             minValueofChildEST = childEST;
+           }
+         }
+         
+        // calculateLFT(lnode.node,minValueofChildLST);
+        // calculateLST(lnode.node);  
+        // calculateFFTF(lnode.node,minValueofChildEST); 
+          compareLFT(lnode.node,minValueofChildLST);
+          compareLST(lnode.node)
+          compareFFTF(lnode.node,minValueofChildEST);
+       
+        }
+        
+      }
+      
+    }
+     
+    
+    
+    /*
+    
+    
+    
+    
+    */
+    
   
        
        var deep =linkedrootnode.level;
@@ -623,13 +711,16 @@ if(mode=="correct" && answer_type=="precedence") {
           
            { node.color= "green"; 
             
-              
+              node.EFTcolor =student_node.EFTcolor;
+              node.ESTcolor =student_node.ESTcolor;
+              node.FFcolor =student_node.FFcolor;
+              node.LFTcolor =student_node.LFTcolor;
+              node.LSTcolor =student_node.LSTcolor;
+              node.TFcolor =student_node.TFcolor;
              
-             //
-             console.log(node);
-             console.log(student_node);
              
-             if(node.EFT!=student_node.EFT){node.EFTcolor="red";}else{node.EFTcolor="black";}
+             
+            if(node.EFT!=student_node.EFT){node.EFTcolor="red";}else{node.EFTcolor="black";}
                if(node.EST!=student_node.EST){node.ESTcolor="red";}else{node.ESTcolor="black";}
                if(node.FF!=student_node.FF){node.FFcolor="red";}else{node.FFcolor="black";}
               if(node.LFT!=student_node.LFT){node.LFTcolor="red";}else{node.LFTcolor="black";}
