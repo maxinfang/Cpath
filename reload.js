@@ -2,9 +2,7 @@ function redraw(history,submission){
   
  myNodes=deserialiseC(history);
  mylinks=deserialiseL(history);
- 
-
-   
+  
   
  if (myNodes == []) return;
  
@@ -242,7 +240,7 @@ function redraw(history,submission){
             
               calculateEST(lnode.node,maxValudeofParentEFT);
               calculateEFT(lnode.node);
-           //   calculateEST(lnode.node,maxValudeofParentEFT)
+              calculateEST(lnode.node,maxValudeofParentEFT);
              
             
           }
@@ -305,8 +303,7 @@ function redraw(history,submission){
         for(var m=0; m<linkedArray_sub.length;m++){ 
         var student_linkednode=linkedArray_sub[m];
         var   student_node= linkedArray_sub[m].node; 
-        console.log(student_node); 
-         console.log(node); 
+         
         if(student_node.activity ==  node.activity) 
           
            { node.color= "blue";  
@@ -565,11 +562,10 @@ if(mode=="correct" && answer_type=="precedence") {
   
   
        
-    var linkedrootnode=findlinkednode(root.id); 
-  
+   var linkedrootnode=findlinkednode(root.id);  
    var linkedsubrootnode=findsublinkednode(sub_root.id);
      
-       recursive(linkedrootnode); 
+      recursive(linkedrootnode); 
       recursive(linkedsubrootnode);
    
        var deep =linkedsubrootnode.level;
@@ -613,7 +609,7 @@ if(mode=="correct" && answer_type=="precedence") {
     for( var i=1; i<=deep; i++ )   {
       for (var j=0;j<linkedArray_sub.length;j++){
        var  lnode=  linkedArray_sub[j]; 
-      //  console.log(lnode);
+       console.log(lnode);
        if(lnode.level==i) {
         var childrenodes=lnode.nextNodes;  
         var minValueofChildLST=project_duration;

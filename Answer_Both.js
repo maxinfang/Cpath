@@ -37,8 +37,7 @@ function getType(){
      return element.innerHTML;
     
   }
-
-
+ 
 
 }
 
@@ -64,7 +63,7 @@ function getDuration(){
     
   }
   
-  console.log("_+++++"+elements[0]+"fas");
+ 
   return elements;
 }
 
@@ -117,9 +116,7 @@ function getHistory(){
   
   
 } 
-
-
-
+ 
 
 
 var op = getEntry();
@@ -146,7 +143,8 @@ $(document).ready(function()  {
    
    //check wehter we need reload or not
    
-   
+   console.log("Now the reload page will start load mode of "+ mode);
+  
    if(mode=="correct" ){history_page=getHistory();
                         student_submission=getSubmission();
                       //console.log("studentpage:"+history);

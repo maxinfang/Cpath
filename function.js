@@ -301,8 +301,6 @@ function findsubrootnode(){
 
 
 
-
-
 function findrootnode(){
 
  for(var m=0; m<myNodes.length;m++){ 
