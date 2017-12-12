@@ -57,14 +57,39 @@ function redraw(correct_string,student_string){
               
                    if(student_node.activity ==  answer_node.activity) { 
                        
-                    if(answer_node.EFT!=student_node.EFT && student_node.EFTcolor=="red") {answer_node.EFTcolor="red"; }  
-                    if(answer_node.EST!=student_node.EST && student_node.ESTcolor=="red"){answer_node.ESTcolor="red";} 
-                    if(answer_node.FF!=student_node.FF && student_node.FFTcolor=="red"){answer_node.FFcolor="red";} 
-                    if(answer_node.LFT!=student_node.LFT && student_node.LFTcolor=="red"){answer_node.LFTcolor="red";} 
-                    if(answer_node.LST!=student_node.LST && student_node.LSTcolor=="red"){answer_node.LSTcolor="red";} 
-                    if(answer_node.TF!=student_node.TF && student_node.TFcolor=="red" )  {answer_node.TFcolor="red";}
+                    if(student_node.EFTcolor!="red"){answer_node.EFTcolor="default";}
+                    else if(student_node.EFT != answer_node.EFT)
+                    {answer_node.EFTcolor="black"; }
+                    else{student_node.EFTcolor="red";  }
+                     
                       
-                  
+                      
+                    if(student_node.ESTcolor!="red"){answer_node.ESTcolor="red";} 
+                    else if(student_node.EST != answer_node.EST)
+                    {answer_node.ESTcolor="black";}
+                      else{student_node.ESTcolor="red";  }
+                     
+                    if(student_node.FFcolor!="red"){answer_node.FFcolor="red";} 
+                    else if(student_node.FF != answer_node.FF)
+                    { answer_node.FFcolor="black";}
+                      else{student_node.FFcolor="red";  }
+                     
+                    if(student_node.LFTcolor!="red"){answer_node.LFTcolor="red";}
+                    else if(student_node.LFT !=answer_node.LFT)
+                    { answer_node.LFTcolor="black";} 
+                      else{student_node.LFTcolor="red";  }
+                     
+                    if(student_node.LSTcolor!="red"){answer_node.LSTcolor="red";} 
+                      else if(student_node.LST !=answer_node.LST)
+                    { answer_node.LSTcolor="black";} 
+                      else{student_node.LSTcolor="red";  }
+                     
+                     
+                    if(student_node.TFcolor!="red" ) {answer_node.TFcolor="red";}
+                       else if(student_node.TF !=answer_node.TF)
+                    { answer_node.TFcolor="black";} 
+                       else{student_node.TFcolor="red";  }
+                      
                   
                   } 
                 
@@ -72,16 +97,10 @@ function redraw(correct_string,student_string){
                 
            }
        
-       // compare the subbmission page 
-       
-       
-       
-       
-       
-       
-       //highlight the wrong places.
-       
-        
+       // compare the subbmission page
+     //checking nodes missing // covert this to a function as well.
+       checkingDup(linkedArray_answer,linkedArray_submission);
+     
        
        
        //draw nodes.

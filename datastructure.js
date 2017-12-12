@@ -1,3 +1,29 @@
+
+function checkingDup(Array_one,Array_two){
+
+  for(var n=0; n<Array_one.length;n++){
+        
+        var node= Array_one[n].node;
+        var flag =false;
+        var repeat =0;
+         
+        for(var m=0; m<Array_two.length;m++){ 
+        var   two_node= Array_two[m].node;  
+          
+        
+        
+        if( two_node.activity ==  node.activity) {  
+          repeat++;} 
+       }
+        if(repeat >1) {node.color="red";}
+     //repeated will be marked as missing as well
+      } 
+
+
+
+}
+
+
 function convert(Nodes,links){ 
    
   var linkedArray= new Array(); 
@@ -252,3 +278,4 @@ function comparecheck(deep,linkedArray){
 
 
 }
+
