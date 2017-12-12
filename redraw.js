@@ -8,139 +8,106 @@ function redraw(correct_string,student_string){
      
   }
   
+   if(student_string != "" ){
+  
    submission_Nodes=deserialiseC(student_string);
    submission_Links=deserialiseL(student_string); 
    
-  
-   
-  
+  }
   
   if(answer_type=="precedence"){ 
     
        var linkedArray_answer= new Array();  
-       var linkedArray_submission= new Array();
-    
+       var linkedArray_submission= new Array(); 
        linkedArray_answer = convert(answer_Nodes,answer_Links); 
        linkedArray_submission = convert(submission_Nodes,submission_Links); 
     
-       correct_root_id=findrootnodebyid(answer_Nodes,answer_Links);
+       correct_root_id=findrootnodebyid(answer_Nodes,answer_Links); 
        submission_root_id=findrootnodebyid(submission_Nodes,submission_Links);
     
        var linkedrootnode_correct= findlinkednodebyid(correct_root_id,linkedArray_answer);
-       var linkedrootnode_submission= findlinkednodebyid(submission_root_id,linkedArray_submission);
     
-     
-      
-      //set the deep;
+       var linkedrootnode_submission= findlinkednodebyid(submission_root_id,linkedArray_submission); 
     
       recursive(linkedrootnode_correct); 
       recursive(linkedrootnode_submission);
     
      // calculate the right answer
-        var deep =linkedrootnode_correct.level;
-       console.log(linkedrootnode_correct);
-       for(var n=deep; n>0 ;n--){
-        
-         for (var j=0;j<linkedArray_answer.length;j++){
-           var  lnode=  linkedArray_answer[j];
-           if(lnode.level== n) {  
-            
-             var parentnodes=lnode.prevNode; 
-             
-             var maxValudeofParentEFT=0;
-             for(var k=0; k<parentnodes.length; k++ ){
-              var nodedata= parentnodes[k].node;
-              var parentEFT= nodedata.EFT;
-              if(maxValudeofParentEFT < parentEFT)
-                {maxValudeofParentEFT = parentEFT; }
-            }
-            
-            calculateEST(lnode.node,maxValudeofParentEFT);
-            calculateEFT(lnode.node);
-            
-          }
-        }
-      }
-  
-      var project_duration=0; 
-      
-      for( var i=1; i<=deep; i++ )   {
-       for (var j=0;j<linkedArray_answer.length;j++){
-         var lnode= linkedArray_answer[j];
-         var nodeEFT= lnode.node.EFT;
-         if(project_duration < nodeEFT){
-          project_duration =nodeEFT;
-          
-        } 
-      }
-    }
-     
-    for( var i=1; i<=deep; i++ )   {
-      for (var j=0;j<linkedArray_answer.length;j++){
-       var  lnode=  linkedArray_answer[j]; 
-        console.log(lnode);
-       if(lnode.level==i) {
-        var childrenodes=lnode.nextNodes;  
-        var minValueofChildLST=project_duration;
-        var minValueofChildEST=project_duration;
-        for(var k=0; k< childrenodes.length; k++ ){
-          var nodedata= childrenodes[k].node;
-          var childLST= nodedata.LST; 
-          var childEST =  nodedata.EST;
-          if( minValueofChildLST > childLST)
-            {minValueofChildLST = childLST;
-            }
-            if(  minValueofChildEST > childEST){
-             minValueofChildEST = childEST;
-           }
-         }
-         
-         calculateLFT(lnode.node,minValueofChildLST);
-         calculateLST(lnode.node);  
-         calculateFFTF(lnode.node,minValueofChildEST);   
-        }
-        
-      }
-      
-    }
-      
-  
+       var deep_answer =linkedrootnode_correct.level; 
+       var deep_student =linkedrootnode_submission.level;
+       calculate(deep_answer,linkedArray_answer); 
+       comparecheck(deep_student,linkedArray_submission);
   }
-   
-  
+    
  //mode= presedence 
   
-     if(answer_type=="precedence"){ 
+     if(mode=="correct"){ 
+       
+       
+       
+         for(var n=0; n<linkedArray_answer.length;n++){
+           
+            var answer_linkednode=linkedArray_answer[n];
+            var answer_node= linkedArray_answer[n].node;  
+               
+            for(var m=0; m<linkedArray_submission.length;m++){ 
+              
+               var student_linkednode=linkedArray_submission[m];
+               var   student_node= linkedArray_submission[m].node;
+              
+                   if(student_node.activity ==  answer_node.activity) { 
+                       
+                    if(answer_node.EFT!=student_node.EFT && student_node.EFTcolor=="red") {answer_node.EFTcolor="red"; }  
+                    if(answer_node.EST!=student_node.EST && student_node.ESTcolor=="red"){answer_node.ESTcolor="red";} 
+                    if(answer_node.FF!=student_node.FF && student_node.FFTcolor=="red"){answer_node.FFcolor="red";} 
+                    if(answer_node.LFT!=student_node.LFT && student_node.LFTcolor=="red"){answer_node.LFTcolor="red";} 
+                    if(answer_node.LST!=student_node.LST && student_node.LSTcolor=="red"){answer_node.LSTcolor="red";} 
+                    if(answer_node.TF!=student_node.TF && student_node.TFcolor=="red" )  {answer_node.TFcolor="red";}
+                      
+                  
+                  
+                  } 
+                
+              }
+                
+           }
+       
+       // compare the subbmission page 
+       
+       
+       
+       
+       
+       
+       //highlight the wrong places.
+       
+        
+       
+       
+       //draw nodes.
          for(var n=0; n<linkedArray_answer.length;n++){
            var   node=linkedArray_answer[n].node;
             console.log(node);
             drawnode(node); 
         }
-   
-   
-  addConnections(answer_Links);
+    
+       addConnections(answer_Links);
      
      }
+  
+  
+     
             //if student then draw student pictures
-  
-  
+   
             //if correct then draw green pictures
-  
-  
+   
             //if submit then draw blue pictures
-  
-  
+   
   
   //mode= arrow
   
   
-  
-  
-  
-  
-  
-  
-  
+   
   
   
   

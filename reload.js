@@ -139,7 +139,7 @@ function redraw(history,submission){
   
        
        var deep =linkedrootnode.level;
-       
+       console.log(deep);
        for(var n=deep; n>0 ;n--){
         
          for (var j=0;j<linkedArray.length;j++){
@@ -939,7 +939,8 @@ if(mode=="correct" && answer_type=="precedence") {
         var link=findlink(head,linkedNode.id);
          prevlink.push(link);  
      }
-       linkedNode.prevconnectors=prevlink;
+       linkedNode.prevconne
+         ctors=prevlink;
      
       var suclink=Array();
       for (s=0; s<successors.length;s++){
