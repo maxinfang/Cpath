@@ -5,15 +5,15 @@ var left_end="#445566";
 var right_end="#445566";
 
 
-if(mode=="correct") { Color= "#5cc902"};
-if(mode=="submission") { Color= "#0060bf"};  
+if(mode=="correct") { Color= "#0060bf"}; //#0060bf
+if(mode=="submission") { Color= "#5cc902"};  //#5cc902
 
 function addShape(type,dragzone,node){
    console.log(node);
    
   if(node.color == "red"){
     Color="#d9534f";left_end="#d9534f";right_end="#d9534f";}
-   else if(mode=="submission"){Color="#0060bf";}else{Color="#5cc902"; } 
+   else if(mode=="submission"){Color="#5cc902";}else{Color="#0060bf"; } 
   
    if(node.left_red=="red"){ left_end="#d9534f";} else if(node.color != "red"){left_end="#445566";} 
    if(node.right_red=="red"){ right_end="#d9534f";} else if(node.color != "red"){right_end="#445566";} 

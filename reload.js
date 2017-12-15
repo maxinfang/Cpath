@@ -306,7 +306,7 @@ function redraw(history,submission){
          
         if(student_node.activity ==  node.activity) 
           
-           { node.color= "blue";  
+           { node.color= "green";  
              
               console.log(node);
                console.log(student_node);
