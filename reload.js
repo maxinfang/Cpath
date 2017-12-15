@@ -314,32 +314,32 @@ function redraw(history,submission){
              // pre  
              
              if(node.EFT==student_node.EFT ){
-               if(node.EFTcolor == "red"){node.EFTcolor="black";}
+               if(node.EFTcolor == "red"){node.EFTcolor="blue";}
                else{node.EFTcolor="default";}
                
              } 
              if(node.EST==student_node.EST ){
-               if(node.ESTcolor == "red"){node.ESTcolor="black";}
+               if(node.ESTcolor == "red"){node.ESTcolor="blue";}
                else{node.ESTcolor="default";}  
              
              }  
              if(node.FF==student_node.FF)  {
-               if(node.FFcolor == "red"){node.FFcolor="black";}
+               if(node.FFcolor == "red"){node.FFcolor="blue";}
                else{node.FFcolor="default";}   
              }   
              if(node.LFT==student_node.LFT){
                
-               if(node.LFTcolor == "red"){node.LFTcolor="black";}
+               if(node.LFTcolor == "red"){node.LFTcolor="blue";}
                else{node.LFTcolor="default";}   
              
              } 
              if(node.LST==student_node.LST){
                
-                 if(node.LSTcolor == "red"){node.LSTcolor="black";}
+                 if(node.LSTcolor == "red"){node.LSTcolor="blue";}
                else{node.LSTcolor="default";} 
              } 
              if(node.TF==student_node.TF  ){
-                 if(node.TFcolor == "red"){node.TFcolor="black";}
+                 if(node.TFcolor == "red"){node.TFcolor="blue";}
                else{node.TFcolor="default";} 
              
              } 
@@ -740,14 +740,14 @@ if(mode=="correct" && answer_type=="precedence") {
              
              
              
-            if(node.EFT!=student_node.EFT){node.EFTcolor="red";}else{node.EFTcolor="black";}
-               if(node.EST!=student_node.EST){node.ESTcolor="red";}else{node.ESTcolor="black";}
-               if(node.FF!=student_node.FF){node.FFcolor="red";}else{node.FFcolor="black";}
-              if(node.LFT!=student_node.LFT){node.LFTcolor="red";}else{node.LFTcolor="black";}
+            if(node.EFT!=student_node.EFT){node.EFTcolor="red";}else{node.EFTcolor="blue";}
+               if(node.EST!=student_node.EST){node.ESTcolor="red";}else{node.ESTcolor="blue";}
+               if(node.FF!=student_node.FF){node.FFcolor="red";}else{node.FFcolor="blue";}
+              if(node.LFT!=student_node.LFT){node.LFTcolor="red";}else{node.LFTcolor="blue";}
             
-               if(node.LST!=student_node.LST){node.LSTcolor="red";}else{node.LSTcolor="black";}
+               if(node.LST!=student_node.LST){node.LSTcolor="red";}else{node.LSTcolor="blue";}
            
-              if(node.TF!=student_node.TF){node.TFcolor="red";}else{node.TFcolor="black";}
+              if(node.TF!=student_node.TF){node.TFcolor="red";}else{node.TFcolor="blue";}
            //  console.log(node);
            //  // compare the pre and next
              // pre 

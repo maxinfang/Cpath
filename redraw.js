@@ -58,25 +58,25 @@ function redraw(correct_string,student_string){
                    if(student_node.activity ==  answer_node.activity) { 
                        
                     if(answer_node.EFT==student_node.EFT ){
-               if(student_node.EFTcolor == "red"){answer_node.EFTcolor="black";}
+               if(student_node.EFTcolor == "red"){answer_node.EFTcolor="blue";}
                else{answer_node.EFTcolor="default";}
                
              } else{answer_node.EFTcolor=student_node.EFTcolor;}
              if(answer_node.EST==student_node.EST ){
-               if(student_node.ESTcolor == "red"){answer_node.ESTcolor="black";}
+               if(student_node.ESTcolor == "red"){answer_node.ESTcolor="blue";}
                else{answer_node.ESTcolor="default";}  
              
              }  else{answer_node.ESTcolor=student_node.ESTcolor;}
                      
              if(answer_node.FF==student_node.FF)  {
-               if(student_node.FFcolor == "red"){answer_node.FFcolor="black";}
+               if(student_node.FFcolor == "red"){answer_node.FFcolor="blue";}
                else{answer_node.FFcolor="default";}   
              }   else{
                     answer_node.FFcolor=student_node.FFcolor;;
              }
              if(answer_node.LFT==student_node.LFT){
                
-               if(student_node.LFTcolor == "red"){answer_node.LFTcolor="black";}
+               if(student_node.LFTcolor == "red"){answer_node.LFTcolor="blue";}
                else{answer_node.LFTcolor="default";}   
              
              } else{
@@ -86,13 +86,13 @@ function redraw(correct_string,student_string){
                      
              if(answer_node.LST==student_node.LST){
                
-                 if(student_node.LSTcolor == "red"){answer_node.LSTcolor="black";}
+                 if(student_node.LSTcolor == "red"){answer_node.LSTcolor="blue";}
                else{answer_node.LSTcolor="default";} 
              } else{answer_node.LSTcolor=student_node.LSTcolor;}
                      
                      
              if(answer_node.TF==student_node.TF  ){
-                 if(student_node.TFcolor == "red"){answer_node.TFcolor="black";}
+                 if(student_node.TFcolor == "red"){answer_node.TFcolor="blue";}
                else{answer_node.TFcolor="default";} 
                
                  } else{
