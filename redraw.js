@@ -113,11 +113,34 @@ function redraw(correct_string,student_string){
        
        // compare the subbmission page
      //checking nodes missing // covert this to a function as well.
+       
+        for(var n=0; n<linkedArray_answer.length;n++){
+        
+        var answer_node= linkedArray_answer[n].node;
+        var flag ="exsit";
+        var repeat =0;
+      
+        
+        for(var m=0; m<linkedArray_submission.length;m++){ 
+          var   student_node= linkedArray_answer[m].node;  
+         
+           
+          
+          
+       
+       }
+        
+     //repeated will be marked as missing as well
+      } 
+       
+       
+       
+       
+       
        checkingDup(linkedArray_answer,linkedArray_submission);
        
        
-       
-       
+     
      
        
        
@@ -134,13 +157,13 @@ function redraw(correct_string,student_string){
   
   
      
-            //if student then draw student pictures
+  //if student then draw student pictures
    
-            //if correct then draw green pictures
+  //if correct then draw green pictures
    
             //if submit then draw blue pictures
    
-  
+ 
   //mode= arrow
   
   

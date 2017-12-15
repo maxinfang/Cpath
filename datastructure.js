@@ -16,6 +16,7 @@ function checkingDup(Array_one,Array_two){
           repeat++;} 
        }
         if(repeat >1) {node.color="red";}
+        if(repeat ==0) {node.color="red";}
      //repeated will be marked as missing as well
       } 
 
