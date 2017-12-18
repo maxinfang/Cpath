@@ -100,7 +100,44 @@ function redraw(correct_string,student_string){
                  }
                      
                      
-                     
+            var correctbox = new Array();
+             var studentbox  = new Array();
+             
+             
+             for(var k=0; k<answer_linkednode.prevNode.length; k++){
+               var temp=  findnodebyid(answer_linkednode.prevNode[k].id,linkedArray_answer); 
+                correctbox.push(temp.activity);
+               
+             }
+             
+             for(var k=0; k<student_linkednode.prevNode.length; k++){
+               var temp=  findnodebyid(student_linkednode.prevNode[k].id,linkedArray_submission); 
+                studentbox.push(temp.activity);
+               
+             }
+             if( !correctbox.sort().compare(studentbox.sort())) { answer_node.left_red="red";}
+             
+             //next 
+             
+              var correctbox_next = new Array();
+              var studentbox_next  = new Array();
+               for(var k=0; k<answer_linkednode.nextNodes.length; k++){
+               var temp=  findnodebyid(answer_linkednode.nextNodes[k].id,linkedArray_answer); 
+                
+              if(typeof temp != 'undefined' ){
+                 correctbox_next.push(temp.activity);
+              }
+               
+             }
+             
+             for(var k=0; k<student_linkednode.nextNodes.length; k++){
+               var temp=  findnodebyid(student_linkednode.nextNodes[k].id,linkedArray_submission); 
+               if(typeof temp!= 'undefined' ){
+                studentbox_next.push(temp.activity);
+               }
+               
+             }
+             if(! correctbox_next.sort().compare(studentbox_next.sort())) {   answer_node.right_red="red";   }          
                      
                      
                      
@@ -141,7 +178,23 @@ function redraw(correct_string,student_string){
        
        
      
+      for(var n=0; n<answer_Links.length;n++){ 
+       var link= answer_Links[n]; 
+          link.strokestyle="red";
+       //console.log(link);
+        for(var m=0; m<submission_Links.length;m++){ 
+          var sublink= submission_Links[m]; 
+          //console.log(sublink);
+           if(link.Tactivity== sublink.Tactivity &&link.Hactivity== sublink.Hactivity ){
+            link.strokestyle="#666"; break;} 
+     }
+  
+  
      
+     
+        
+        
+     }
        
        
        //draw nodes.
@@ -154,7 +207,199 @@ function redraw(correct_string,student_string){
        addConnections(answer_Links);
      
      }
+   else if(mode=="correct" && answer_type=="arrow"){
+    
+    for(n=0; n<myNodes.length;n++){ 
+       var node= myNodes[n];
+    // console.log(node);
+       drawnode(node);  
+   } 
+    
+    //data structure first
+    // nodelist
+    
+  function findlinkednode(id){ 
+    
+    for (x=0;x<linkedArray2.length;x++){ 
+      var li=linkedArray2[x];
+      if(li.id==id){return li;}
+    } 
+    return "none";
+ } 
   
+    
+     var linkedArray= new Array(); 
+     var linkedArray2= new Array();  
+    
+     for(n=0; n<myNodes.length;n++){  
+        var node=myNodes[n];  
+       var linkedNode= new NodeClass(node);
+     linkedArray.push(linkedNode);  
+     linkedArray2.push(linkedNode);
+   } 
+    
+     for (j=0;j<linkedArray.length;j++){ 
+      
+      var linkedNode=linkedArray[j]; 
+      var children= new Array(); 
+      var parents= new Array(); 
+      for(var n=0; n<mylinks.length;n++){ 
+       var link= mylinks[n]; 
+       if (link.t==linkedNode.id){
+         parents.push(findlinkednode(link.h));
+       }
+       
+       if (link.h == linkedNode.id){
+         children.push(findlinkednode(link.t))
+       }
+     }    
+      linkedNode.prevNode=parents; 
+      linkedNode.nextNodes=children;  
+      console.log(linkedNode);
+  
+     } 
+    
+    // connectionlist
+    
+   var linkedconnections=new Array(); 
+   var linkedconnectionsserach=new Array(); 
+    
+    for(x=0; x<mylinks.length; x++ ){
+    
+      var   connector =  mylinks[x];
+      var linkedconnector= new connectionClass(connector);  
+    
+    /*  var predecessor= new Array(); 
+      var successor= new Array();   
+      
+      linkedconnector.prevLinks=predecessor; 
+      linkedconnector.nextLinks=findsuccessor;            */
+      linkedconnections.push(linkedconnector); 
+      
+      
+    }
+    
+    
+   for (j=0;j<linkedArray.length;j++){ 
+      
+      var linkedNode=linkedArray[j]; 
+      var predessors=Array();
+      var successors=Array();
+     
+      predessors= linkedNode.prevNode;
+      successors=linkedNode.nextNodes;
+     
+       //findlink();
+       var prevlink=Array();
+      for (p=0; p<predessors.length;p++){
+        var head=predessors[p].id;
+        var link=findlink(head,linkedNode.id);
+         prevlink.push(link);  
+     }
+      // linkedNode.prevconne
+         ctors=prevlink;
+     
+      var suclink=Array();
+      for (s=0; s<successors.length;s++){
+        var tail=successors[s].id;
+        var link=findlink(linkedNode.id,tail);
+         suclink.push(link);  
+     }
+       linkedNode.nextconnectors=suclink;
+     
+       
+   }
+    
+     
+    
+     var root = findrootnode();  
+     var sub_root= findsubrootnode();
+    
+    
+     var linkedrootnode= findlinkednode(root.id)
+     recursive(linkedrootnode); 
+    
+     var deep =linkedrootnode.level;
+     var maxvalueofEFT=0;
+    
+       for(var n=deep; n>0 ;n--){
+        
+         for (var j=0;j<linkedArray.length;j++){
+           var  lnode=  linkedArray[j];
+           if(lnode.level== n) {   
+             var parentlinks=lnode.prevconnectors;
+             var maxValudeofParentEFT=0; 
+             for(var k=0; k<parentlinks.length; k++ ){
+              var linkdata= parentlinks[k];
+              
+              var parentEFT= linkdata.EFT;
+              if(maxValudeofParentEFT < parentEFT)
+                {maxValudeofParentEFT = parentEFT; 
+                 if(maxValudeofParentEFT>maxvalueofEFT){maxvalueofEFT=maxValudeofParentEFT;}
+                }
+            }
+           
+             var nextlinks=lnode.nextconnectors; 
+             for(var k=0; k<nextlinks.length;k++ ){
+              var linkdata= nextlinks[k]; 
+                calculateEST(linkdata,maxValudeofParentEFT);
+                calculateEFT(linkdata); 
+            }
+             
+             
+             
+            
+          }
+        }
+      }
+    
+    
+     for( var i=1; i<=deep; i++ )   {
+       
+      for (var j=0;j<linkedArray.length;j++){
+       var  lnode=  linkedArray[j]; 
+       if(lnode.level==i) {
+         var childrelinks=lnode.nextconnectors;   
+         var ValueofChildEFT=maxvalueofEFT;
+         var ValueofChildEST=maxvalueofEFT;
+         
+       
+         for(var k=0; k< childrelinks.length; k++ ){
+          var linkdata= childrelinks[k]; 
+          var childLST= linkdata.LST;
+          var childEST= linkdata.EST;
+          if(childLST < ValueofChildEFT){  
+            ValueofChildEFT=childLST;   }  
+           
+           if(childEST< ValueofChildEST) {
+              ValueofChildEST=childEST; 
+              
+              }
+           
+           
+         }
+         
+         
+         
+           var prelinks=lnode.prevconnectors; 
+             for(var k=0; k<prelinks.length;k++ ){
+              link=prelinks[k];  
+              calculateLFT(link, ValueofChildEFT);
+              calculateLST(link);  
+              calculateFFTF(link,ValueofChildEST);   
+                } 
+        }
+      }
+    }
+    
+    
+  
+    
+     addConnections(mylinks);
+    
+  }
+
+
   
      
   //if student then draw student pictures

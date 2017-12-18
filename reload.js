@@ -343,7 +343,6 @@ function redraw(history,submission){
                else{node.TFcolor="default";} 
              
              } 
-             
               
             console.log(linkednode.prevNode);
             console.log(student_linkednode.prevNode);
@@ -372,17 +371,19 @@ function redraw(history,submission){
                var temp=  findnode(linkednode.nextNodes[k].id); 
                 
               if(typeof temp != 'undefined' ){
-                 correctbox_next.push(temp.activity);}
+                 correctbox_next.push(temp.activity);
+              }
                
              }
              
              for(var k=0; k<student_linkednode.nextNodes.length; k++){
                var temp=  findsubnode(student_linkednode.nextNodes[k].id); 
                if(typeof temp!= 'undefined' ){
-                studentbox_next.push(temp.activity);}
+                studentbox_next.push(temp.activity);
+               }
                
              }
-             if(! correctbox_next.sort().compare(studentbox_next.sort())) {   node.right_red="red";}
+             if(! correctbox_next.sort().compare(studentbox_next.sort())) {   node.right_red="red";   }
            
             break;
             }
