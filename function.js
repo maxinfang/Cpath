@@ -595,6 +595,19 @@ for(i=0; i<myNodes.length;i++){
      }
  }
   
+  
+  if(answer_type =="arrow"){ 
+        for(i=0; i<mylinks.length;i++){
+         if (mylinks[i].activity) { // ie not a dummy activity
+          for(j=i+1; j<mylinks.length;j++){  
+              if(mylinks[i].activity ==mylinks[j].activity){
+             console.log("warning");
+             repeatflag = 1; }
+           }
+        }
+     }
+ }
+  
  
   
 console.log("------------------------------------------------------");
