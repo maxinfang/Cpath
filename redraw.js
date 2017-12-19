@@ -100,22 +100,30 @@ function redraw(correct_string,student_string){
                  }
                      
                      
-            var correctbox = new Array();
+             var correctbox = new Array();
              var studentbox  = new Array();
              
              
              for(var k=0; k<answer_linkednode.prevNode.length; k++){
                var temp=  findnodebyid(answer_linkednode.prevNode[k].id,linkedArray_answer); 
-                correctbox.push(temp.activity);
+                       
+            
+               correctbox.push(temp.node.activity);
                
              }
              
+           
+                     
              for(var k=0; k<student_linkednode.prevNode.length; k++){
                var temp=  findnodebyid(student_linkednode.prevNode[k].id,linkedArray_submission); 
-                studentbox.push(temp.activity);
+                studentbox.push(temp.node.activity);
                
              }
-             if( !correctbox.sort().compare(studentbox.sort())) { answer_node.left_red="red";}
+                     
+                         
+             if( !correctbox.sort().compare(studentbox.sort())) {
+              
+               answer_node.left_red="red";}
              
              //next 
              
@@ -125,7 +133,7 @@ function redraw(correct_string,student_string){
                var temp=  findnodebyid(answer_linkednode.nextNodes[k].id,linkedArray_answer); 
                 
               if(typeof temp != 'undefined' ){
-                 correctbox_next.push(temp.activity);
+                 correctbox_next.push(temp.node.activity);
               }
                
              }
@@ -133,7 +141,7 @@ function redraw(correct_string,student_string){
              for(var k=0; k<student_linkednode.nextNodes.length; k++){
                var temp=  findnodebyid(student_linkednode.nextNodes[k].id,linkedArray_submission); 
                if(typeof temp!= 'undefined' ){
-                studentbox_next.push(temp.activity);
+                studentbox_next.push(temp.node.activity);
                }
                
              }
