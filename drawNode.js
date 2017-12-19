@@ -265,7 +265,7 @@ function drawnode(node){
      
     
     var indexvalue= $( "#"+dropLid+" option:selected" ).val();
-    node.activity= indexvalue;
+    node.activity= +indexvalue;
     updateNode(node,"activity");
     
     $("#"+durationId).text("Duration: "+du[node.activity]);

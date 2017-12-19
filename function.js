@@ -114,7 +114,7 @@ function deserialiseL(string){
    var cc = new connector(); 
    cc.h= linkAttribute[1]
    cc.t= linkAttribute[2]; 
-   cc.activity=dataAttribute[1];
+   cc.activity=+dataAttribute[1];
    cc.EST=dataAttribute[2];
    cc.EFT=dataAttribute[3];
    cc.LST=dataAttribute[4];
@@ -150,7 +150,7 @@ function deserialiseC(string){
    
        var dataAttribute=shapeanddata[1].split('d');
       // console.log(dataAttribute);
-      node.activity=dataAttribute[1];
+      node.activity=+dataAttribute[1];
       node.EST=dataAttribute[2];
       node.EFT=dataAttribute[3];
       node.LST=dataAttribute[4];
@@ -583,6 +583,8 @@ for(i=0; i<myNodes.length;i++){
  */ 
  var repeatflag=0;
   
+  
+  console.log(myNodes);
  if(answer_type =="precedence"){ 
         for(i=0; i<myNodes.length;i++){
          if (myNodes[i].activity) { // ie not a dummy activity

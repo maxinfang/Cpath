@@ -4,12 +4,9 @@ function addConnections(linklist){
   
   for(n=0; n<arraynodes.length;n++){
     var link= arraynodes[n]; 
-    
-    console.log(link);
-    addConnection(link);  
-    
-    
    
+    addConnection(link);  
+     
     
   }
   
@@ -40,27 +37,12 @@ function addConnection(link){
   var linkconn= jsPlumb.connect({
    source:s,
    target:t,
-   id:"x",
-  
-   
+   id:"x", 
    
  }); 
+   
   
-   var myElement = linkconn.canvas; 
-  var mc = new Hammer.Manager(myElement);  
-  mc.add( new Hammer.Tap({ event: 'doubletap', taps: 2 }) ); 
-  
-  
-  //console.log();
-  
-  mc.on("doubletap", function(ev) {
-      //alert("trigged");
-      // var box= linkconn.getOverlays(); 
-      // if(box.isVisiable==true){box.setVisiable(false)} 
-     // else {box.setVisiable(false)}
-       
-    
-});
+ 
   
   
   linkconn.addOverlay( ["Custom", {
@@ -88,8 +70,7 @@ function addConnection(link){
         box[1].setVisible(false); 
        }
   
-  if(link.strokestyle=="red"){ 
-    
+  if(link.strokestyle=="red"){  
      linkconn.setPaintStyle({
       lineWidth: 2, 
       strokeStyle: "red", 

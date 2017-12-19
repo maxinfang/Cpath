@@ -166,6 +166,7 @@ $(document).ready(function()  {
     
     
     if(history_page == "" ){ 
+      
     }
     else if(mode!="student"){  
             
