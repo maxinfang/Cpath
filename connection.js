@@ -54,10 +54,10 @@ function addConnection(link){
   //console.log();
   
   mc.on("doubletap", function(ev) {
-      alert("trigged");
-      var box= linkconn.getOverlays(); 
-      if(box.isVisiable==true){box.setVisiable(false)} 
-      else {box.setVisiable(false)}
+      //alert("trigged");
+      // var box= linkconn.getOverlays(); 
+      // if(box.isVisiable==true){box.setVisiable(false)} 
+     // else {box.setVisiable(false)}
        
     
 });
