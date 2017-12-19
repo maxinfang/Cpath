@@ -157,15 +157,19 @@ $(document).ready(function()  {
       
     }
      
-    if(mode=="student"){history_page=getHistory();
-                       
+    if(mode=="student"){ 
+    
+      history_page=getHistory();
+                 
     }
+  
+    
     
     if(history_page == "" ){ 
     }
-    else{  
-       
-     redraw(history_page,correct_string); //
+    else if(mode!="student"){  
+            
+     redraw(history_page,correct_string);  
      addConnections(mylinks);
    }
    
