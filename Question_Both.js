@@ -23,10 +23,8 @@ var namespacefortype= array[0]+"_"+array[1]+"_type";
 var op= new Array();
 
 
-if(parent.document.getElementById(namespaceforAnswer))
- {mode ="correct";
-  answer_type=getType();
-}
+answer_type=getType();
+ 
 
 function getType(){
   
