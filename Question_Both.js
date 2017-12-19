@@ -19,6 +19,7 @@ var namespaceforEntry = array[0]+"_"+array[1]+"_entry";
 var namespaceforLabel= array[0]+"_"+array[1]+"_label"; 
 var namespaceforDuration= array[0]+"_"+array[1]+"_duration"; 
 var namespaceforAnswer= array[0]+"_"+array[1]+"_answer";
+var namespacefortype= array[0]+"_"+array[1]+"_type"; 
 var op= new Array();
 
 
