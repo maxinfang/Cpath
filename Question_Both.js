@@ -171,6 +171,10 @@ $(document).ready(function()  {
             
      redraw(history_page,correct_string);  
      addConnections(mylinks);
+   }else{
+     redraw(history_page,"");  
+     addConnections(mylinks);
+   
    }
    
  
