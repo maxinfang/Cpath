@@ -9,8 +9,10 @@ function redraw(history,submission){
    if( mode == "student")
   { for(n=0; n<myNodes.length;n++){ 
     var node= myNodes[n];
-   // console.log(node);
+    
     drawnode(node);
+     addConnections(mylinks);
+   
   }   
   
 }
@@ -847,8 +849,7 @@ if(mode=="correct" && answer_type=="precedence") {
         }
    
    
-  addConnections(mylinks);
-   
+ 
  }
   
   else if(mode=="correct" && answer_type=="arrow"){

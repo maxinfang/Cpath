@@ -173,8 +173,7 @@ $(document).ready(function()  {
      addConnections(mylinks);
    }else{
      redraw(history_page,"");  
-     addConnections(mylinks);
-   
+     
    }
    
  
