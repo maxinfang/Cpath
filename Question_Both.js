@@ -3,7 +3,7 @@
  var templink;
  var questionId=this.frameElement.attributes.id.value; 
  var array = questionId.split("_");
-
+ var answer_type="default";
   
 // Special handling may be required here if iframe id has double quotes included.
 if(array[0] != "question"){
@@ -20,6 +20,25 @@ var namespaceforLabel= array[0]+"_"+array[1]+"_label";
 var namespaceforDuration= array[0]+"_"+array[1]+"_duration"; 
 var namespaceforAnswer= array[0]+"_"+array[1]+"_answer";
 var op= new Array();
+
+
+if(parent.document.getElementById(namespaceforAnswer))
+ {mode ="correct";
+  answer_type=getType();
+}
+
+function getType(){
+  
+  var element=parent.document.getElementById(namespacefortype);
+ 
+  if ( typeof element !="undefined"&& element !=null ) { 
+  
+     return element.innerHTML;
+    
+  }
+ 
+
+}
 
  
 if(parent.document.getElementById(namespaceforSub))

@@ -581,24 +581,21 @@ for(i=0; i<myNodes.length;i++){
 }
 
  */ 
-     var repeatflag=0;
+ var repeatflag=0;
   
-  if(answer_type =="precedence"){
-    
-  
+ if(answer_type =="precedence"){ 
         for(i=0; i<myNodes.length;i++){
          if (myNodes[i].activity) { // ie not a dummy activity
-          for(j=i+1; j<myNodes.length;j++){ 
-          
-        if(myNodes[i].activity ==myNodes[j].activity){
-        console.log("warning");
-        repeatflag = 1;
+          for(j=i+1; j<myNodes.length;j++){  
+              if(myNodes[i].activity ==myNodes[j].activity){
+             console.log("warning");
+             repeatflag = 1; }
+           }
         }
-        }
-     }
      }
   }
   
+ 
   
 console.log("------------------------------------------------------");
  
