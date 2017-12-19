@@ -10,10 +10,11 @@ function redraw(history,submission){
   { for(n=0; n<myNodes.length;n++){ 
     var node= myNodes[n];
     
-    drawnode(node);
-     addConnections(mylinks);
+     drawnode(node);
+ 
    
   }   
+    addConnections(mylinks);
   
 }
    if (mode == "submission" )
