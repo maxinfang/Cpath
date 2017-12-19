@@ -144,15 +144,19 @@ $(document).ready(function()  {
    //check wehter we need reload or not
    
    console.log("Now the reload page will start load mode of "+ mode);
-  
-   if(mode=="correct" ){history_page=getHistory();
+   console.log(mode);
+   if(mode=="correct"){ history_page=getHistory();
                         student_submission=getSubmission();
                       //console.log("studentpage:"+history);
+                        // redraw(history_page,student_submission); 
+                        
                     }
                     
                     if(history_page == "" ){ 
+                      
                     }
                     else{   
+                     
                     redraw(history_page,student_submission);   
                    }
                    

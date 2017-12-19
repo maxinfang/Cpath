@@ -1,6 +1,8 @@
 function redraw(correct_string,student_string){
   
-     
+  if(answer_type=="precedence"){ 
+  
+  
    if(correct_string != "" ){
      
      answer_Nodes=deserialiseC(correct_string);
@@ -15,7 +17,7 @@ function redraw(correct_string,student_string){
    
   }
   
-  if(answer_type=="precedence"){ 
+ 
     
        var linkedArray_answer= new Array();  
        var linkedArray_submission= new Array(); 
@@ -40,9 +42,9 @@ function redraw(correct_string,student_string){
   }
     
  //mode= presedence 
-  
+ 
      if(mode=="correct"&& answer_type=="precedence"){ 
-       
+         
        
        
          for(var n=0; n<linkedArray_answer.length;n++){
@@ -216,7 +218,18 @@ function redraw(correct_string,student_string){
      
      }
    else if(mode=="correct" && answer_type=="arrow"){
-    
+     
+     
+       myNodes=deserialiseC(correct_string);
+       mylinks=deserialiseL(correct_string);
+     
+       submissionNodes=deserialiseC(student_string);
+       submissionlinks=deserialiseL(student_string);
+  
+     
+     
+     
+         
     for(n=0; n<myNodes.length;n++){ 
        var node= myNodes[n];
     // console.log(node);
@@ -304,8 +317,7 @@ function redraw(correct_string,student_string){
         var link=findlink(head,linkedNode.id);
          prevlink.push(link);  
      }
-      // linkedNode.prevconne
-         ctors=prevlink;
+       linkedNode.prevconnectors=prevlink;
      
       var suclink=Array();
       for (s=0; s<successors.length;s++){
@@ -319,7 +331,7 @@ function redraw(correct_string,student_string){
    }
     
      
-    
+ 
      var root = findrootnode();  
      var sub_root= findsubrootnode();
     
@@ -329,7 +341,7 @@ function redraw(correct_string,student_string){
     
      var deep =linkedrootnode.level;
      var maxvalueofEFT=0;
-    
+        console.log(linkedArray);
        for(var n=deep; n>0 ;n--){
         
          for (var j=0;j<linkedArray.length;j++){
@@ -406,20 +418,11 @@ function redraw(correct_string,student_string){
      addConnections(mylinks);
     
   }
-
-
-  
      
-  //if student then draw student pictures
-   
-  //if correct then draw green pictures
-   
-            //if submit then draw blue pictures
-   
- 
-  //mode= arrow
-  
-  
+     
+     
+    
+    
    
   
   
