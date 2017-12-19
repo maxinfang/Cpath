@@ -581,18 +581,23 @@ for(i=0; i<myNodes.length;i++){
 }
 
  */ 
-var repeatflag=0;
-for(i=0; i<myNodes.length;i++){
-  if (myNodes[i].activity) { // ie not a dummy activity
-    for(j=i+1; j<myNodes.length;j++){ 
-      if(myNodes[i].activity ==myNodes[j].activity){
+     var repeatflag=0;
+  
+  if(answer_type =="precedence"){
+    
+  
+        for(i=0; i<myNodes.length;i++){
+         if (myNodes[i].activity) { // ie not a dummy activity
+          for(j=i+1; j<myNodes.length;j++){ 
+          
+        if(myNodes[i].activity ==myNodes[j].activity){
         console.log("warning");
         repeatflag = 1;
-      }
-    }
+        }
+        }
+     }
+     }
   }
-}
-  
   
   
 console.log("------------------------------------------------------");
@@ -611,6 +616,8 @@ console.log("------------------------------------------------------");
 if (istailexist==0) numberOfnoParent++;
 }
  
+ 
+  
 if(repeatflag ){
  $("body").css("background-color","#fee");
  $("p").text("Warning: Two activities use the same label!");
