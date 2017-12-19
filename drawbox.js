@@ -197,7 +197,7 @@ function drawbox(type,data,conn){
    
    $(dropL).change(function() { 
     var indexvalue= $( "#"+dropLid+" option:selected" ).val();
-    data.activity= indexvalue;
+    data.activity= +indexvalue;
     if (data.activity==0){
                                      // conn.setPaintStyle({lineWidth: 2, 
                                      //  strokeStyle:"#666",
