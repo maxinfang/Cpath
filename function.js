@@ -611,7 +611,7 @@ console.log("------------------------------------------------------");
 if (istailexist==0) numberOfnoParent++;
 }
  
-if(repeatflag && answer_type!="arrow"){
+if(repeatflag ){
  $("body").css("background-color","#fee");
  $("p").text("Warning: Two activities use the same label!");
 
