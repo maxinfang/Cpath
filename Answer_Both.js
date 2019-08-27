@@ -125,6 +125,8 @@ var du= getDuration();
 $(document).ready(function()  { 
   
     //initialize jsPlumb
+  
+     
     
     /*initialize endpoint Class*/
      jsPlumb.setRenderMode(jsPlumb.SVG);
@@ -214,9 +216,7 @@ $(document).ready(function()  {
    
    
    if(mode!="submission"){
-    
-     
-    
+      
     $("#c").click(function(){ 
      var node= new Node();
      node.id =generateID(myNodes); 

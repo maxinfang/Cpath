@@ -32,7 +32,15 @@ function redraw(correct_string,student_string){
        var linkedrootnode_submission= findlinkednodebyid(submission_root_id,linkedArray_submission); 
     
       recursive(linkedrootnode_correct); 
-      recursive(linkedrootnode_submission);
+    
+       try {
+          recursive(linkedrootnode_submission);
+ 
+          }
+           catch(err) {
+            console.log(err)
+         }
+     
     
      // calculate the right answer
        var deep_answer =linkedrootnode_correct.level; 
@@ -46,7 +54,7 @@ function redraw(correct_string,student_string){
      if(mode=="correct"&& answer_type=="precedence"){ 
          
        
-       
+         
          for(var n=0; n<linkedArray_answer.length;n++){
            
             var answer_linkednode=linkedArray_answer[n];

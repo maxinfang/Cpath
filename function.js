@@ -651,7 +651,156 @@ else{
 
 }
 
+function checkloop1(){
+   
+    var allerrors = new Array();
+    for(n=0; n<myNodes.length;++n){
+       
+        var node= myNodes[n];
+        var li=[]; 
+        li.push(node);  
+        if(node.parentID!="") { 
+            var parentid =node.parentID;
+            var parentnode= findnode(parentid);  
+            var temp=  recursivecheck(parentnode, li )
+            if (temp!=true){ 
+                for (var l=0; l<temp.length;l++ ) {
+          if (! include(allerrors,temp[l])) {
+            allerrors.push(temp[l]);
+          }
+        }
+              
+            } 
+        }
+    
+    }  
+    
+}
 
+
+
+function checkloop( submissionNodes, submissionlinks ){
+  
+  
+  
+   var linkedArray_sub=new Array();
+   var linkedArray2_sub=new Array(); 
+  
+  
+   function findsublinkednode(id){
+    
+   for (x=0;x<linkedArray2_sub.length;x++){ 
+     var li=linkedArray2_sub[x];
+     if(li.id==id){return li;}
+   } 
+   return "none";
+ } 
+  
+  
+   for(n=0; n<submissionNodes.length;n++){  
+    var node=submissionNodes[n];  
+      // console.log(node);
+       var linkedNode= new NodeClass(node)
+     // console.log(linkedNode);
+     linkedArray_sub.push(linkedNode);  
+     linkedArray2_sub.push(linkedNode);
+   }  
+  
+     
+     for (j=0;j<linkedArray_sub.length;j++){ 
+      
+      var linkedNode=linkedArray_sub[j]; 
+      var children= new Array(); 
+      var parents= new Array(); 
+      for(var n=0; n<submissionlinks.length;n++){ 
+       var link= submissionlinks[n]; 
+       if (link.t==linkedNode.id){
+          
+         link.Tactivity=linkedNode.node.activity;
+         parents.push(findsublinkednode(link.h));
+       }
+       
+       if (link.h == linkedNode.id){
+         link.Hactivity=linkedNode.node.activity;
+         children.push(findsublinkednode(link.t))
+       }
+     }
+         // linkedNode.node.parentID;  
+         // console.log(children);
+         linkedNode.prevNode=parents; 
+         linkedNode.nextNodes=children;
+       }
+     
+    return true;
+      for (i=0;i<linkedArray_sub.length;i++){  
+                var linkedNode= linkedArray_sub[i]; 
+                 var li=[]; 
+        
+                 li.push(linkedNode);  
+        
+                 var  childlist = linkedNode.nextNodes;
+                    for (j=0;j<childlist.length;j++){  
+                    if(recursiveloop(childlist[j],li)) return true; 
+                      
+               }
+      }
+    
+
+     return false;
+
+}
+  
+  
+function include(arr, obj) {
+    for(var i=0; i<arr.length; i++) { 
+      console.log(obj);
+       console.log(arr[i]);
+        if (arr[i] == obj) return true;
+    }
+  return false;
+  
+  //include([1,2,3,4], 3); 
+}
+
+function recursiveloop(currentnode,box){
+  
+  
+     
+    if(include,boxcurrent){ 
+    ret = new Array();
+     }
+  
+    else{ return  recursiveloop(childnode,box);  }
+          
+
+
+ 
+  
+  
+  
+}
+
+  
+  
+
+function finditself(node,box){ 
+         
+       for(var i=0; i<box.length; i++) {
+         
+           console.log(box[i]);
+          if (box[i].id == node.id){ return true; }
+          
+          finditself(node,box[i].nextNodes);
+          
+       }
+       
+  
+      return false;
+ } 
+
+
+         
+ 
 
 
 
@@ -804,25 +953,58 @@ function deleteNode(node)
   return;
 }
 
- function recursive(node){  
+
+function recursivecheck(currentnode,box){
+    
+       
+    box.push(currentnode) ;
+  
+    var parentid =currentnode.parentID;
+           
+    if(parentid=="") {return true;};
+  
+    var parentnode= findnode(parentid);
+  
+    if(include(box,parentnode)){
+    ret = new Array();
+    while (box.length > 0) {
+      temp = box.pop();
+      ret.push(temp);
+      if (include(ret,parentnode)) {
+        return ret;
+      }
+    }
+  } 
+  
+    else{ return  recursivecheck (parentnode,box);  
+          
+           
+         }
+  
+   
+}
+
+
+
+
+
+
+ function recursive(node){ 
+   
+   
     var currentnode= node;
     var nextnodes= node.nextNodes;
     var nodedata= node.node; 
-    var length= nextnodes.length;
-    
-     
+    var length= nextnodes.length; 
     if( length>0) {
       var  prob=0;
       var max = 0;
       for (var x=0;x<length;x++){
-        var childnode = nextnodes[x];  
-        var childLevel = recursive(childnode);  
-        
-        if( max < childLevel){
-          max=childLevel;  
-          
-        }
-        
+        var childnode = nextnodes[x];   
+        var childLevel = recursive(childnode);   
+        if( max < childLevel){ 
+            max=childLevel;   
+        } 
       } 
       node.level=max+1;
       return node.level
@@ -839,10 +1021,8 @@ function deleteNode(node)
   function validateInt(value)
 {
     var num = value;
-    var regex=/^\d*$/;;
-    
-  
-  message="true";
+    var regex=/^\d*$/;  
+    message="true";
   
   if (!num.match(regex)) { message="Numbers must be Integer"; 
                           }

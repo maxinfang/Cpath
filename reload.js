@@ -4,12 +4,19 @@ function redraw(history,submission){
  mylinks=deserialiseL(history);
   
   
+  
+ var checkerr = checkloop(deserialiseC(submission),deserialiseL(submission)); //add checking ere 
+   console.log('submissionNodes');
+  
+ if (checkerr == true) {mode ="student";}
+  
+  
  if (myNodes == []) return;
  
-   if( mode == "student")
+   if( mode == "student"  )
   { for(n=0; n<myNodes.length;n++){ 
     var node= myNodes[n];
-    
+     
      drawnode(node);
  
    
@@ -130,15 +137,14 @@ function redraw(history,submission){
        }
   
   
-  
-     
-  
+   
        
        var linkedrootnode=findlinkednode(root.id);
        var linkedsubrootnode=findsublinkednode(sub_root.id);
-       console.log(linkedsubrootnode);
+      
        recursive(linkedrootnode); 
        recursive(linkedsubrootnode);
+         
   
        
        var deep =linkedrootnode.level;
@@ -568,9 +574,9 @@ if(mode=="correct" && answer_type=="precedence") {
        
    var linkedrootnode=findlinkednode(root.id);  
    var linkedsubrootnode=findsublinkednode(sub_root.id);
-     
+       
       recursive(linkedrootnode); 
-      recursive(linkedsubrootnode);
+      recursive(linkedsubrootnode); 
    
        var deep =linkedsubrootnode.level;
        
