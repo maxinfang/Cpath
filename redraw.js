@@ -11,7 +11,7 @@ function redraw(correct_string,student_string){
   }
   
    if(student_string != "" ){
-  
+   
    submission_Nodes=deserialiseC(student_string);
    submission_Links=deserialiseL(student_string); 
    

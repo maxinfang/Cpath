@@ -103,6 +103,7 @@ function deserialiseL(string){
  var array= new Array(); 
  var stringwithCandL=string.split('a');  
  var stringlink=stringwithCandL[1]; 
+ 
  if(stringlink.length ==0) return [];   
  var link= stringlink.split('L');  
    //console.log(link);
@@ -732,17 +733,14 @@ function checkloop( submissionNodes, submissionlinks ){
        }
      
     return true;
+  
       for (i=0;i<linkedArray_sub.length;i++){  
                 var linkedNode= linkedArray_sub[i]; 
-                 var li=[]; 
+                var li=[]; 
+                if(recursiveloop(linkedNode,li)) return true; 
         
-                 li.push(linkedNode);  
-        
-                 var  childlist = linkedNode.nextNodes;
-                    for (j=0;j<childlist.length;j++){  
-                    if(recursiveloop(childlist[j],li)) return true; 
-                      
-               }
+              
+                   
       }
     
 
@@ -764,19 +762,18 @@ function include(arr, obj) {
 
 function recursiveloop(currentnode,box){
   
-  
+     if(include(box,currentnode)){return true;}
      
-    if(include,boxcurrent){ 
-    ret = new Array();
-     }
+     box.push(currentnode) ; 
+     childnodes = currentnode.nextNodes;  
+     for (i=0;i<childnodes.length;i++){   
+       return  recursivecheck (parentnode,box); 
+      }
   
-    else{ return  recursiveloop(childnode,box);  }
-          
-
-
- 
-  
-  
+   
+           
+    
+   
   
 }
 

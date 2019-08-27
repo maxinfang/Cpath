@@ -1,12 +1,16 @@
 function redraw(history,submission){
   
+  
+
  myNodes=deserialiseC(history);
  mylinks=deserialiseL(history);
   
   
+    
+  var checkerr = true; 
   
- var checkerr = checkloop(deserialiseC(submission),deserialiseL(submission)); //add checking ere 
-   console.log('submissionNodes');
+  //false;//checkloop(deserialiseC(submission),deserialiseL(submission)); //add checking ere 
+//   console.log('submissionNodes');
   
  if (checkerr == true) {mode ="student";}
   
@@ -28,7 +32,7 @@ function redraw(history,submission){
      
   {
      
-    
+ 
  submissionNodes=deserialiseC(submission);
  submissionlinks=deserialiseL(submission);
   

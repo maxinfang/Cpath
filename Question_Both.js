@@ -124,6 +124,7 @@ function getHistory(){
   }
   
   
+  
 } 
 
 
@@ -153,13 +154,13 @@ $(document).ready(function()  {
  
     if(mode=="submission") {  history_page= getSubmission();
                               correct_string=getCorrectAnswer();
-                              
-      
+                               
     }
      
     if(mode=="student"){ 
     
       history_page=getHistory();
+      
                  
     }
   
