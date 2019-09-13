@@ -464,7 +464,8 @@ function  giveWarning(myNodes,mylinks){
   
   
  var linkedArray= new Array();   //untested array
- var linkedArray2= new Array();   
+ var linkedArray2= new Array();  
+  
  
   for(n=0; n<myNodes.length;n++){  
  var node=myNodes[n];  
@@ -652,12 +653,13 @@ else{
 
 }
 
-function checkloop1(){
+function checkloop(){
    
     var allerrors = new Array();
     for(n=0; n<myNodes.length;++n){
        
         var node= myNodes[n];
+      console.log(node);
         var li=[]; 
         li.push(node);  
         if(node.parentID!="") { 
@@ -680,14 +682,14 @@ function checkloop1(){
 
 
 
-function checkloop( submissionNodes, submissionlinks ){
+function checkloop1( submissionNodes, submissionlinks ){
   
-  
+   
   
    var linkedArray_sub=new Array();
    var linkedArray2_sub=new Array(); 
   
-  
+ 
    function findsublinkednode(id){
     
    for (x=0;x<linkedArray2_sub.length;x++){ 
@@ -696,7 +698,7 @@ function checkloop( submissionNodes, submissionlinks ){
    } 
    return "none";
  } 
-  
+   
   
    for(n=0; n<submissionNodes.length;n++){  
     var node=submissionNodes[n];  
@@ -732,23 +734,72 @@ function checkloop( submissionNodes, submissionlinks ){
          linkedNode.nextNodes=children;
        }
      
-    return true;
+     var allerrors = new Array();
   
-      for (i=0;i<linkedArray_sub.length;i++){  
-                var linkedNode= linkedArray_sub[i]; 
-                var li=[]; 
-                if(recursiveloop(linkedNode,li)) return true; 
-        
-              
-                   
-      }
+     for (j=0;j<linkedArray_sub.length;j++){ 
+       
+        var linkedNode=linkedArray_sub[j]; 
+        console.log(linkedNode);
+        var li=[]; 
+        li.push(linkedNode);  
+        console.log(linkedNode)
+        if(linkedNode.nextNodes.length>0) {   
+          for (i=0;i<linkedNode.nextNodes.length;i++){ 
+                   console.log('tt');
+                          var error=recursiveloop(linkedNode.nextNodes[i],li);
+     if(error){allerrors.push(error);}
+             
+           }
+          // check loop
+        }
+         
     
+    }  
+  
+     console.log(allerrors);
+  
+  
 
-     return false;
+     return allerrors;
 
 }
   
+function recursiveloop(currentnode,box){
+    
+      
+       if (include(box,currentnode)){
+           console.log('findloop');
+           console.log(box);
+           var ret = new Array(); 
+           while (box.length > 0) {
+                temp = box.pop();
+                ret.push(temp);
+               
+           }
+          console.log(ret);
+           return ret;
+       }
+     
+     
+      console.log(box);
+      console.log(currentnode);
   
+     if (currentnode.nextNodes.length>0) { box.push(currentnode) ;}
+  
+      for (m=0;m<currentnode.nextNodes.length;m++){ 
+         nextnode= currentnode.nextNodes[m];
+         return  recursiveloop(nextnode,box);
+      }
+  
+     // box.pop;
+      
+    
+  
+}
+
+  
+
+
 function include(arr, obj) {
     for(var i=0; i<arr.length; i++) { 
       console.log(obj);
@@ -760,24 +811,7 @@ function include(arr, obj) {
   //include([1,2,3,4], 3); 
 }
 
-function recursiveloop(currentnode,box){
-  
-     if(include(box,currentnode)){return true;}
-     
-     box.push(currentnode) ; 
-     childnodes = currentnode.nextNodes;  
-     for (i=0;i<childnodes.length;i++){   
-       return  recursivecheck (parentnode,box); 
-      }
-  
-   
-           
-    
-   
-  
-}
 
-  
   
 
 function finditself(node,box){ 
@@ -795,20 +829,101 @@ function finditself(node,box){
       return false;
  } 
 
+function giveloopWarning(text){
+  
+        
+    var loop="Warning: loop detected!";
+  
+   for(var n=0; n<text.length;n++){ 
+                  
+        node= text[n];
+        //loop= loop+" "+node.id; 
+              
+        var targetid ;
+        $("#"+node.id).children().each(function(no,el){ 
+            if($(el).hasClass("_jsPlumb_endpoint_anchor_")){
+                targetid= el.id ; 
+            } 
+        });
+  
+        var sourceid ; 
+        $("#"+node.id).children().each(function(no,el){
+                  
+            if($(el).hasClass("_jsPlumb_endpoint_anchor_")){
+                sourceid= el.id ; 
+            } 
+        }); 
+              
+        console.log(targetid);
+        console.log(sourceid);
+              
+    }
+ 
+             
+    var connectionList = jsPlumb.getConnections();
+    console.log(connectionList);
+    for(var x=0; x<connectionList.length; x++){
+           
+        conn =connectionList[x];
+        console.log(conn);
+         var targetId=$('#'+conn.targetId).parent().attr('id');
+     sourceId=$('#'+conn.sourceId).parent().attr('id');
+         console.log(targetId);
+         console.log( sourceId);
+    
+     
+  
+   if (true){
+            conn.setPaintStyle({ 
+                dashstyle: "solid",
+                lineWidth: 2 ,
+                strokeStyle:"#fa0000",
+            })
+        } 
+    else{
+      conn.setPaintStyle({ 
+                dashstyle: "solid",
+                lineWidth: 2 ,
+                strokeStyle:"#666",
+            })
+    }
+    }
+           
+    if(text.length>0){
+        $("body").css("background-color","#fee");
+        $("p").text(loop);
+  }
+   else{
+     console.log('test');
+      // giveWarning();
+            
+       }; 
+
+}
 
          
- 
-
+  
 
 
 function sentToparentPage()
-{ giveWarning(myNodes,mylinks);
+{ 
+  giveWarning(myNodes,mylinks);
   console.log(mylinks);
+   
   answervalue= serialise(myNodes,mylinks);
   console.log(answervalue);
   
-  // checkloop();
   
+  redlist=  checkloop1(myNodes,mylinks);
+  
+  for(var n=0; n< redlist.length;n++){ 
+    giveloopWarning(redlist[n]);
+    
+    
+    }
+    
+  
+ 
   var elem= parent.document.getElementsByTagName("input"); 
   var arr = new Array();
   var i = 0;
@@ -823,6 +938,25 @@ function sentToparentPage()
  }
  
  
+}
+
+function intheloop(sourceid,targetid,array){
+
+      for(var i=0; i<array.length; i++) { 
+          for(var l=0; l<array.length; l++) { 
+            
+                if (array[i] == array[l] ) continue;
+                  
+                if(array[i] == sourceid && array[l] == targetid) return true;
+           } 
+      
+      }
+        
+         
+    
+  return false;
+  
+
 }
 
 

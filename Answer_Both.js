@@ -158,7 +158,7 @@ $(document).ready(function()  {
                       
                     }
                     else{   
-                     
+                        console.log(mode);
                     redraw(history_page,student_submission);   
                    }
                    

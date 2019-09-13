@@ -9,7 +9,7 @@ function redraw(history,submission){
     
   var checkerr = true; 
   
-  //false;//checkloop(deserialiseC(submission),deserialiseL(submission)); //add checking ere 
+  //false;//checkloop(deserialiseC(submission),deserialiseL(submission)); //add    checking ere 
 //   console.log('submissionNodes');
   
  if (checkerr == true) {mode ="student";}

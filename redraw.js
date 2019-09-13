@@ -235,8 +235,7 @@ function redraw(correct_string,student_string){
        submissionlinks=deserialiseL(student_string);
   
      
-     
-     
+ 
          
     for(n=0; n<myNodes.length;n++){ 
        var node= myNodes[n];
