@@ -830,50 +830,36 @@ function finditself(node,box){
  } 
 
 function giveloopWarning(text){
-  
+    console.log(text);
+    var  looparray = new Array();
         
     var loop="Warning: loop detected!";
   
    for(var n=0; n<text.length;n++){ 
                   
         node= text[n];
-        //loop= loop+" "+node.id; 
-              
-        var targetid ;
-        $("#"+node.id).children().each(function(no,el){ 
-            if($(el).hasClass("_jsPlumb_endpoint_anchor_")){
-                targetid= el.id ; 
-            } 
-        });
-  
-        var sourceid ; 
-        $("#"+node.id).children().each(function(no,el){
-                  
-            if($(el).hasClass("_jsPlumb_endpoint_anchor_")){
-                sourceid= el.id ; 
-            } 
-        }); 
-              
-        console.log(targetid);
-        console.log(sourceid);
+       
+        looparray.push (node.id);
               
     }
  
-             
+     console.log(looparray);
+  
     var connectionList = jsPlumb.getConnections();
     console.log(connectionList);
-    for(var x=0; x<connectionList.length; x++){
+    for(var x=0; x<=connectionList.length; ++x){
            
-        conn =connectionList[x];
-        console.log(conn);
-         var targetId=$('#'+conn.targetId).parent().attr('id');
+    conn =connectionList[x];
+    console.log(conn);
+      
+     var targetId=$('#'+conn.targetId).parent().attr('id');
      sourceId=$('#'+conn.sourceId).parent().attr('id');
          console.log(targetId);
          console.log( sourceId);
     
      
-  
-   if (true){
+   //include([1,2,3,4], 3); 
+   if (include(looparray, targetId) && include(looparray, sourceId) ){
             conn.setPaintStyle({ 
                 dashstyle: "solid",
                 lineWidth: 2 ,
