@@ -866,13 +866,7 @@ function giveloopWarning(text){
                 strokeStyle:"#fa0000",
             })
         } 
-    else{
-      conn.setPaintStyle({ 
-                dashstyle: "solid",
-                lineWidth: 2 ,
-                strokeStyle:"#666",
-            })
-    }
+   
     }
            
     if(text.length>0){
