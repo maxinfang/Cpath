@@ -850,10 +850,10 @@ function giveloopWarning(text){
     for(var x=0; x<=connectionList.length; ++x){
            
     conn =connectionList[x];
-    console.log(conn);
-      
+     if (conn === undefined) continue;
+      console.log(conn);
      var targetId=$('#'+conn.targetId).parent().attr('id');
-     sourceId=$('#'+conn.sourceId).parent().attr('id');
+     var  sourceId=$('#'+conn.sourceId).parent().attr('id');
          console.log(targetId);
          console.log( sourceId);
     
