@@ -845,15 +845,13 @@ function giveloopWarning(text){
  
      console.log(looparray);
   
-    var connectionList = jsPlumb.getConnections();
+     var connectionList = jsPlumb.getConnections();
     console.log(connectionList);
-    for(var x=0; x<=connectionList.length; ++x){
-           
+    for(var x=0; x<connectionList.length; x++){    
     conn =connectionList[x];
      if (conn === undefined) continue;
       console.log(conn);
-     var targetId=$('#'+conn.targetId).parent().attr('id');
-     var  sourceId=$('#'+conn.sourceId).parent().attr('id');
+      var targetId=$('#'+conn.targetId).parent().attr('id');      var  sourceId=$('#'+conn.sourceId).parent().attr('id');
          console.log(targetId);
          console.log( sourceId);
     
@@ -896,10 +894,24 @@ function sentToparentPage()
   
   redlist=  checkloop1(myNodes,mylinks);
   
+   var connectionList = jsPlumb.getConnections();
+    console.log(connectionList);
+    for(var x=0; x<connectionList.length; x++){    
+    conn =connectionList[x];
+      conn.setPaintStyle({ 
+                dashstyle: "solid",
+                lineWidth: 2 ,
+                strokeStyle:"#666",
+            })
+      }
+      
+      
+      
+
+  
   for(var n=0; n< redlist.length;n++){ 
     giveloopWarning(redlist[n]);
-    
-    
+     
     }
     
   
