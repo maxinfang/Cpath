@@ -768,8 +768,8 @@ function recursiveloop(currentnode,box){
     
       
        if (include(box,currentnode)){
-           console.log('findloop');
-           console.log(box);
+       //    console.log('findloop');
+       //    console.log(box);
            var ret = new Array(); 
            while (box.length > 0) {
                 temp = box.pop();
@@ -782,8 +782,8 @@ function recursiveloop(currentnode,box){
        }
      
      
-      console.log(box);
-      console.log(currentnode);
+    //  console.log(box);
+     // console.log(currentnode);
   
      if (currentnode.nextNodes.length>0) { box.push(currentnode) ;}
   
@@ -895,8 +895,11 @@ function sentToparentPage()
   
   redlist=  checkloop1(myNodes,mylinks);
   
+  
+  
+  console.log( redlist);
    var connectionList = jsPlumb.getConnections();
-    console.log(connectionList);
+   // console.log(connectionList);
     for(var x=0; x<connectionList.length; x++){    
     conn =connectionList[x];
       conn.setPaintStyle({ 
@@ -911,7 +914,7 @@ function sentToparentPage()
 
   
   for(var n=0; n< redlist.length;n++){ 
-    giveloopWarning(redlist[n]);
+   // giveloopWarning(redlist[n]);
      
     }
     
