@@ -774,6 +774,7 @@ function recursiveloop(currentnode,box){
            while (box.length > 0) {
                 temp = box.pop();
                 ret.push(temp);
+                if (temp == currentnode) {break;}
                
            }
           console.log(ret);
