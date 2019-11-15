@@ -460,9 +460,7 @@ if(mode=="correct" && answer_type=="precedence") {
  submissionlinks=deserialiseL(submission);
   
   
-  
-  
-  
+ 
  var root = new Node();
  root = findrootnode();  
  var sub_root= new Node();
@@ -944,6 +942,8 @@ if(mode=="correct" && answer_type=="precedence") {
      
       predessors= linkedNode.prevNode;
       successors=linkedNode.nextNodes;
+      
+     
      
        //findlink();
        var prevlink=Array();
@@ -962,6 +962,7 @@ if(mode=="correct" && answer_type=="precedence") {
          suclink.push(link);  
      }
        linkedNode.nextconnectors=suclink;
+       linkedNode.color='green';
      
        
    }
@@ -982,6 +983,7 @@ if(mode=="correct" && answer_type=="precedence") {
         
          for (var j=0;j<linkedArray.length;j++){
            var  lnode=  linkedArray[j];
+             
            if(lnode.level== n) {   
              var parentlinks=lnode.prevconnectors;
              var maxValudeofParentEFT=0; 
@@ -1010,17 +1012,23 @@ if(mode=="correct" && answer_type=="precedence") {
       }
     
     
+    
+    
      for( var i=1; i<=deep; i++ )   {
        
       for (var j=0;j<linkedArray.length;j++){
-       var  lnode=  linkedArray[j]; 
+       var  lnode=  linkedArray[j];
+            
        if(lnode.level==i) {
          var childrelinks=lnode.nextconnectors;   
+         console.log(lnode);
          var ValueofChildEFT=maxvalueofEFT;
          var ValueofChildEST=maxvalueofEFT;
          
        
          for(var k=0; k< childrelinks.length; k++ ){
+           
+          
           var linkdata= childrelinks[k]; 
           var childLST= linkdata.LST;
           var childEST= linkdata.EST;

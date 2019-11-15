@@ -26,8 +26,9 @@ function drawbox(type,data,conn){
        
        
        
-    if(1){
-    datadiv.style.borderColor = "red";}//add the dropdown
+    if(data.color !='black'){
+    datadiv.style.borderColor = "red";}
+       else { datadiv.style.borderColor = "black";}//add the dropdown
        
        
     $(datadiv).uniqueId();

@@ -229,8 +229,7 @@ function redraw(correct_string,student_string){
      
      
        myNodes=deserialiseC(correct_string);
-       mylinks=deserialiseL(correct_string);
-     
+       mylinks=deserialiseL(correct_string); 
        submissionNodes=deserialiseC(student_string);
        submissionlinks=deserialiseL(student_string);
   
@@ -271,8 +270,11 @@ function redraw(correct_string,student_string){
       var linkedNode=linkedArray[j]; 
       var children= new Array(); 
       var parents= new Array(); 
+       
       for(var n=0; n<mylinks.length;n++){ 
-       var link= mylinks[n]; 
+       
+       var link= mylinks[n];
+        console.log(link); 
        if (link.t==linkedNode.id){
          parents.push(findlinkednode(link.h));
        }
@@ -286,24 +288,35 @@ function redraw(correct_string,student_string){
       console.log(linkedNode);
   
      } 
+     
+     
+     
     
+     
+     
     // connectionlist
     
    var linkedconnections=new Array(); 
    var linkedconnectionsserach=new Array(); 
     
-    for(x=0; x<mylinks.length; x++ ){
-    
-      var   connector =  mylinks[x];
-      var linkedconnector= new connectionClass(connector);  
-    
-    /*  var predecessor= new Array(); 
-      var successor= new Array();   
+    for(x=0; x< submissionlinks.length; x++ ){
       
-      linkedconnector.prevLinks=predecessor; 
-      linkedconnector.nextLinks=findsuccessor;            */
-      linkedconnections.push(linkedconnector); 
       
+          var sublink= submissionlinks[x];
+       for(var n=0; n<mylinks.length;n++){ 
+              var link= mylinks[n]; 
+               if(link.activity ==sublink.activity){
+                   link.color='black';
+               }
+         }
+     
+      
+    }
+     
+     
+       for(x=0; x<mylinks.length; x++ ){
+    
+   
       
     }
     
@@ -414,7 +427,9 @@ function redraw(correct_string,student_string){
               calculateLFT(link, ValueofChildEFT);
               calculateLST(link);  
               calculateFFTF(link,ValueofChildEST);   
+               
                 } 
+         
         }
       }
     }
