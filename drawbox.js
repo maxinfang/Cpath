@@ -23,8 +23,17 @@ function drawbox(type,data,conn){
     var dataLeft= $(newdiv).position().left;
     var dataTop= $(newdiv).position().top; 
     datadiv= document.createElement('div');
+       
+       
+       
+    if(1){
+    datadiv.style.borderColor = "red";}//add the dropdown
+       
+       
     $(datadiv).uniqueId();
     
+       
+       
     var datadivId=$(datadiv).attr("id");
     //  data.id=datadivId;
     $(datadiv).addClass("datatable");

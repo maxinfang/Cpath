@@ -745,20 +745,17 @@ function checkloop1( submissionNodes, submissionlinks ){
         console.log(linkedNode)
         if(linkedNode.nextNodes.length>0) {   
           for (i=0;i<linkedNode.nextNodes.length;i++){ 
-                   console.log('tt');
+                   
                           var error=recursiveloop(linkedNode.nextNodes[i],li);
      if(error){allerrors.push(error);}
              
            }
-          // check loop
-        }
          
-    
-    }  
+        }
+          
+    }   
   
-     console.log(allerrors);
-  
-  
+     console.log(allerrors); 
 
      return allerrors;
 
@@ -793,20 +790,20 @@ function recursiveloop(currentnode,box){
       }
   
      // box.pop;
-      
-    
+       
   
 }
 
-  
-
+   
 
 function include(arr, obj) {
+  
     for(var i=0; i<arr.length; i++) { 
       console.log(obj);
        console.log(arr[i]);
         if (arr[i] == obj) return true;
     }
+  
   return false;
   
   //include([1,2,3,4], 3); 
