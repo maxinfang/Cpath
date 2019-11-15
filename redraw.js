@@ -299,16 +299,19 @@ function redraw(correct_string,student_string){
    var linkedconnections=new Array(); 
    var linkedconnectionsserach=new Array(); 
     
-    for(x=0; x< submissionlinks.length; x++ ){
+    
+    for(x=0; x< mylinks.length; x++ ){ 
       
-      
-          var sublink= submissionlinks[x];
-       for(var n=0; n<mylinks.length;n++){ 
-              var link= mylinks[n]; 
-               if(link.activity ==sublink.activity){
-                   link.color='black';
+          var link= mylinks[x];
+          var flag= 'red';
+       for(var n=0; n<submissionlinks.length;n++){ 
+              var sublink= submissionlinks[n]; 
+               if(sublink.activity ==link.activity){
+                   flag = 'black';
                }
          }
+          if (flag =='black'){ link.color='black'}
+          else {link.color='red'};
      
       
     }

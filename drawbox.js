@@ -26,7 +26,7 @@ function drawbox(type,data,conn){
        
        
        
-    if(data.color !='black'){
+    if(data.color =='red'){
     datadiv.style.borderColor = "red";}
        else { datadiv.style.borderColor = "black";}//add the dropdown
        
