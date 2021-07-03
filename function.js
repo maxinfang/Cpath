@@ -102,6 +102,9 @@ function connectionClass(connector) {
 function deserialiseL(string){  
  var array= new Array(); 
  var stringwithCandL=string.split('a');  
+ if (stringwithCandL.length < 2) {
+   return array;
+ }
  var stringlink=stringwithCandL[1]; 
  
  if(stringlink.length ==0) return [];   
@@ -134,7 +137,10 @@ function deserialiseL(string){
 
 function deserialiseC(string){ 
  var array= new Array(); 
- var stringwithCandL=string.split('a'); 
+ var stringwithCandL=string.split('a');
+ if (stringwithCandL.length < 2) {
+   return array;
+ }
  var stringnode=stringwithCandL[0];
  var stringlink=stringwithCandL[1]; 
  var stringnode=  stringnode.split('C'); 

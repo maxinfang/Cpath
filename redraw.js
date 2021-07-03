@@ -3,19 +3,19 @@ function redraw(correct_string,student_string){
   if(answer_type=="precedence"){ 
   
   
-   if(correct_string != "" ){
+//   if(correct_string != "" ){
      
      answer_Nodes=deserialiseC(correct_string);
      answer_Links=deserialiseL(correct_string); 
      
-  }
+//  }
   
-   if(student_string != "" ){
+//   if(student_string != "" ){
    
    submission_Nodes=deserialiseC(student_string);
    submission_Links=deserialiseL(student_string); 
    
-  }
+//  }
   
  
     
