@@ -20,6 +20,7 @@ var namespaceforLabel= array[0]+"_"+array[1]+"_label";
 var namespaceforDuration= array[0]+"_"+array[1]+"_duration"; 
 var namespaceforAnswer= array[0]+"_"+array[1]+"_answer";
 var namespacefortype= array[0]+"_"+array[1]+"_type"; 
+var namespaceforInput = "input_"+array[1]; 
 var op= new Array();
 
 
@@ -40,7 +41,7 @@ function getType(){
 }
 
  
-if(parent.document.getElementById(namespaceforSub))
+if(parent.document.getElementById(namespaceforAnswer))
  {mode ="submission";
 }
 else{
@@ -130,10 +131,8 @@ function getHistory(){
 
 
 function getSubmission(){
-  var element=parent.document.getElementById(namespaceforSub);
-  
-  //console.log(element.innerHTML);
-  return element.innerHTML;
+  parentintputbox=$("input[name*='" + namespaceforInput + "']", window.parent.document);
+  return parentintputbox[0].value;
 }
 
 var op = getEntry();
@@ -159,7 +158,7 @@ $(document).ready(function()  {
      
     if(mode=="student"){ 
     
-      history_page=getHistory();
+      history_page=getSubmission();
       
                  
     }
