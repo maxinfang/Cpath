@@ -61,7 +61,7 @@ function addConnection(link){
     linkconn.setPaintStyle({
       lineWidth: 2, 
       strokeStyle: "#666", 
-      dashstyle:"4 2" 
+     // dashstyle:"4 2" 
     })
    
       var box= linkconn.getOverlays();
@@ -74,7 +74,7 @@ function addConnection(link){
      linkconn.setPaintStyle({
       lineWidth: 2, 
       strokeStyle: "red", 
-      dashstyle:"10 2" 
+     // dashstyle:"10 2" 
     })
   
   }
