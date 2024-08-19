@@ -9,32 +9,76 @@ if(mode=="correct") { Color= "#0060bf"}; //#0060bf
 if(mode=="submission") { Color= "#5cc902"};  //#5cc902
 
 function addShape(type,dragzone,node){
-   console.log(node);
-   
-  if(node.color == "red"){
-    Color="#d9534f";left_end="#d9534f";right_end="#d9534f";}
-   else if(mode=="submission"){Color="#5cc902";}else{Color="#0060bf"; } 
+  console.log(node);
 
-   if(node.color =="green") {
-    Color="#5cc902";
-   }
+  if (node.color == "red") {
+    Color = "#d9534f";
+    left_end = "#d9534f";
+    right_end = "#d9534f";
+  } else if (mode == "submission") {
+    Color = "#5cc902";
+  } else {
+    Color = "#0060bf";
+  }
 
-   if (node.color == "orange") Color = "#ffa500";
-    
+  if (node.color == "green") {
+    Color = "#5cc902";
+  }
+
+  if (node.color == "orange") Color = "#ffa500";
+
   //to do add orange in the future
-  
-   if(node.left_red=="red"){ left_end="#d9534f";} else if(node.color != "red"){left_end="#445566";} 
-   if(node.right_red=="red"){ right_end="#d9534f";} else if(node.color != "red"){right_end="#445566";} 
 
-   //if any one leftnode and right node is red 
-   //if any box color is red or blue then change orange
-   //
-   if(node.left_red == "red"||node.right_red == "red"){
-       node.color == "orange" ;
-       Color = "#ffa500";
-   }
-  
-  if (type=="C") {addCircle(dragzone,node);} 
+  if (node.left_red == "red") {
+    left_end = "#d9534f";
+  } else if (node.color != "red") {
+    left_end = "#445566";
+  }
+  if (node.right_red == "red") {
+    right_end = "#d9534f";
+  } else if (node.color != "red") {
+    right_end = "#445566";
+  }
+
+  //if any one leftnode and right node is red
+  //if any box color is red or blue then change orange
+  //
+  if (node.left_red == "red" || node.right_red == "red") {
+    node.color == "orange";
+    Color = "#ffa500";
+  }
+
+  if (node.ETFcolor == "red" || node.ETFcolor == "blue") {
+    node.color == "orange";
+    Color = "#ffa500";
+  }
+
+  if (node.ESTcolor == "red" || node.ESTcolor == "blue") {
+    node.color == "orange";
+    Color = "#ffa500";
+  }
+
+  if (node.FFcolor == "red" || node.FFcolor == "blue") {
+    node.color == "orange";
+    Color = "#ffa500";
+  }
+  if (node.TFcolor == "red" || node.TFcolor == "blue") {
+    node.color == "orange";
+    Color = "#ffa500";
+  }
+
+  if (node.LFTcolor == "red" || node.LFTcolor == "blue") {
+    node.color == "orange";
+    Color = "#ffa500";
+  }
+  if (node.LSTcolor == "red" || node.LSTcolor == "blue") {
+    node.color == "orange";
+    Color = "#ffa500";
+  }
+
+  if (type == "C") {
+    addCircle(dragzone, node);
+  }
 }
  
  
