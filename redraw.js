@@ -51,8 +51,7 @@ function redraw(correct_string, student_string) {
 
   if (mode == "correct" && answer_type == "precedence") {
 
-    console.log("!@#@!#!!!111111");
-    for (var n = 0; n < linkedArray_answer.length; n++) {
+     for (var n = 0; n < linkedArray_answer.length; n++) {
       var answer_linkednode = linkedArray_answer[n];
       var answer_node = linkedArray_answer[n].node;
 
