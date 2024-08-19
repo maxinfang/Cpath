@@ -967,7 +967,7 @@ function calculateEFT(node){
 
 function compareEFT(node){
    if  (node.EFT != +du[node.activity] +  +node.EST) { node.EFTcolor="red";};
- 
+  // to Max update the eft
 }
   
  
@@ -981,6 +981,7 @@ function  calculateEST(node,value){
 
 function compareEST(node,value){
   if (node.EST != value){ node.ESTcolor="red";}
+  // to Max update the color
 }
 
 
