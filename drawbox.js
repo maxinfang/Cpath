@@ -56,7 +56,7 @@ function drawbox(type,data,conn){
     $(datadiv).append(dropL.show());
     $(datadiv).append(oNewP);
     $(datadiv).append(element);
-    console.log(data);
+    //console.log(data);
    //$(element).append(addlabel("EST"));
    //  console.log("test"+data.EST);
    var EST = (data.EST=="") ? addtext("EST") : addtext("EST",data.EST,data.ESTcolor);

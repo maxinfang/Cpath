@@ -53,15 +53,15 @@ function convert(Nodes, links) {
     for (var n = 0; n < links.length; n++) {
       var link = links[n];
 
-      console.log(link);
+     // console.log(link);
       if (link.t == linkedNode.id) {
-        console.log(linkedNode.node.activity);
+       // console.log(linkedNode.node.activity);
         link.Tactivity = linkedNode.node.activity;
         parents.push(findlinkednode(link.h));
       }
 
       if (link.h == linkedNode.id) {
-        console.log(linkedNode.node.activity);
+       // console.log(linkedNode.node.activity);
         link.Hactivity = linkedNode.node.activity;
         children.push(findlinkednode(link.t));
       }
@@ -104,7 +104,7 @@ function findrootnodebyid(myNodes, mylinks) {
       var link = mylinks[n];
       if (link.t == id) {
         count++;
-        console.log("link:++" + link);
+        //console.log("link:++" + link);
       }
     }
     if (count == 0) {
@@ -149,7 +149,7 @@ function calculate(deep, linkedArray) {
   for (var i = 1; i <= deep; i++) {
     for (var j = 0; j < linkedArray.length; j++) {
       var lnode = linkedArray[j];
-      console.log(lnode);
+      //console.log(lnode);
       if (lnode.level == i) {
         var childrenodes = lnode.nextNodes;
         var minValueofChildLST = project_duration;
