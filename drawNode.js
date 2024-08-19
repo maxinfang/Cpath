@@ -68,7 +68,7 @@ function drawnode(node){
       
       var datadivId=$(datadiv).attr("id");
       $(datadiv).addClass("datatable"); 
-      $(datadiv).addClass("border-red");
+      //$(datadiv).addClass("border-red");
       
       var element = document.createElement('span');
       element.className = "normal short";

@@ -16,7 +16,7 @@ function addShape(type,dragzone,node){
    else if(mode=="submission"){Color="#5cc902";}else{Color="#0060bf"; } 
 
    if(node.color =="green") {
-    Color="green"
+    Color="#5cc902";
    }
     
   
