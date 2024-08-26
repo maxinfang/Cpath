@@ -5,9 +5,7 @@ function redraw(history, submission) {
   var checkerr = true;
 
 
-  if (checkerr == true) {
-    mode = "student"; 
-  }
+ 
 
   if (myNodes == []) return; 
 
