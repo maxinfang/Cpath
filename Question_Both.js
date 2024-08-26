@@ -43,10 +43,10 @@ function getType(){
  
 if(parent.document.getElementById(namespaceforAnswer))
  {
-  mode="student";
+  mode ="submission"; 
 }
 else{
-  mode ="submission";
+  mode="student";
 };
 
 function getDuration(){
