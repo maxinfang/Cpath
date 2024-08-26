@@ -4,18 +4,14 @@ function redraw(history, submission) {
 
   var checkerr = true;
 
-  //false;//checkloop(deserialiseC(submission),deserialiseL(submission)); //add    checking ere
-  //   console.log('submissionNodes');
 
   if (checkerr == true) {
-    mode = "student";
-    mode = "submission";
+    mode = "student"; 
   }
 
   if (myNodes == []) return; 
-  // hard code to mmode to submision
 
-  
+
 
   if (mode == "student") {
     for (n = 0; n < myNodes.length; n++) {

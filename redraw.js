@@ -1,3 +1,5 @@
+// this is for answer page and better to merge with the student page.
+// bit complicated as the student page has two mode.
 function redraw(correct_string, student_string) {
   if (answer_type == "precedence") { 
     //   if(correct_string != "" ){
