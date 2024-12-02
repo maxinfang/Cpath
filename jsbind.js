@@ -9,23 +9,24 @@ jsPlumb.bind("connection",  function(info, originalEvent) {
   //  var conn = info.connection;
   //var parentId=$('#'+conn.sourceId).parent().attr('id');
  /// var childId=$('#'+conn.targetId).parent().attr('id');
-  //console.log(childId);
-  
+  //console.log(childId); 
          
     })
-  
+   
 
+ if (answer_type  == "arrow") {
+  jsPlumb.bind("dblclick", function(conn) { 
+    var box= conn.getOverlays();   
+   if(box[1].visible == true){
+         box[1].setVisible(false);
+    }
+    else{
+         box[1].setVisible(true);
+     }  
+ });  
+ }
 
-
- jsPlumb.bind("dblclick", function(conn) { 
-        var box= conn.getOverlays();   
-       if(box[1].visible == true){
-             box[1].setVisible(false);
-        }
-        else{
-             box[1].setVisible(true);
-         }  
-     }); 
+   
  
 jsPlumb.bind("connectionDetached", function(info, originalEvent) {
   

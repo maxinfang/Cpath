@@ -32,16 +32,12 @@ function drawnode(node){
       if(mode =="student") { $(newdiv).append(deletezone);} 
 
      
-      $(newdiv).append(dragzone);  
-      
+      $(newdiv).append(dragzone);   
   
-      addShape("C",dragzone,node);  
-      
+      addShape("C",dragzone,node);   
       
       var dropL;
-      var dropLid;
-      
-      
+      var dropLid; 
     
       if(node.activity==""){ 
        node.activity=0;
@@ -297,7 +293,12 @@ console.log(containerId);
 // We create a manager object, which is the same as Hammer(), but without the presetted recognizers. 
 var mc = new Hammer.Manager(myElement); 
 // Tap recognizer with minimal 2 taps
-mc.add( new Hammer.Tap({ event: 'doubletap', taps: 2 }) ); 
+
+//console.log("answer_type: "+answer_type);
+ if (answer_type  == "precedence") {
+  mc.add( new Hammer.Tap({ event: 'doubletap', taps: 2 }) ); 
+ }
+
 mc.add( new Hammer.Pan({ direction: Hammer.DIRECTION_ALL, threshold: 0 }) );
 var Press = new Hammer.Press({
   time: 500
@@ -317,13 +318,10 @@ mc.on("doubletap", function(ev) {
 // Subscribe to desired event
 mc.on('press', function(e) {
    $("#"+datadivId).toggle("slow") ;
-});
- 
-  
-    
+}); 
+/*
    $(datadiv).bind("dbclick",
-     function() {  
-     
+     function() {   
        $("#"+datadivId).toggle("slow") ;
      });
    
