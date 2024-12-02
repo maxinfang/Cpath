@@ -101,6 +101,11 @@ function connectionClass(connector) {
 
 function deserialiseL(string){  
  var array= new Array(); 
+   // Check if the input string is null or its length is less than 2
+   if (!string || string.length < 2) {
+    return array;
+  }
+ 
  var stringwithCandL=string.split('a');  
  if (stringwithCandL.length < 2) {
    return array;
@@ -137,7 +142,12 @@ function deserialiseL(string){
 
 function deserialiseC(string){ 
  var array= new Array(); 
- var stringwithCandL=string.split('a');
+  // Check if the input string is null or its length is less than 2
+  if (!string || string.length <= 2) {
+     return array;
+  }
+
+  var stringwithCandL= string && string.split('a');
  if (stringwithCandL.length < 2) {
    return array;
  }

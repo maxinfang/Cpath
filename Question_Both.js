@@ -131,10 +131,30 @@ function getHistory(){
 
 
 
-function getSubmission(){
-  parentintputbox=$("input[name*='" + namespaceforInput + "']", window.parent.document);
-  return parentintputbox[0].value;
+function getSubmission() {
+  try {
+    // Select the input element
+    const parentInputBox = $("input[name*='" + namespaceforInput + "']", window.parent.document);
+
+    // Check if the input element exists
+    if (parentInputBox.length === 0) {
+      throw new Error("Input element not found");
+    }
+
+    // Get the value of the input element
+    const value = parentInputBox[0].value;
+
+    // Check if the value is empty
+    if (!value) {
+      throw new Error("Input value is empty");
+    }
+
+    return value;
+  } catch (error) {
+     return null; // Return a default value or handle the error as needed
+  }
 }
+
 
 var op = getEntry();
 var du= getDuration();
