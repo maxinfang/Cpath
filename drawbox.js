@@ -169,10 +169,7 @@ function drawbox(type,data,conn){
     
   }, false);
        
-       
-       
-       
-       
+        
    
    $(EST).change(function() {
      data.EST= $(EST).val();

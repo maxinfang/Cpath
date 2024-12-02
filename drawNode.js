@@ -294,7 +294,6 @@ console.log(containerId);
 var mc = new Hammer.Manager(myElement); 
 // Tap recognizer with minimal 2 taps
 
-//console.log("answer_type: "+answer_type);
  if (answer_type  == "precedence") {
   mc.add( new Hammer.Tap({ event: 'doubletap', taps: 2 }) ); 
  }
@@ -309,6 +308,7 @@ mc.add(Press);
 // tie in the handler that will be called
 mc.off("pan", handleDrag);
 
+// how I add the answer_type here to ties the 
 mc.on("doubletap", function(ev) {
     $("#"+datadivId).toggle("slow") ;
 });
@@ -330,7 +330,7 @@ mc.on('press', function(e) {
      $("#"+datadivId).toggle("slow") ;
    }
       );
-   
+   */
    if(node.activity==0){$(datadiv).hide()}
     
  
